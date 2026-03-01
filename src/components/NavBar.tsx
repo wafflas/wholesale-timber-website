@@ -6,6 +6,13 @@ import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import { Menu, X, Search } from "lucide-react";
 
+const links = [
+  { href: "/", label: "Αρχική" },
+  { href: "/products", label: "Προϊόντα" },
+  { href: "/facilities", label: "Εγκαταστάσεις" },
+  { href: "/contact", label: "Επικοινωνία" },
+];
+
 export default function NavBar() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -23,13 +30,7 @@ export default function NavBar() {
 
   useEffect(() => {
     setMobileOpen(false);
-  }, [location]);
-
-  const links = [
-    { href: "/", label: "Αρχική" },
-    { href: "/products", label: "Προϊόντα" },
-    { href: "/contact", label: "Επικοινωνία" },
-  ];
+  }, [pathname]);
 
   const isActive = (path: string) => pathname === path;
 
@@ -47,7 +48,7 @@ export default function NavBar() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className={`group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 font-heading text-sm font-medium tracking-wide transition-colors  hover:text-primary focus:text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 ${
+                  className={`group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-md font-semibold tracking-wide transition-colors hover:text-primary focus:text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 ${
                     isActive(link.href) ? "text-primary" : "text-foreground/80"
                   }`}
                 >
@@ -68,15 +69,15 @@ export default function NavBar() {
             >
               <button
                 onClick={() => setSearchOpen(!searchOpen)}
-                className="flex h-10 w-10 shrink-0 items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
+                className="flex h-10 w-10 shrink-0 items-center justify-center text-muted-foreground hover:text-primary transition-colors"
               >
                 <Search className="h-4 w-4" />
               </button>
               <input
                 ref={searchRef}
                 type="text"
-                placeholder="Search products..."
-                className="h-10 w-full bg-transparent pr-4 text-sm text-foreground outline-none placeholder:text-muted-foreground font-body"
+                placeholder="Αναζήτηση προϊόντων..."
+                className="h-10 w-full bg-transparent pr-4 text-sm text-foreground outline-none placeholder:text-muted-foreground"
                 onBlur={() => setSearchOpen(false)}
               />
             </div>
@@ -103,7 +104,7 @@ export default function NavBar() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className={`group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 font-heading text-sm font-medium tracking-wide transition-colors  hover:text-primary focus:text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 ${
+                    className={`group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-semibold tracking-wide transition-colors hover:text-primary focus:text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 ${
                       isActive(link.href)
                         ? "text-primary"
                         : "text-foreground/80"

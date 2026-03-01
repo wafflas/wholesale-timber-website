@@ -70,6 +70,14 @@ const config = {
           "5": "hsl(var(--chart-5))",
         },
       },
+      fontSize: {
+        "2xl": ["3.5rem", { lineHeight: "1.1", letterSpacing: "-0.02em" }],
+        xl: ["2rem", { lineHeight: "1.25", letterSpacing: "-0.01em" }],
+        lg: ["1.25rem", { lineHeight: "1.4" }],
+        md: ["1rem", { lineHeight: "1.6" }],
+        sm: ["0.875rem", { lineHeight: "1.5" }],
+        xs: ["0.75rem", { lineHeight: "1.4" }],
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",

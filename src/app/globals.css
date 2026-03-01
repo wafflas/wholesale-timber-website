@@ -10,7 +10,7 @@
     --card-foreground: 0 0% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 3.9%;
-    --primary: 22.3 77.8% 26.5%;
+    --primary: 19 56% 40%;
     --primary-foreground: 42.9 33.3% 95.9%;
     --secondary: 0 0% 96.1%;
     --secondary-foreground: 0 0% 9%;
@@ -37,7 +37,7 @@
     --card-foreground: 0 0% 98%;
     --popover: 0 0% 3.9%;
     --popover-foreground: 0 0% 98%;
-    --primary: 22.3 77.8% 26.5%;
+    --primary: 19 56% 40%;
     --primary-foreground: 42.9 33.3% 95.9%;
     --secondary: 0 0% 14.9%;
     --secondary-foreground: 0 0% 98%;
@@ -64,6 +64,15 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-body), sans-serif;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading), sans-serif;
   }
 }
 
