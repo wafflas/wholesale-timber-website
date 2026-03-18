@@ -1,26 +1,27 @@
 import type { Metadata } from "next";
-import { Montserrat, Open_Sans } from "next/font/google";
+import { Roboto, Inter } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+const roboto = Roboto({
+  subsets: ["latin", "greek"],
+  weight: ["400", "500", "700", "900"],
   variable: "--font-heading",
   display: "swap",
 });
 
-const openSans = Open_Sans({
-  subsets: ["latin"],
+const inter = Inter({
+  subsets: ["latin", "greek"],
   weight: ["400", "500", "600"],
   variable: "--font-body",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Χονδρική Ξυλεία",
-  description: "Χονδρική ξυλεία κορυφαίας ποιότητας από όλο τον κόσμο.",
+  title: "BEST PLY I.K.E. | Εισαγωγές & Εξαγωγές Ξυλείας",
+  description:
+    "BEST PLY I.K.E. — Αξιοπιστία στις εισαγωγές και εξαγωγές ξυλείας. Birch Plywood, Okoume, Poplar, Blockboard, OSB, PET MDF.",
 };
 
 export default function RootLayout({
@@ -29,7 +30,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${montserrat.variable} ${openSans.variable}`}>
+    <html lang="el" className={`${roboto.variable} ${inter.variable}`}>
       <body className="antialiased">
         <NavBar />
         {children}

@@ -1,9 +1,17 @@
+import Hero from "@/components/Hero";
+import ProductCategories from "@/components/ProductCategories";
+import AboutSection from "@/components/AboutSection";
+import PartnersGrid from "@/components/PartnersGrid";
+import CtaBanner from "@/components/CtaBanner";
+
 export default function Home() {
   return (
-    <main className="min-h-screen">
-      <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl font-bold pt-24">Αρχική</h1>
-      </div>
+    <main>
+      <Hero />
+      <ProductCategories />
+      <AboutSection />
+      <PartnersGrid />
+      <CtaBanner />
     </main>
   );
 }
