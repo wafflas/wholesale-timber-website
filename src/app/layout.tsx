@@ -1,20 +1,12 @@
 import type { Metadata } from "next";
-import { Roboto, Inter } from "next/font/google";
+import { Golos_Text } from "next/font/google";
 import "./globals.css";
-import NavBar from "@/components/NavBar";
-import Footer from "@/components/Footer";
+import { NavBar } from "@/components/NavBar";
 
-const roboto = Roboto({
-  subsets: ["latin", "greek"],
-  weight: ["400", "500", "700", "900"],
-  variable: "--font-heading",
-  display: "swap",
-});
-
-const inter = Inter({
-  subsets: ["latin", "greek"],
-  weight: ["400", "500", "600"],
-  variable: "--font-body",
+const golosText = Golos_Text({
+  subsets: ["latin", "latin-ext", "cyrillic"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-golos-text",
   display: "swap",
 });
 
@@ -30,11 +22,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="el" className={`${roboto.variable} ${inter.variable}`}>
-      <body className="antialiased">
+    <html lang="el" className={golosText.variable}>
+      <body className="font-golos-text antialiased text-foreground bg-background">
         <NavBar />
         {children}
-        <Footer />
       </body>
     </html>
   );
