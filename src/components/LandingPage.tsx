@@ -36,7 +36,7 @@ export function LandingPage() {
 
           <div className="flex min-h-0 flex-1 flex-col px-5 pb-10 sm:px-6">
             <div className="mt-auto flex w-full max-w-md flex-col space-y-20 self-center pt-10 sm:pt-12">
-                <LandingTaglinesTypewriter className="mt-8 max-w-[22rem] items-start justify-start text-left text-[1.25rem] font-bold opacity-80 leading-relaxed text-white sm:mt-10" />
+                <LandingTaglinesTypewriter className="mt-8 max-w-[24rem] items-start justify-start text-left text-[1.25rem] font-bold opacity-80 leading-relaxed text-white sm:mt-10" />
                <div className="flex flex-col gap-3">
                  <Link
                   href="/products"
