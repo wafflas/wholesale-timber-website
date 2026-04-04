@@ -16,7 +16,7 @@ export default {
       },
       fontFamily: {
         "golos-text": ["var(--font-golos-text)", "system-ui", "sans-serif"],
-        hero: ['"Post No Bills Jaffna"', "sans-serif"],
+        hero: ["var(--font-hero)", "sans-serif"],
       },
       letterSpacing: {
         hero: "0.07rem",

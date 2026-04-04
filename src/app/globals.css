@@ -5,6 +5,23 @@
 :root {
   --background: #0a0a0a;
   --foreground: #fafafa;
+  --focus-ring: #ac8d5b;
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 2px;
+}
+
+@layer base {
+  :where(
+    a,
+    button,
+    input:not([type="hidden"]),
+    textarea,
+    select,
+    summary
+  ):focus-visible {
+    outline: var(--focus-ring-width) solid var(--focus-ring);
+    outline-offset: var(--focus-ring-offset);
+  }
 }
 
 body {
