@@ -1,9 +1,5 @@
-import { LandingPage } from "@/components/LandingPage";
+import { redirect } from "next/navigation";
 
-export default function Home() {
-  return (
-    <main className="relative flex min-h-[100dvh] flex-col">
-      <LandingPage />
-    </main>
-  );
+export default function RootPage() {
+  redirect("/el");
 }

@@ -11,24 +11,74 @@ const PRODUCT_LINKS = [
 ] as const;
 
 const NAV_LINKS = [
-  { label: "Αρχική", href: "/" },
-  { label: "Η εταιρεία", href: "/company" },
-  { label: "Υπηρεσίες", href: "/services" },
-  { label: "Προϊόντα", href: "/products" },
-  { label: "Επικοινωνία", href: "/contact" },
+  { key: "home", href: "/" },
+  { key: "company", href: "/company" },
+  { key: "services", href: "/services" },
+  { key: "products", href: "/products" },
+  { key: "contact", href: "/contact" },
 ] as const;
 
 const footerLinkClass =
   "text-[#d1d1d1]/90 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#2b2623]";
 
-export function Footer() {
+interface FooterProps {
+  locale?: "el" | "en";
+}
+
+export function Footer({ locale = "el" }: FooterProps) {
+  const copy =
+    locale === "en"
+      ? {
+          description:
+            "Trusted timber imports & exports. Premium products for professionals, sourced worldwide.",
+          products: "PRODUCTS",
+          navigation: "NAVIGATION",
+          contact: "CONTACT",
+          address: "Filadelfeias 7, Nea Erythraia, Athens",
+          hours: "Monday - Friday 9:00 am - 5:00 pm",
+          rights: "All rights reserved.",
+          privacy: "Privacy Policy",
+          terms: "Terms of Service",
+          navLinkLabels: {
+            home: "Home",
+            company: "Company",
+            services: "Services",
+            products: "Products",
+            contact: "Contact",
+          },
+        }
+      : {
+          description:
+            "Αξιοπιστία στις εισαγωγές και εξαγωγές ξυλείας. Κορυφαία προϊόντα για επαγγελματίες, από όλο τον κόσμο.",
+          products: "ΠΡΟΪΟΝΤΑ",
+          navigation: "ΠΛΟΗΓΗΣΗ",
+          contact: "ΕΠΙΚΟΙΝΩΝΙΑ",
+          address: "Φιλαδελφείας 7, Νέα Ερυθραία, Αθήνα",
+          hours: "Δευτέρα - Παρασκευή 9:00 πμ - 5:00 μμ",
+          rights: "Με επιφύλαξη παντός δικαιώματος.",
+          privacy: "Πολιτική Απορρήτου",
+          terms: "Όροι Παροχής Υπηρεσιών",
+          navLinkLabels: {
+            home: "Αρχική",
+            company: "Η εταιρεία",
+            services: "Υπηρεσίες",
+            products: "Προϊόντα",
+            contact: "Επικοινωνία",
+          },
+        };
+
+  const buildHref = (href: string) => {
+    if (href === "/") return `/${locale}`;
+    return `/${locale}${href}`;
+  };
+
   return (
     <footer className="bg-[#2b2623] text-[#d1d1d1]">
       <div className="mx-auto max-w-6xl px-5 py-14 sm:px-6 md:py-16 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-4">
             <Link
-              href="/"
+              href={buildHref("/")}
               className="inline-block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#2b2623]"
             >
               <Image
@@ -40,8 +90,7 @@ export function Footer() {
               />
             </Link>
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-[#d1d1d1]/85">
-              Αξιοπιστία στις εισαγωγές και εξαγωγές ξυλείας. Κορυφαία προϊόντα
-              για επαγγελματίες, από όλο τον κόσμο.
+              {copy.description}
             </p>
           </div>
 
@@ -53,12 +102,12 @@ export function Footer() {
               id="footer-products-heading"
               className="text-xs font-bold uppercase tracking-[0.2em] text-primary"
             >
-              ΠΡΟΪΟΝΤΑ
+              {copy.products}
             </h2>
             <ul className="mt-5 space-y-3 text-sm">
               {PRODUCT_LINKS.map((item) => (
                 <li key={item.label}>
-                  <Link href={item.href} className={footerLinkClass}>
+                  <Link href={buildHref(item.href)} className={footerLinkClass}>
                     {item.label}
                   </Link>
                 </li>
@@ -74,13 +123,13 @@ export function Footer() {
               id="footer-nav-heading"
               className="text-xs font-bold uppercase tracking-[0.2em] text-primary"
             >
-              ΠΛΟΗΓΗΣΗ
+              {copy.navigation}
             </h2>
             <ul className="mt-5 space-y-3 text-sm">
               {NAV_LINKS.map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className={footerLinkClass}>
-                    {item.label}
+                  <Link href={buildHref(item.href)} className={footerLinkClass}>
+                    {copy.navLinkLabels[item.key]}
                   </Link>
                 </li>
               ))}
@@ -89,7 +138,7 @@ export function Footer() {
 
           <div className="lg:col-span-4">
             <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
-              ΕΠΙΚΟΙΝΩΝΙΑ
+              {copy.contact}
             </h2>
             <ul className="mt-5 space-y-5 text-sm">
               <li>
@@ -128,7 +177,7 @@ export function Footer() {
                     rel="noopener noreferrer"
                     className={`${footerLinkClass} max-w-xs leading-relaxed`}
                   >
-                    Φιλαδελφείας 7, Νέα Ερυθραία, Αθήνα
+                    {copy.address}
                   </a>
                 </div>
               </li>
@@ -140,7 +189,7 @@ export function Footer() {
                     aria-hidden
                   />
                   <span className="leading-relaxed">
-                    Δευτέρα - Παρασκευή 9:00 πμ - 5:00 μμ
+                    {copy.hours}
                   </span>
                 </div>
               </li>
@@ -165,18 +214,17 @@ export function Footer() {
 
         <div className="mt-14 border-t border-white/20 pt-8">
           <p className="text-center text-xs text-[#d1d1d1]/70 sm:text-left">
-            © {new Date().getFullYear()} BEST PLY I.K.E. Με επιφύλαξη παντός
-            δικαιώματος.
+            © {new Date().getFullYear()} BEST PLY I.K.E. {copy.rights}
           </p>
           <ul className="mt-4 flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs sm:justify-start">
             <li>
-              <Link href="/privacy" className={footerLinkClass}>
-                Πολιτική Απορρήτου
+              <Link href={buildHref("/privacy")} className={footerLinkClass}>
+                {copy.privacy}
               </Link>
             </li>
             <li>
-              <Link href="/terms" className={footerLinkClass}>
-                Όροι Παροχής Υπηρεσιών
+              <Link href={buildHref("/terms")} className={footerLinkClass}>
+                {copy.terms}
               </Link>
             </li>
           </ul>

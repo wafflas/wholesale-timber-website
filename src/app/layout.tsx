@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Golos_Text } from "next/font/google";
 import "./globals.css";
-import { NavBar } from "@/components/NavBar";
-import { Footer } from "@/components/Footer";
 
 const golosText = Golos_Text({
   subsets: ["latin", "latin-ext", "cyrillic"],
@@ -32,13 +30,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="el" className={`${golosText.variable} ${fontHero.variable}`}>
+    <html className={`${golosText.variable} ${fontHero.variable}`}>
       <body className="font-golos-text antialiased text-foreground bg-background">
-        <NavBar />
-        <div className="flex min-h-dvh flex-col">
-          {children}
-          <Footer />
-        </div>
+        {children}
       </body>
     </html>
   );

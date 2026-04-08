@@ -14,16 +14,25 @@ const TAGLINES = [
   "Δέσμευση στην Απόλυτη Ποιότητα.",
 ] as const;
 
+const TAGLINES_EN = [
+  "Premium timber.",
+  "Trusted worldwide.",
+  "Reliable on every delivery.",
+  "Committed to absolute quality.",
+] as const;
+
 const PAUSE_AFTER_LINE_S = 3;
 const BASE_DURATION_S = 3.25;
 const REF_CHAR_COUNT = 37;
 
 interface LandingTaglinesTypewriterProps {
   className?: string;
+  locale?: "el" | "en";
 }
 
 export function LandingTaglinesTypewriter({
   className,
+  locale = "el",
 }: LandingTaglinesTypewriterProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const clipRef = useRef<HTMLDivElement>(null);
@@ -37,7 +46,8 @@ export function LandingTaglinesTypewriter({
       const inner = innerRef.current;
       if (!clip || !inner) return;
 
-      const text = TAGLINES[lineIndex];
+      const activeTaglines = locale === "en" ? TAGLINES_EN : TAGLINES;
+      const text = activeTaglines[lineIndex];
       const steps = Math.max(text.length, 1);
       const fullWidth = inner.offsetWidth;
       const duration = Math.min(
@@ -79,7 +89,7 @@ export function LandingTaglinesTypewriter({
             PAUSE_AFTER_LINE_S,
             () => {
               nextLineDelayRef.current = null;
-              setLineIndex((i) => (i + 1) % TAGLINES.length);
+              setLineIndex((i) => (i + 1) % activeTaglines.length);
             },
           );
         },
@@ -91,7 +101,7 @@ export function LandingTaglinesTypewriter({
         gsap.killTweensOf(clip);
       };
     },
-    { dependencies: [lineIndex], scope: containerRef },
+    { dependencies: [lineIndex, locale], scope: containerRef },
   );
 
   return (
@@ -112,7 +122,7 @@ export function LandingTaglinesTypewriter({
             className="inline-block whitespace-nowrap pr-4"
             key={lineIndex}
           >
-            {TAGLINES[lineIndex]}
+            {(locale === "en" ? TAGLINES_EN : TAGLINES)[lineIndex]}
           </span>
         </div>
       </div>
