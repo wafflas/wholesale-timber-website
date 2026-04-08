@@ -409,15 +409,18 @@ export function NavBar() {
 
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(172,141,91,0.06)_0%,_transparent_55%)] pointer-events-none" />
 
-        <div ref={watermarkRef} className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none select-none md:right-10">
-          <span className="font-hero text-[10rem] leading-[0.85] tracking-hero text-white/[0.025] [writing-mode:vertical-rl] md:text-[14rem]">
+        <div
+          ref={watermarkRef}
+          className="pointer-events-none absolute right-2 top-1/2 z-[1] -translate-y-1/2 select-none sm:right-5 md:right-10"
+        >
+          <span className="font-hero text-[10rem] leading-[0.85] tracking-hero text-white/[0.11] [writing-mode:vertical-rl] md:text-[14rem] md:text-white/[0.045] lg:text-white/[0.025]">
             BEST PLY
           </span>
         </div>
 
         <div
           ref={menuContentRef}
-          className="relative flex h-full flex-col justify-between px-8 pb-10 pt-28 overflow-y-auto md:px-14"
+          className="relative z-[2] flex h-full flex-col justify-between overflow-y-auto px-8 pb-10 pt-28 md:px-14"
         >
           <div>
             <p ref={navLabelRef} className="mb-6 text-[0.6rem] font-bold uppercase tracking-[0.2em] text-primary/40">
