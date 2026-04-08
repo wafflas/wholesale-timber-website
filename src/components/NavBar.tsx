@@ -9,8 +9,11 @@ import gsap from "gsap";
 import { Search } from "lucide-react";
 
 const NAV_LINKS = [
-  { label: "ΠΡΟΪΟΝΤΑ", href: "/products" },
-  { label: "ΕΠΙΚΟΙΝΩΝΗΣΤΕ ΜΑΖΙ ΜΑΣ", href: "/contact" },
+  { label: "Αρχική", href: "/" },
+  { label: "Η εταιρεία", href: "/company" },
+  { label: "Υπηρεσίες", href: "/services" },
+  { label: "Προϊόντα", href: "/products" },
+  { label: "Επικοινωνία", href: "/contact" },
 ];
 
 export function NavBar() {
@@ -26,7 +29,14 @@ export function NavBar() {
   const lineMidRef = useRef<HTMLSpanElement>(null);
   const lineBottomRef = useRef<HTMLSpanElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
+  const leftPanelRef = useRef<HTMLDivElement>(null);
+  const rightPanelRef = useRef<HTMLDivElement>(null);
+  const menuContentRef = useRef<HTMLDivElement>(null);
+  const seamRef = useRef<HTMLDivElement>(null);
+  const watermarkRef = useRef<HTMLDivElement>(null);
+  const navLabelRef = useRef<HTMLParagraphElement>(null);
   const linksRef = useRef<HTMLUListElement>(null);
+  const footerRef = useRef<HTMLDivElement>(null);
   const searchRef = useRef<HTMLInputElement>(null);
   const overlayTl = useRef<gsap.core.Timeline | null>(null);
 
@@ -42,7 +52,13 @@ export function NavBar() {
   }, [searchOpen]);
 
   useEffect(() => {
-    const overlay = overlayRef.current;
+    const leftPanel = leftPanelRef.current;
+    const rightPanel = rightPanelRef.current;
+    const menuContent = menuContentRef.current;
+    const seam = seamRef.current;
+    const watermark = watermarkRef.current;
+    const navLabel = navLabelRef.current;
+    const footer = footerRef.current;
     const top = lineTopRef.current;
     const mid = lineMidRef.current;
     const bottom = lineBottomRef.current;
@@ -50,14 +66,21 @@ export function NavBar() {
       ? Array.from(linksRef.current.children)
       : [];
 
-    if (!overlay || !top || !mid || !bottom) return;
+    if (
+      !leftPanel || !rightPanel || !menuContent || !seam ||
+      !watermark || !navLabel || !footer ||
+      !top || !mid || !bottom
+    )
+      return;
 
-    gsap.set(overlay, {
-      yPercent: -100,
-      opacity: 0,
-      pointerEvents: "none",
-    });
-    gsap.set(links, { opacity: 0, y: 20 });
+    gsap.set(leftPanel, { xPercent: -100 });
+    gsap.set(rightPanel, { xPercent: 100 });
+    gsap.set(menuContent, { opacity: 0 });
+    gsap.set(seam, { opacity: 0, scaleY: 0.3, transformOrigin: "50% 50%" });
+    gsap.set(watermark, { opacity: 0 });
+    gsap.set(navLabel, { opacity: 0, y: -10 });
+    gsap.set(links, { opacity: 0, y: 50, x: -20 });
+    gsap.set(footer, { opacity: 0, y: 20 });
     gsap.set([top, mid, bottom], { transformOrigin: "50% 50%" });
     gsap.set(mid, { scaleX: 1 });
 
@@ -65,38 +88,70 @@ export function NavBar() {
 
     const lineEase = "power3.inOut";
     const lineDuration = 0.42;
-    /** Line centers at 6 / 12 / 18px in a 24px-tall icon → meet at middle with ±6px travel. */
     const mergeY = 6;
+    const contentStart = 0.6;
 
-    tl.to(overlay, {
-      yPercent: 0,
+    tl.to(leftPanel, {
+      xPercent: 0,
+      duration: 0.65,
+      ease: "power4.inOut",
+    }, 0);
+    tl.to(rightPanel, {
+      xPercent: 0,
+      duration: 0.65,
+      ease: "power4.inOut",
+    }, 0);
+
+    tl.to(seam, {
       opacity: 1,
-      pointerEvents: "auto",
+      scaleY: 1,
+      duration: 0.3,
+      ease: "power2.out",
+    }, 0.3);
+    tl.to(seam, {
+      opacity: 0,
+      duration: 0.45,
+      ease: "power2.inOut",
+    }, 0.6);
+
+    tl.to(mid, { scaleX: 0, opacity: 0, duration: 0.22, ease: "power2.in" }, 0.06);
+    tl.to(top, { rotate: 45, y: mergeY, duration: lineDuration, ease: lineEase }, 0.11);
+    tl.to(bottom, { rotate: -45, y: -mergeY, duration: lineDuration, ease: lineEase }, 0.11);
+
+    tl.to(menuContent, {
+      opacity: 1,
+      duration: 0.25,
+      ease: "power2.out",
+    }, contentStart);
+
+    tl.to(navLabel, {
+      opacity: 1,
+      y: 0,
+      duration: 0.35,
+      ease: "power2.out",
+    }, contentStart + 0.05);
+
+    tl.to(links, {
+      opacity: 1,
+      y: 0,
+      x: 0,
       duration: 0.55,
+      stagger: 0.1,
       ease: "power3.out",
-    });
+    }, contentStart + 0.12);
 
-    tl.to(
-      mid,
-      { scaleX: 0, opacity: 0, duration: 0.22, ease: "power2.in" },
-      "<0.06",
-    );
-    tl.to(
-      top,
-      { rotate: 45, y: mergeY, duration: lineDuration, ease: lineEase },
-      "<0.05",
-    );
-    tl.to(
-      bottom,
-      { rotate: -45, y: -mergeY, duration: lineDuration, ease: lineEase },
-      "<",
-    );
+    tl.to(watermark, {
+      opacity: 1,
+      duration: 0.4,
+      ease: "sine.out",
+    }, contentStart + 0.05);
 
-    tl.to(
-      links,
-      { opacity: 1, y: 0, duration: 0.4, stagger: 0.07, ease: "power2.out" },
-      "<0.1",
-    );
+    tl.to(footer, {
+      opacity: 1,
+      y: 0,
+      duration: 0.45,
+      ease: "power2.out",
+    }, contentStart + 0.3);
 
     tl.eventCallback("onComplete", () => {
       setIsOpen(true);
@@ -224,50 +279,89 @@ export function NavBar() {
       <div
         ref={overlayRef}
         hidden={overlayHidden}
-        className="fixed inset-0 z-[4000] bg-secondary flex flex-col px-8 md:px-14 pt-28 pb-12 overflow-y-auto opacity-0"
+        className="fixed inset-0 z-[4000] overflow-hidden"
         aria-hidden={overlayHidden}
       >
-        <ul ref={linksRef} className="flex flex-col gap-2 flex-1">
-          {NAV_LINKS.map((link) => (
-            <li key={link.href}>
-              <Link
-                href={link.href}
-                onClick={() => {
-                  if (isOpen) toggleMenu();
-                }}
-                className="font-golos-text text-primary text-[2.25rem] md:text-[3.8rem] leading-none hover:opacity-50 transition-opacity duration-300 block py-2 border-b border-primary/10"
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <div
+          ref={leftPanelRef}
+          className="absolute inset-y-0 left-0 w-1/2 bg-secondary"
+        />
+        <div
+          ref={rightPanelRef}
+          className="absolute inset-y-0 right-0 w-1/2 bg-secondary"
+        />
+        <div
+          ref={seamRef}
+          className="absolute top-0 bottom-0 left-1/2 w-px -translate-x-1/2 bg-primary/25"
+        />
 
-        <div className="mt-10 pt-6 border-t border-primary/15 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-          <div className="flex flex-col gap-1">
-            <a
-              href="tel:+306932262910"
-              className="font-golos-text text-[0.7rem] tracking-[0.12em] uppercase text-primary/60 hover:text-primary transition-colors"
-            >
-              +30 6932 262 910
-            </a>
-            <a          
-              href="mailto:bestplyike@gmail.com"
-              className="font-golos-text text-[0.7rem] tracking-[0.12em] uppercase text-primary/60 hover:text-primary transition-colors"
-            >
-              bestplyike@gmail.com
-            </a>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(172,141,91,0.06)_0%,_transparent_55%)] pointer-events-none" />
+
+        <div ref={watermarkRef} className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none select-none md:right-10">
+          <span className="font-hero text-[10rem] leading-[0.85] tracking-hero text-white/[0.025] [writing-mode:vertical-rl] md:text-[14rem]">
+            BEST PLY
+          </span>
+        </div>
+
+        <div
+          ref={menuContentRef}
+          className="relative flex h-full flex-col justify-between px-8 pb-10 pt-28 overflow-y-auto md:px-14"
+        >
+          <div>
+            <p ref={navLabelRef} className="mb-6 text-[0.6rem] font-bold uppercase tracking-[0.2em] text-primary/40">
+              ΠΛΟΗΓΗΣΗ
+            </p>
+            <ul ref={linksRef} className="flex flex-col">
+              {NAV_LINKS.map((link, i) => (
+                <li key={link.href} className="group border-b border-primary/10">
+                  <Link
+                    href={link.href}
+                    onClick={() => {
+                      if (isOpen) toggleMenu();
+                    }}
+                    className="flex items-baseline gap-4 py-5 transition-colors duration-300 md:py-7"
+                  >
+                    <span className="font-golos-text text-[0.65rem] font-medium tabular-nums tracking-[0.2em] text-primary/30">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="font-golos-text text-[2.4rem] font-semibold leading-none text-primary transition-colors duration-300 group-hover:text-white md:text-[4rem]">
+                      {link.label}
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
-          <div className="flex items-center gap-6">
-            <a
-              href="https://wa.me/306932262910"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-golos-text text-[0.6rem] tracking-[0.18em] uppercase text-primary/50 hover:text-primary transition-colors"
-            >
-              WhatsApp
-            </a>
+          <div ref={footerRef} className="border-t border-primary/10 pt-8">
+            <p className="mb-4 text-[0.6rem] font-bold uppercase tracking-[0.2em] text-primary/40">
+              ΕΠΙΚΟΙΝΩΝΙΑ
+            </p>
+            <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
+              <div className="flex flex-col gap-1.5">
+                <a
+                  href="tel:+306932262910"
+                  className="font-golos-text text-[0.8rem] tracking-[0.04em] text-[#d1d1d1]/80 transition-colors hover:text-white"
+                >
+                  +30 6932 262 910
+                </a>
+                <a
+                  href="mailto:bestplyike@gmail.com"
+                  className="font-golos-text text-[0.8rem] tracking-[0.04em] text-[#d1d1d1]/80 transition-colors hover:text-white"
+                >
+                  bestplyike@gmail.com
+                </a>
+              </div>
+
+              <a
+                href="https://wa.me/306932262910"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-primary/20 px-4 py-2 font-golos-text text-[0.65rem] font-medium uppercase tracking-[0.18em] text-primary/60 transition-colors hover:border-primary/40 hover:text-primary"
+              >
+                WhatsApp
+              </a>
+            </div>
           </div>
         </div>
       </div>
