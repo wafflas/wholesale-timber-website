@@ -1,6 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
+import { useLocale } from "@/hooks/use-locale";
 
 const PRODUCT_LINKS = [
   { label: "Birch Plywood", href: "/products" },
@@ -21,11 +24,8 @@ const NAV_LINKS = [
 const footerLinkClass =
   "text-[#d1d1d1]/90 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#2b2623]";
 
-interface FooterProps {
-  locale?: "el" | "en";
-}
-
-export function Footer({ locale = "el" }: FooterProps) {
+export function Footer() {
+  const locale = useLocale();
   const copy =
     locale === "en"
       ? {

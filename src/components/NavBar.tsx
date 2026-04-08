@@ -5,6 +5,7 @@ import { flushSync } from "react-dom";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useLocale } from "@/hooks/use-locale";
 import gsap from "gsap";
 import { Check, Globe, Search } from "lucide-react";
 
@@ -199,12 +200,7 @@ export function NavBar() {
   const navBg = isScrolled ? "bg-secondary backdrop-blur-sm" : "bg-transparent";
 
   const supportedLocales = ["el", "en"] as const;
-  const currentLocale = (() => {
-    const segments = pathname.split("/").filter(Boolean);
-    const maybeLocale = segments[0];
-    if (supportedLocales.includes(maybeLocale as (typeof supportedLocales)[number])) return maybeLocale;
-    return "el";
-  })();
+  const currentLocale = useLocale();
 
   const copy =
     currentLocale === "en"
@@ -335,7 +331,7 @@ export function NavBar() {
               aria-label={copy.selectLanguage}
               aria-expanded={languageOpen}
               onClick={() => setLanguageOpen((o) => !o)}
-              className="flex h-11 w-11 items-center justify-center rounded-full text-white/70 transition-colors hover:text-white hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 md:h-10 md:w-10"
+              className="flex h-11 w-11 items-center justify-center rounded-full text-white/70 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 md:h-10 md:w-10"
               title={copy.languageTitle}
             >
               <Globe className="size-5" strokeWidth={1.75} />

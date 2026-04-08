@@ -25,7 +25,11 @@ export function proxy(request: NextRequest) {
   const segments = pathname.split("/").filter(Boolean);
   const maybeLocale = segments[0];
 
-  if (maybeLocale && isSupportedLocale(maybeLocale)) return NextResponse.next();
+  if (maybeLocale && isSupportedLocale(maybeLocale)) {
+    const requestHeaders = new Headers(request.headers);
+    requestHeaders.set("x-next-locale", maybeLocale);
+    return NextResponse.next({ request: { headers: requestHeaders } });
+  }
 
   const nextUrl = request.nextUrl.clone();
   nextUrl.pathname = `/${DEFAULT_LOCALE}${pathname === "/" ? "" : pathname}`;

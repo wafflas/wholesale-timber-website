@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Golos_Text } from "next/font/google";
+import { headers } from "next/headers";
 import "./globals.css";
 
 const golosText = Golos_Text({
@@ -24,13 +25,17 @@ export const metadata: Metadata = {
   manifest: "/favicon_io/site.webmanifest",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const headersList = await headers();
+  const locale = headersList.get("x-next-locale");
+  const lang = locale === "en" ? "en" : "el";
+
   return (
-    <html className={`${golosText.variable} ${fontHero.variable}`}>
+    <html lang={lang} className={`${golosText.variable} ${fontHero.variable}`}>
       <body className="font-golos-text antialiased text-foreground bg-background">
         {children}
       </body>

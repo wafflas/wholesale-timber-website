@@ -1,12 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { LandingTaglinesTypewriter } from "@/components/LandingTaglinesTypewriter";
+import { useLocale } from "@/hooks/use-locale";
 
-interface LandingPageProps {
-  locale?: "el" | "en";
-}
-
-export function LandingPage({ locale = "el" }: LandingPageProps) {
+export function LandingPage() {
+  const locale = useLocale();
   const copy =
     locale === "en"
       ? {
@@ -53,10 +53,7 @@ export function LandingPage({ locale = "el" }: LandingPageProps) {
 
           <div className="flex min-h-0 flex-1 flex-col px-5 pb-10 sm:px-6">
             <div className="mt-auto flex w-full max-w-md flex-col space-y-20 self-center pt-10 sm:pt-12">
-                <LandingTaglinesTypewriter
-                  locale={locale}
-                  className="mt-8 max-w-[24rem] items-center justify-center text-center text-[1.20rem] font-bold opacity-80 leading-relaxed text-white sm:mt-10"
-                />
+                <LandingTaglinesTypewriter className="mt-8 max-w-[24rem] items-center justify-center text-center text-[1.20rem] font-bold opacity-80 leading-relaxed text-white sm:mt-10" />
                <div className="flex flex-col gap-3 items-center">
                  <Link
                   href="products"

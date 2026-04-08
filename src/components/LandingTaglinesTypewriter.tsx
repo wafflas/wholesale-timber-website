@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { useLocale } from "@/hooks/use-locale";
 import gsap from "gsap";
 import { SteppedEase } from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -27,13 +28,12 @@ const REF_CHAR_COUNT = 37;
 
 interface LandingTaglinesTypewriterProps {
   className?: string;
-  locale?: "el" | "en";
 }
 
 export function LandingTaglinesTypewriter({
   className,
-  locale = "el",
 }: LandingTaglinesTypewriterProps) {
+  const locale = useLocale();
   const containerRef = useRef<HTMLDivElement>(null);
   const clipRef = useRef<HTMLDivElement>(null);
   const innerRef = useRef<HTMLSpanElement>(null);

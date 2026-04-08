@@ -1,25 +1,9 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import localFont from "next/font/local";
-import { Golos_Text } from "next/font/google";
 import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/Footer";
 
 const SUPPORTED_LOCALES = ["el", "en"] as const;
-
-const golosText = Golos_Text({
-  subsets: ["latin", "latin-ext", "cyrillic"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-golos-text",
-  display: "swap",
-});
-
-const fontHero = localFont({
-  src: "../../../public/fonts/PostNoBillsJaffna-SemiBold.ttf",
-  weight: "600",
-  variable: "--font-hero",
-  display: "swap",
-});
 
 const LOCALE_TO_METADATA: Record<string, Metadata> = {
   el: {
@@ -54,18 +38,14 @@ export default async function LocaleLayout({
 }) {
   const { locale } = await params;
   if (!SUPPORTED_LOCALES.includes(locale as (typeof SUPPORTED_LOCALES)[number])) notFound();
-  const normalizedLocale = locale === "en" ? "en" : "el";
 
   return (
-    <html lang={locale} className={`${golosText.variable} ${fontHero.variable}`}>
-      <body className="font-golos-text antialiased text-foreground bg-background">
-        <NavBar />
-        <div className="flex min-h-dvh flex-col">
-          {children}
-          <Footer locale={normalizedLocale} />
-        </div>
-      </body>
-    </html>
+    <>
+      <NavBar />
+      <div className="flex min-h-dvh flex-col">
+        {children}
+        <Footer />
+      </div>
+    </>
   );
 }
-
