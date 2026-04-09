@@ -1,24 +1,34 @@
-import { notFound } from "next/navigation";
+import type { ReactNode } from "react";
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { hasLocale } from "next-intl";
+import { setRequestLocale, getTranslations } from "next-intl/server";
+import { NextIntlClientProvider } from "next-intl";
+import localFont from "next/font/local";
+import { Golos_Text } from "next/font/google";
+import { routing, type Locale } from "@/i18n/routing";
+import { getPathname } from "@/i18n/navigation";
 import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/Footer";
+import "../globals.css";
 
-const SUPPORTED_LOCALES = ["el", "en"] as const;
+const golosText = Golos_Text({
+  subsets: ["latin", "latin-ext", "cyrillic"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-golos-text",
+  display: "swap",
+});
 
-const LOCALE_TO_METADATA: Record<string, Metadata> = {
-  el: {
-    title: "BEST PLY I.K.E. | Εισαγωγές & Εξαγωγές Ξυλείας",
-    description:
-      "BEST PLY I.K.E. — Αξιοπιστία στις εισαγωγές και εξαγωγές ξυλείας. Birch Plywood, Okoume, Poplar, Blockboard, OSB, PET MDF.",
-    manifest: "/favicon_io/site.webmanifest",
-  },
-  en: {
-    title: "BEST PLY I.K.E. | Timber Imports & Exports",
-    description:
-      "BEST PLY I.K.E. — Reliable timber imports & exports. Birch plywood, Okoume, Poplar, Blockboard, OSB, PET MDF.",
-    manifest: "/favicon_io/site.webmanifest",
-  },
-};
+const fontHero = localFont({
+  src: "../../../public/fonts/PostNoBillsJaffna-SemiBold.ttf",
+  weight: "600",
+  variable: "--font-hero",
+  display: "swap",
+});
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
 
 export async function generateMetadata({
   params,
@@ -26,26 +36,52 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  return LOCALE_TO_METADATA[locale] ?? LOCALE_TO_METADATA.el;
+  const t = await getTranslations({ locale, namespace: "Metadata" });
+
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "https://bestply.gr";
+
+  return {
+    title: t("title"),
+    description: t("description"),
+    manifest: "/favicon_io/site.webmanifest",
+    alternates: {
+      canonical: `${baseUrl}/${locale}`,
+      languages: Object.fromEntries(
+        routing.locales.map((l) => [l, `${baseUrl}/${l}`]),
+      ),
+    },
+  };
 }
 
 export default async function LocaleLayout({
   children,
   params,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  if (!SUPPORTED_LOCALES.includes(locale as (typeof SUPPORTED_LOCALES)[number])) notFound();
+
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
+
+  setRequestLocale(locale);
 
   return (
-    <>
-      <NavBar />
-      <div className="flex min-h-dvh flex-col">
-        {children}
-        <Footer />
-      </div>
-    </>
+    <html
+      lang={locale}
+      className={`${golosText.variable} ${fontHero.variable}`}
+    >
+      <body className="font-golos-text antialiased text-foreground bg-background">
+        <NextIntlClientProvider>
+          <NavBar />
+          <div className="flex min-h-dvh flex-col">
+            {children}
+            <Footer />
+          </div>
+        </NextIntlClientProvider>
+      </body>
+    </html>
   );
 }

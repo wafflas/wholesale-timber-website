@@ -1,12 +1,7 @@
 "use client";
 
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useParams } from "next/navigation";
+import { useLocale, useTranslations } from "next-intl";
 
-gsap.registerPlugin(ScrollTrigger);
-
-// Extended 24-item dummy data
 const allProducts = [
   {
     name: "Birch Plywood Premium",
@@ -71,7 +66,6 @@ const allProducts = [
     descriptionGr:
       "Ειδική αντιολισθητική επιφάνεια για πατώματα φορτηγών και σκαλωσιές.",
   },
-
   {
     name: "PET MDF SuperMat",
     nameGr: "PET MDF Ματ",
@@ -146,7 +140,6 @@ const allProducts = [
     descriptionGr:
       "Σύγχρονη επιλογή σε ανθρακί απόχρωση για minimal κατασκευές.",
   },
-
   {
     name: "Blockboard Poplar 18mm",
     nameGr: "Μπλόκμπορντ Λεύκας 18mm",
@@ -178,7 +171,6 @@ const allProducts = [
     descriptionGr:
       "Πυρήνας λεύκας με φυσικό καπλαμά δρυός, έτοιμο για λούστρο.",
   },
-
   {
     name: "OSB 3 11mm",
     nameGr: "OSB 3 11mm",
@@ -209,7 +201,6 @@ const allProducts = [
     descriptionEn: "Tongue & groove OSB—ideal for flooring.",
     descriptionGr: "OSB με σύστημα click/πατούρα, ιδανικό για πατώματα.",
   },
-
   {
     name: "Okoume Lumber",
     nameGr: "Μαδέρια Οκουμέ",
@@ -267,19 +258,18 @@ const allProducts = [
 ];
 
 export default function ProductsPage() {
-  const params = useParams<{ locale?: string }>();
-  const locale = params?.locale === "en" ? "en" : "el";
+  const t = useTranslations("ProductsPage");
+  const locale = useLocale();
+  const isEn = locale === "en";
 
   return (
     <div className="bg-[#FAF9F7] min-h-screen overflow-hidden selection:bg-[#AC8D5B] selection:text-white">
       <div className="mx-auto max-w-6xl px-5 py-24 sm:px-6 lg:px-8">
         <h1 className="font-hero text-3xl tracking-hero text-[#2b2623] sm:text-4xl">
-          {locale === "en" ? "Products" : "Προϊόντα"}
+          {t("title")}
         </h1>
         <p className="mt-4 max-w-2xl text-sm leading-relaxed text-[#2b2623]/70">
-          {locale === "en"
-            ? "Browse our product categories. This is currently using dummy data."
-            : "Δείτε τις κατηγορίες προϊόντων μας. Προς το παρόν εμφανίζονται δοκιμαστικά δεδομένα."}
+          {t("body")}
         </p>
 
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -291,15 +281,15 @@ export default function ProductsPage() {
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#AC8D5B]">
-                    {locale === "en" ? p.typeEn : p.typeGr}
+                    {isEn ? p.typeEn : p.typeGr}
                   </p>
                   <h2 className="mt-2 text-base font-semibold text-[#2b2623]">
-                    {locale === "en" ? p.name : p.nameGr}
+                    {isEn ? p.name : p.nameGr}
                   </h2>
                 </div>
               </div>
               <p className="mt-3 text-sm leading-relaxed text-[#2b2623]/70">
-                {locale === "en" ? p.descriptionEn : p.descriptionGr}
+                {isEn ? p.descriptionEn : p.descriptionGr}
               </p>
             </div>
           ))}
@@ -308,4 +298,3 @@ export default function ProductsPage() {
     </div>
   );
 }
-

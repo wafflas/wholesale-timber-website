@@ -1,24 +1,12 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { LandingTaglinesTypewriter } from "@/components/LandingTaglinesTypewriter";
-import { useLocale } from "@/hooks/use-locale";
 
 export function LandingPage() {
-  const locale = useLocale();
-  const copy =
-    locale === "en"
-      ? {
-          eyebrow: "SINCE 2021 — ATHENS",
-          primaryCta: "VIEW OUR PRODUCTS →",
-          secondaryCta: "CONTACT US",
-        }
-      : {
-          eyebrow: "ΑΠΟ ΤΟ 2021 — ΑΘΗΝΑ",
-          primaryCta: "ΔΕΙΤΕ ΤΑ ΠΡΟΪΟΝΤΑ ΜΑΣ →",
-          secondaryCta: "ΕΠΙΚΟΙΝΩΝΗΣΤΕ ΜΑΖΙ ΜΑΣ",
-        };
+  const t = useTranslations("Landing");
 
   return (
     <>
@@ -38,7 +26,7 @@ export function LandingPage() {
         <div className="relative z-20 flex min-h-0 w-full min-w-0 flex-col pt-24 sm:pt-28">
           <div className="px-5 pt-6 sm:px-6">
             <p className="text-center text-[0.7rem] font-bold uppercase tracking-[0.2em] text-white/50">
-              {copy.eyebrow}
+              {t("eyebrow")}
             </p>
           </div>
 
@@ -56,20 +44,19 @@ export function LandingPage() {
                 <LandingTaglinesTypewriter className="mt-8 max-w-[24rem] items-center justify-center text-center text-[1.20rem] font-bold opacity-80 leading-relaxed text-white sm:mt-10" />
                <div className="flex flex-col gap-3 items-center">
                  <Link
-                  href="products"
+                  href="/products"
                   className="flex w-full items-center justify-center rounded-xl bg-primary py-4 text-center text-sm font-bold uppercase tracking-wide text-white transition-opacity hover:opacity-90 active:opacity-80"
                 >
-                  {copy.primaryCta}
+                  {t("primaryCta")}
                 </Link>
 
                 <Link
-                  href="contact"
+                  href="/contact"
                   className="flex w-full items-center justify-center rounded-xl border border-white bg-transparent py-4 text-center text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-white/10 active:bg-white/15"
                 >
-                  {copy.secondaryCta}
+                  {t("secondaryCta")}
                 </Link>
                </div>
-               
             </div>
           </div>
         </div>

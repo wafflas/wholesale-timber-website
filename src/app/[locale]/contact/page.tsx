@@ -1,24 +1,24 @@
-"use client";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 
-import { useRef } from "react";
-import { useParams } from "next/navigation";
-
-export default function ContactPage() {
-  const params = useParams<{ locale?: string }>();
-  const locale = params?.locale === "en" ? "en" : "el";
-  const pageRef = useRef<HTMLDivElement>(null);
+export default async function ContactPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations("ContactPage");
 
   return (
-    <div ref={pageRef} className="py-16 md:py-24">
+    <div className="py-16 md:py-24">
       <main className="mx-auto max-w-3xl px-5 sm:px-6">
         <h1 className="font-hero text-3xl tracking-hero text-white sm:text-4xl">
-          {locale === "en" ? "Contact" : "Επικοινωνία"}
+          {t("title")}
         </h1>
         <p className="mt-6 text-sm leading-relaxed text-white/60">
-          {locale === "en" ? "Content in progress." : "Περιεχόμενο σε εξέλιξη."}
+          {t("body")}
         </p>
       </main>
     </div>
   );
 }
-

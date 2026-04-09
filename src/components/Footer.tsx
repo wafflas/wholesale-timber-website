@@ -1,9 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
-import { useLocale } from "@/hooks/use-locale";
 
 const PRODUCT_LINKS = [
   { label: "Birch Plywood", href: "/products" },
@@ -25,52 +25,8 @@ const footerLinkClass =
   "text-[#d1d1d1]/90 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#2b2623]";
 
 export function Footer() {
-  const locale = useLocale();
-  const copy =
-    locale === "en"
-      ? {
-          description:
-            "Trusted timber imports & exports. Premium products for professionals, sourced worldwide.",
-          products: "PRODUCTS",
-          navigation: "NAVIGATION",
-          contact: "CONTACT",
-          address: "Filadelfeias 7, Nea Erythraia, Athens",
-          hours: "Monday - Friday 9:00 am - 5:00 pm",
-          rights: "All rights reserved.",
-          privacy: "Privacy Policy",
-          terms: "Terms of Service",
-          navLinkLabels: {
-            home: "Home",
-            company: "Company",
-            services: "Services",
-            products: "Products",
-            contact: "Contact",
-          },
-        }
-      : {
-          description:
-            "Αξιοπιστία στις εισαγωγές και εξαγωγές ξυλείας. Κορυφαία προϊόντα για επαγγελματίες, από όλο τον κόσμο.",
-          products: "ΠΡΟΪΟΝΤΑ",
-          navigation: "ΠΛΟΗΓΗΣΗ",
-          contact: "ΕΠΙΚΟΙΝΩΝΙΑ",
-          address: "Φιλαδελφείας 7, Νέα Ερυθραία, Αθήνα",
-          hours: "Δευτέρα - Παρασκευή 9:00 πμ - 5:00 μμ",
-          rights: "Με επιφύλαξη παντός δικαιώματος.",
-          privacy: "Πολιτική Απορρήτου",
-          terms: "Όροι Παροχής Υπηρεσιών",
-          navLinkLabels: {
-            home: "Αρχική",
-            company: "Η εταιρεία",
-            services: "Υπηρεσίες",
-            products: "Προϊόντα",
-            contact: "Επικοινωνία",
-          },
-        };
-
-  const buildHref = (href: string) => {
-    if (href === "/") return `/${locale}`;
-    return `/${locale}${href}`;
-  };
+  const tNav = useTranslations("Navigation");
+  const tFooter = useTranslations("Footer");
 
   return (
     <footer className="bg-[#2b2623] text-[#d1d1d1]">
@@ -78,7 +34,7 @@ export function Footer() {
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-4">
             <Link
-              href={buildHref("/")}
+              href="/"
               className="inline-block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#2b2623]"
             >
               <Image
@@ -90,7 +46,7 @@ export function Footer() {
               />
             </Link>
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-[#d1d1d1]/85">
-              {copy.description}
+              {tFooter("description")}
             </p>
           </div>
 
@@ -102,12 +58,12 @@ export function Footer() {
               id="footer-products-heading"
               className="text-xs font-bold uppercase tracking-[0.2em] text-primary"
             >
-              {copy.products}
+              {tFooter("products")}
             </h2>
             <ul className="mt-5 space-y-3 text-sm">
               {PRODUCT_LINKS.map((item) => (
                 <li key={item.label}>
-                  <Link href={buildHref(item.href)} className={footerLinkClass}>
+                  <Link href={item.href} className={footerLinkClass}>
                     {item.label}
                   </Link>
                 </li>
@@ -123,13 +79,13 @@ export function Footer() {
               id="footer-nav-heading"
               className="text-xs font-bold uppercase tracking-[0.2em] text-primary"
             >
-              {copy.navigation}
+              {tFooter("navigation")}
             </h2>
             <ul className="mt-5 space-y-3 text-sm">
               {NAV_LINKS.map((item) => (
                 <li key={item.href}>
-                  <Link href={buildHref(item.href)} className={footerLinkClass}>
-                    {copy.navLinkLabels[item.key]}
+                  <Link href={item.href} className={footerLinkClass}>
+                    {tNav(item.key)}
                   </Link>
                 </li>
               ))}
@@ -138,7 +94,7 @@ export function Footer() {
 
           <div className="lg:col-span-4">
             <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-primary">
-              {copy.contact}
+              {tFooter("contact")}
             </h2>
             <ul className="mt-5 space-y-5 text-sm">
               <li>
@@ -177,7 +133,7 @@ export function Footer() {
                     rel="noopener noreferrer"
                     className={`${footerLinkClass} max-w-xs leading-relaxed`}
                   >
-                    {copy.address}
+                    {tFooter("address")}
                   </a>
                 </div>
               </li>
@@ -189,7 +145,7 @@ export function Footer() {
                     aria-hidden
                   />
                   <span className="leading-relaxed">
-                    {copy.hours}
+                    {tFooter("hours")}
                   </span>
                 </div>
               </li>
@@ -200,7 +156,7 @@ export function Footer() {
                     strokeWidth={1.75}
                     aria-hidden
                   />
-                  <a            
+                  <a
                     href="mailto:bestplyike@gmail.com"
                     className={`${footerLinkClass} w-fit`}
                   >
@@ -214,17 +170,17 @@ export function Footer() {
 
         <div className="mt-14 border-t border-white/20 pt-8">
           <p className="text-center text-xs text-[#d1d1d1]/70 sm:text-left">
-            © {new Date().getFullYear()} BEST PLY I.K.E. {copy.rights}
+            © {new Date().getFullYear()} BEST PLY I.K.E. {tFooter("rights")}
           </p>
           <ul className="mt-4 flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs sm:justify-start">
             <li>
-              <Link href={buildHref("/privacy")} className={footerLinkClass}>
-                {copy.privacy}
+              <Link href="/privacy" className={footerLinkClass}>
+                {tFooter("privacy")}
               </Link>
             </li>
             <li>
-              <Link href={buildHref("/terms")} className={footerLinkClass}>
-                {copy.terms}
+              <Link href="/terms" className={footerLinkClass}>
+                {tFooter("terms")}
               </Link>
             </li>
           </ul>

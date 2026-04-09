@@ -1,26 +1,12 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { useLocale } from "@/hooks/use-locale";
+import { useTranslations } from "next-intl";
 import gsap from "gsap";
 import { SteppedEase } from "gsap";
 import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(useGSAP);
-
-const TAGLINES = [
-  "Κορυφαία Ξυλεία.",
-  "Διεθνής Αξιοπιστία.",
-  "Συνέπεια σε κάθε Παράδοση.",
-  "Δέσμευση στην Απόλυτη Ποιότητα.",
-] as const;
-
-const TAGLINES_EN = [
-  "Premium timber.",
-  "Trusted worldwide.",
-  "Reliable on every delivery.",
-  "Committed to absolute quality.",
-] as const;
 
 const PAUSE_AFTER_LINE_S = 3;
 const BASE_DURATION_S = 3.25;
@@ -33,7 +19,9 @@ interface LandingTaglinesTypewriterProps {
 export function LandingTaglinesTypewriter({
   className,
 }: LandingTaglinesTypewriterProps) {
-  const locale = useLocale();
+  const t = useTranslations("Taglines");
+  const taglines = t("lines").split("|");
+
   const containerRef = useRef<HTMLDivElement>(null);
   const clipRef = useRef<HTMLDivElement>(null);
   const innerRef = useRef<HTMLSpanElement>(null);
@@ -46,8 +34,7 @@ export function LandingTaglinesTypewriter({
       const inner = innerRef.current;
       if (!clip || !inner) return;
 
-      const activeTaglines = locale === "en" ? TAGLINES_EN : TAGLINES;
-      const text = activeTaglines[lineIndex];
+      const text = taglines[lineIndex];
       const steps = Math.max(text.length, 1);
       const fullWidth = inner.offsetWidth;
       const duration = Math.min(
@@ -89,7 +76,7 @@ export function LandingTaglinesTypewriter({
             PAUSE_AFTER_LINE_S,
             () => {
               nextLineDelayRef.current = null;
-              setLineIndex((i) => (i + 1) % activeTaglines.length);
+              setLineIndex((i) => (i + 1) % taglines.length);
             },
           );
         },
@@ -101,7 +88,7 @@ export function LandingTaglinesTypewriter({
         gsap.killTweensOf(clip);
       };
     },
-    { dependencies: [lineIndex, locale], scope: containerRef },
+    { dependencies: [lineIndex, taglines], scope: containerRef },
   );
 
   return (
@@ -122,7 +109,7 @@ export function LandingTaglinesTypewriter({
             className="inline-block whitespace-nowrap pr-4"
             key={lineIndex}
           >
-            {(locale === "en" ? TAGLINES_EN : TAGLINES)[lineIndex]}
+            {taglines[lineIndex]}
           </span>
         </div>
       </div>

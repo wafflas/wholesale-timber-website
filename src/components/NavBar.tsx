@@ -3,11 +3,11 @@
 import { useEffect, useRef, useState } from "react";
 import { flushSync } from "react-dom";
 import Image from "next/image";
-import Link from "next/link";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useLocale } from "@/hooks/use-locale";
+import { useTranslations } from "next-intl";
+import { Link, usePathname, useRouter } from "@/i18n/navigation";
+import { LocaleSwitcher } from "@/components/LocaleSwitcher";
 import gsap from "gsap";
-import { Check, Globe, Search } from "lucide-react";
+import { Search } from "lucide-react";
 
 const NAV_LINKS = [
   { key: "home", href: "/" },
@@ -20,14 +20,14 @@ const NAV_LINKS = [
 export function NavBar() {
   const router = useRouter();
   const pathname = usePathname();
-  const searchParams = useSearchParams();
+  const tNav = useTranslations("Navigation");
+  const tBar = useTranslations("NavBar");
 
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [overlayHidden, setOverlayHidden] = useState(true);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [languageOpen, setLanguageOpen] = useState(false);
 
   const lineTopRef = useRef<HTMLSpanElement>(null);
   const lineMidRef = useRef<HTMLSpanElement>(null);
@@ -50,18 +50,6 @@ export function NavBar() {
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  useEffect(() => {
-    if (!languageOpen) return;
-    const onPointerDown = (event: PointerEvent) => {
-      const target = event.target;
-      if (!(target instanceof HTMLElement)) return;
-      if (target.closest("[data-language-switcher-root]")) return;
-      setLanguageOpen(false);
-    };
-    window.addEventListener("pointerdown", onPointerDown, { capture: true });
-    return () => window.removeEventListener("pointerdown", onPointerDown, { capture: true });
-  }, [languageOpen]);
 
   useEffect(() => {
     if (searchOpen) searchRef.current?.focus();
@@ -199,72 +187,14 @@ export function NavBar() {
   const textColor = "text-white";
   const navBg = isScrolled ? "bg-secondary backdrop-blur-sm" : "bg-transparent";
 
-  const supportedLocales = ["el", "en"] as const;
-  const currentLocale = useLocale();
-
-  const copy =
-    currentLocale === "en"
-      ? {
-          navLabel: "NAVIGATION",
-          contactLabel: "CONTACT",
-          openSearch: "Open search",
-          closeSearch: "Close search",
-          searchPlaceholder: "Search products...",
-          openMenu: "Open menu",
-          closeMenu: "Close menu",
-          selectLanguage: "Select language",
-          languageTitle: "Language",
-          navLinkLabels: {
-            home: "Home",
-            company: "Company",
-            services: "Services",
-            products: "Products",
-            contact: "Contact",
-          },
-        }
-      : {
-          navLabel: "ΠΛΟΗΓΗΣΗ",
-          contactLabel: "ΕΠΙΚΟΙΝΩΝΙΑ",
-          openSearch: "Άνοιγμα αναζήτησης",
-          closeSearch: "Κλείσιμο αναζήτησης",
-          searchPlaceholder: "Αναζήτηση προϊόντων...",
-          openMenu: "Open menu",
-          closeMenu: "Close menu",
-          selectLanguage: "Select language",
-          languageTitle: "Language",
-          navLinkLabels: {
-            home: "Αρχική",
-            company: "Η εταιρεία",
-            services: "Υπηρεσίες",
-            products: "Προϊόντα",
-            contact: "Επικοινωνία",
-          },
-        };
-
-  const buildHref = (href: string) => {
-    if (href === "/") return `/${currentLocale}`;
-    return `/${currentLocale}${href}`;
-  };
-
-  const switchLocale = (nextLocale: (typeof supportedLocales)[number]) => {
-    const segments = pathname.split("/").filter(Boolean);
-    const hasLocale = supportedLocales.includes(segments[0] as (typeof supportedLocales)[number]);
-    const rest = hasLocale ? segments.slice(1) : segments;
-
-    const nextPath = `/${[nextLocale, ...rest].join("/")}`;
-    const query = searchParams.toString();
-    router.push(query ? `${nextPath}?${query}` : nextPath);
-    setLanguageOpen(false);
-  };
-
   return (
     <>
       <nav
         className={`fixed top-0 left-0 right-0 z-[4500] transition-all duration-500 ease-in-out px-6 md:px-10 py-5 flex items-center justify-between ${navBg} ${textColor}`}
       >
         <Link
-          href={`/${currentLocale}`}
-          aria-label="Home"
+          href="/"
+          aria-label={tNav("home")}
           className="shrink-0 flex items-center"
         >
           <Image
@@ -291,7 +221,7 @@ export function NavBar() {
                 onMouseDown={(e) => e.preventDefault()}
                 onClick={() => setSearchOpen((o) => !o)}
                 aria-expanded={searchOpen}
-                aria-label={searchOpen ? copy.closeSearch : copy.openSearch}
+                aria-label={searchOpen ? tBar("closeSearch") : tBar("openSearch")}
                 className="flex h-11 w-11 shrink-0 items-center justify-center text-white/70 transition-colors hover:text-white md:h-10 md:w-10"
               >
                 <Search className="size-6" strokeWidth={1.75} />
@@ -302,7 +232,7 @@ export function NavBar() {
                 tabIndex={searchOpen ? 0 : -1}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder={copy.searchPlaceholder}
+                placeholder={tBar("searchPlaceholder")}
                 enterKeyHint="search"
                 className={`h-11 min-w-0 flex-1 bg-transparent py-0 pl-0 pr-3 text-base text-white outline-none transition-opacity duration-300 ease-out placeholder:text-white/45 font-golos-text md:h-10 md:pr-4 md:text-sm ${
                   searchOpen
@@ -316,57 +246,19 @@ export function NavBar() {
                   const q = searchQuery.trim();
                   setSearchOpen(false);
                   router.push(
-                    q
-                      ? `/${currentLocale}/products?q=${encodeURIComponent(q)}`
-                      : `/${currentLocale}/products`,
+                    q ? `/products?q=${encodeURIComponent(q)}` : "/products",
                   );
                 }}
               />
             </div>
           </div>
 
-          <div className="relative" data-language-switcher-root>
-            <button
-              type="button"
-              aria-label={copy.selectLanguage}
-              aria-expanded={languageOpen}
-              onClick={() => setLanguageOpen((o) => !o)}
-              className="flex h-11 w-11 items-center justify-center rounded-full text-white/70 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 md:h-10 md:w-10"
-              title={copy.languageTitle}
-            >
-              <Globe className="size-5" strokeWidth={1.75} />
-            </button>
-
-            {languageOpen ? (
-              <div className="absolute right-0 mt-2 w-40 overflow-hidden rounded-xl border border-white/10 bg-secondary/95 backdrop-blur-sm shadow-2xl">
-                <button
-                  type="button"
-                  onClick={() => switchLocale("el")}
-                  className="flex w-full items-center justify-between px-3 py-2.5 text-sm text-white/85 hover:bg-white/10"
-                >
-                  <span>Ελληνικά</span>
-                  {currentLocale === "el" ? (
-                    <Check className="size-4 text-white/70" />
-                  ) : null}
-                </button>
-                <button
-                  type="button"
-                  onClick={() => switchLocale("en")}
-                  className="flex w-full items-center justify-between px-3 py-2.5 text-sm text-white/85 hover:bg-white/10"
-                >
-                  <span>English</span>
-                  {currentLocale === "en" ? (
-                    <Check className="size-4 text-white/70" />
-                  ) : null}
-                </button>
-              </div>
-            ) : null}
-          </div>
+          <LocaleSwitcher />
 
           <button
             type="button"
             onClick={toggleMenu}
-            aria-label={isOpen ? copy.closeMenu : copy.openMenu}
+            aria-label={isOpen ? tBar("closeMenu") : tBar("openMenu")}
             aria-expanded={isOpen}
             className={`rounded-md p-1.5 flex items-center justify-center group transition-colors hover:text-white ${isOpen ? "text-white transition-all duration-300 ease-out" : "text-white/70 hover:text-white transition-all duration-300 ease-out"}`}
           >
@@ -424,13 +316,13 @@ export function NavBar() {
         >
           <div>
             <p ref={navLabelRef} className="mb-6 text-[0.6rem] font-bold uppercase tracking-[0.2em] text-primary/40">
-              {copy.navLabel}
+              {tNav("label")}
             </p>
             <ul ref={linksRef} className="flex flex-col">
               {NAV_LINKS.map((link, i) => (
                 <li key={link.href} className="group border-b border-primary/10">
                   <Link
-                    href={buildHref(link.href)}
+                    href={link.href}
                     onClick={() => {
                       if (isOpen) toggleMenu();
                     }}
@@ -440,7 +332,7 @@ export function NavBar() {
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <span className="font-golos-text text-[2.4rem] font-semibold leading-none text-primary transition-colors duration-300 group-hover:text-white md:text-[4rem]">
-                      {copy.navLinkLabels[link.key]}
+                      {tNav(link.key)}
                     </span>
                   </Link>
                 </li>
@@ -450,7 +342,7 @@ export function NavBar() {
 
           <div ref={footerRef} className="border-t border-primary/10 pt-8">
             <p className="mb-4 text-[0.6rem] font-bold uppercase tracking-[0.2em] text-primary/40">
-              {copy.contactLabel}
+              {tBar("contactLabel")}
             </p>
             <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
               <div className="flex flex-col gap-1.5">
@@ -483,4 +375,3 @@ export function NavBar() {
     </>
   );
 }
-
