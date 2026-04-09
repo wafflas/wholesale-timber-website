@@ -181,10 +181,10 @@ export function Footer() {
         </div>
 
         <div className="mt-14 border-t border-white/20 pt-8">
-          <p className="text-center text-xs text-[#d1d1d1]/70 sm:text-left">
+          <p className="text-center text-xs text-[#d1d1d1]/70">
             © {new Date().getFullYear()} BEST PLY I.K.E. {tFooter("rights")}
           </p>
-          <ul className="mt-4 flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs sm:justify-start">
+          <ul className="mt-4 flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs">
             <li>
               <Link href="/privacy" className={footerLinkClass}>
                 {tFooter("privacy")}

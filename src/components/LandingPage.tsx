@@ -75,7 +75,7 @@ export function LandingPage() {
             </p>
           </div>
 
-          <h1 className="font-hero relative mx-auto mt-10 w-full max-w-[340px] sm:max-w-[420px] md:max-w-[460px] lg:max-w-[500px] xl:max-w-[600px] 2xl:max-w-[750px] aspect-[1.15] sm:aspect-[1.3] md:aspect-[1.5] lg:aspect-[1.7] shrink-0 font-semibold leading-[0.9] tracking-hero sm:mt-6 md:mt-8">
+          <h1 className="font-hero relative mx-auto mt-10 w-full max-w-[340px] sm:max-w-[420px] md:max-w-[460px] lg:max-w-[500px] xl:max-w-[600px] 2xl:max-w-[750px] aspect-[1.3] sm:aspect-[1.4] md:aspect-[1.5] lg:aspect-[1.7] shrink-0 font-semibold leading-[0.9] tracking-hero sm:mt-6 md:mt-8">
             <span
               ref={bestRef}
               className="absolute start-0 top-0 text-[9rem] text-white/85 sm:text-[9.5rem] md:text-[10rem] lg:text-[11.5rem] xl:text-[13rem] 2xl:text-[16rem] will-change-transform"

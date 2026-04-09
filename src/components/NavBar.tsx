@@ -253,12 +253,12 @@ export function NavBar() {
   const handleNavClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
     href: string,
-    isMobile: boolean = false
+    isMobile: boolean = false,
   ) => {
     if (isMobile && isOpen) {
       toggleMenu();
     }
-    
+
     if (isHome) {
       if (href === "/") {
         e.preventDefault();
@@ -451,7 +451,7 @@ export function NavBar() {
             </ul>
           </div>
 
-          <div ref={footerRef} className="border-t border-primary/10 pt-8">
+          <div ref={footerRef} className="pt-8">
             <p className="mb-4 text-[0.6rem] font-bold uppercase tracking-[0.2em] text-primary/40">
               {tBar("contactLabel")}
             </p>
