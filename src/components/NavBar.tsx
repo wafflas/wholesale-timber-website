@@ -317,7 +317,7 @@ export function NavBar() {
             <div
               className={`flex shrink-0 items-center overflow-hidden rounded-full border transition-all duration-300 ease-out h-11 md:h-10 ${
                 searchOpen
-                  ? "w-[min(14rem,calc(100vw-6.5rem))] border-white/25 bg-white/10 backdrop-blur-sm md:w-56"
+                  ? "w-[min(14rem,calc(100dvw-6.5rem))] border-white/25 bg-white/10 backdrop-blur-sm md:w-56"
                   : "w-11 border-transparent bg-transparent backdrop-blur-none md:w-10"
               }`}
             >

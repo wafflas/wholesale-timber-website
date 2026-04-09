@@ -82,7 +82,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider>
           <SmoothScroller>
             <NavBar />
-            <div className="flex min-h-dvh flex-col">
+            <div className="flex min-h-dvh w-full min-w-0 flex-col">
               {children}
               <Footer />
             </div>

@@ -14,7 +14,7 @@ export default async function LocaleHomePage({
   setRequestLocale(locale);
 
   return (
-    <main className="relative flex min-h-[100dvh] flex-col">
+    <main className="relative flex min-h-[100dvh] w-full min-w-0 flex-col overflow-x-hidden">
       <LandingPage />
       <BestPicks />
       <Company />
