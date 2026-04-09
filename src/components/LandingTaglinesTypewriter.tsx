@@ -98,7 +98,7 @@ export function LandingTaglinesTypewriter({
       aria-live="polite"
       aria-atomic="true"
     >
-      <div className="flex min-h-[1.625rem] items-start justify-start">
+      <div className="flex min-h-[1.625rem] items-start justify-start lg:min-h-[2.25rem] lg:justify-center">
         <div
           ref={clipRef}
           className="box-border inline-block max-w-full overflow-hidden whitespace-nowrap border-r-2 border-transparent align-top"
@@ -106,7 +106,7 @@ export function LandingTaglinesTypewriter({
         >
           <span
             ref={innerRef}
-            className="inline-block whitespace-nowrap pr-4"
+            className="inline-block whitespace-nowrap pr-4 tracking-wide"
             key={lineIndex}
           >
             {taglines[lineIndex]}

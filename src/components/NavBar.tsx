@@ -8,11 +8,11 @@ import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { LocaleSwitcher } from "@/components/LocaleSwitcher";
 import gsap from "gsap";
 import { Search } from "lucide-react";
+import { useLenis } from "lenis/react";
 
 const NAV_LINKS = [
   { key: "home", href: "/" },
-  { key: "company", href: "/company" },
-  { key: "services", href: "/services" },
+  { key: "company", href: "/#company" },
   { key: "products", href: "/products" },
   { key: "contact", href: "/contact" },
 ] as const;
@@ -22,6 +22,7 @@ export function NavBar() {
   const pathname = usePathname();
   const tNav = useTranslations("Navigation");
   const tBar = useTranslations("NavBar");
+  const lenis = useLenis();
 
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -66,14 +67,19 @@ export function NavBar() {
     const top = lineTopRef.current;
     const mid = lineMidRef.current;
     const bottom = lineBottomRef.current;
-    const links = linksRef.current
-      ? Array.from(linksRef.current.children)
-      : [];
+    const links = linksRef.current ? Array.from(linksRef.current.children) : [];
 
     if (
-      !leftPanel || !rightPanel || !menuContent || !seam ||
-      !watermark || !navLabel || !footer ||
-      !top || !mid || !bottom
+      !leftPanel ||
+      !rightPanel ||
+      !menuContent ||
+      !seam ||
+      !watermark ||
+      !navLabel ||
+      !footer ||
+      !top ||
+      !mid ||
+      !bottom
     )
       return;
 
@@ -95,67 +101,115 @@ export function NavBar() {
     const mergeY = 6;
     const contentStart = 0.6;
 
-    tl.to(leftPanel, {
-      xPercent: 0,
-      duration: 0.65,
-      ease: "power4.inOut",
-    }, 0);
-    tl.to(rightPanel, {
-      xPercent: 0,
-      duration: 0.65,
-      ease: "power4.inOut",
-    }, 0);
+    tl.to(
+      leftPanel,
+      {
+        xPercent: 0,
+        duration: 0.65,
+        ease: "power4.inOut",
+      },
+      0,
+    );
+    tl.to(
+      rightPanel,
+      {
+        xPercent: 0,
+        duration: 0.65,
+        ease: "power4.inOut",
+      },
+      0,
+    );
 
-    tl.to(seam, {
-      opacity: 1,
-      scaleY: 1,
-      duration: 0.3,
-      ease: "power2.out",
-    }, 0.3);
-    tl.to(seam, {
-      opacity: 0,
-      duration: 0.45,
-      ease: "power2.inOut",
-    }, 0.6);
+    tl.to(
+      seam,
+      {
+        opacity: 1,
+        scaleY: 1,
+        duration: 0.3,
+        ease: "power2.out",
+      },
+      0.3,
+    );
+    tl.to(
+      seam,
+      {
+        opacity: 0,
+        duration: 0.45,
+        ease: "power2.inOut",
+      },
+      0.6,
+    );
 
-    tl.to(mid, { scaleX: 0, opacity: 0, duration: 0.22, ease: "power2.in" }, 0.06);
-    tl.to(top, { rotate: 45, y: mergeY, duration: lineDuration, ease: lineEase }, 0.11);
-    tl.to(bottom, { rotate: -45, y: -mergeY, duration: lineDuration, ease: lineEase }, 0.11);
+    tl.to(
+      mid,
+      { scaleX: 0, opacity: 0, duration: 0.22, ease: "power2.in" },
+      0.06,
+    );
+    tl.to(
+      top,
+      { rotate: 45, y: mergeY, duration: lineDuration, ease: lineEase },
+      0.11,
+    );
+    tl.to(
+      bottom,
+      { rotate: -45, y: -mergeY, duration: lineDuration, ease: lineEase },
+      0.11,
+    );
 
-    tl.to(menuContent, {
-      opacity: 1,
-      duration: 0.25,
-      ease: "power2.out",
-    }, contentStart);
+    tl.to(
+      menuContent,
+      {
+        opacity: 1,
+        duration: 0.25,
+        ease: "power2.out",
+      },
+      contentStart,
+    );
 
-    tl.to(navLabel, {
-      opacity: 1,
-      y: 0,
-      duration: 0.35,
-      ease: "power2.out",
-    }, contentStart + 0.05);
+    tl.to(
+      navLabel,
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.35,
+        ease: "power2.out",
+      },
+      contentStart + 0.05,
+    );
 
-    tl.to(links, {
-      opacity: 1,
-      y: 0,
-      x: 0,
-      duration: 0.55,
-      stagger: 0.1,
-      ease: "power3.out",
-    }, contentStart + 0.12);
+    tl.to(
+      links,
+      {
+        opacity: 1,
+        y: 0,
+        x: 0,
+        duration: 0.55,
+        stagger: 0.1,
+        ease: "power3.out",
+      },
+      contentStart + 0.12,
+    );
 
-    tl.to(watermark, {
-      opacity: 1,
-      duration: 0.4,
-      ease: "sine.out",
-    }, contentStart + 0.05);
+    tl.to(
+      watermark,
+      {
+        opacity: 1,
+        duration: 0.4,
+        ease: "sine.out",
+      },
+      contentStart + 0.05,
+    );
 
-    tl.to(footer, {
-      opacity: 1,
-      y: 0,
-      duration: 0.45,
-      ease: "power2.out",
-    }, contentStart + 0.3);
+    tl.to(
+      footer,
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.45,
+        ease: "power2.out",
+      },
+      contentStart + 0.3,
+    );
 
     tl.eventCallback("onComplete", () => {
       setIsOpen(true);
@@ -177,25 +231,55 @@ export function NavBar() {
     if (overlayTl.current.isActive()) return;
 
     if (isOpen) {
+      if (lenis) lenis.start();
+      document.body.style.overflow = "";
       overlayTl.current.reverse();
     } else {
+      if (lenis) lenis.stop();
+      document.body.style.overflow = "hidden";
       flushSync(() => setOverlayHidden(false));
       overlayTl.current.play();
     }
   };
 
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
+
+  const isHome = pathname === "/";
+  const navBg =
+    isHome && !isScrolled ? "bg-transparent" : "bg-secondary backdrop-blur-sm";
   const textColor = "text-white";
-  const navBg = isScrolled ? "bg-secondary backdrop-blur-sm" : "bg-transparent";
+
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+    isMobile: boolean = false
+  ) => {
+    if (isMobile && isOpen) {
+      toggleMenu();
+    }
+    
+    if (isHome) {
+      if (href === "/") {
+        e.preventDefault();
+        lenis?.scrollTo(0, { duration: 1.2 });
+      } else if (href === "/#company") {
+        e.preventDefault();
+        lenis?.scrollTo("#company", { duration: 1.2, offset: -80 });
+      }
+    }
+  };
 
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-[4500] transition-all duration-500 ease-in-out px-6 md:px-10 py-5 flex items-center justify-between ${navBg} ${textColor}`}
+        className={`fixed top-0 left-0 right-0 z-[4500] transition-all duration-500 ease-in-out px-6 md:px-10 lg:px-14 py-5 flex items-center justify-between ${navBg} ${textColor}`}
       >
         <Link
           href="/"
           aria-label={tNav("home")}
           className="shrink-0 flex items-center"
+          onClick={(e) => handleNavClick(e, "/", false)}
         >
           <Image
             src="/Logo.svg"
@@ -203,9 +287,30 @@ export function NavBar() {
             width={88}
             height={36}
             priority
-            className="h-9 w-auto"
+            className="h-9 w-auto lg:h-10"
           />
         </Link>
+
+        <ul className="hidden lg:flex items-center gap-1 xl:gap-2">
+          {NAV_LINKS.map((link) => (
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                onClick={(e) => handleNavClick(e, link.href, false)}
+                className={`relative px-4 py-2 font-golos-text text-[0.8rem] font-semibold uppercase tracking-[0.14em] transition-colors duration-300 hover:text-white group ${
+                  isActive(link.href) ? "text-white" : "text-white/60"
+                }`}
+              >
+                {tNav(link.key)}
+                <span
+                  className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-primary transition-all duration-300 ease-out ${
+                    isActive(link.href) ? "w-4/5" : "w-0 group-hover:w-4/5"
+                  }`}
+                />
+              </Link>
+            </li>
+          ))}
+        </ul>
 
         <div className="flex shrink-0 items-center gap-2">
           <div className="relative flex items-center">
@@ -221,7 +326,9 @@ export function NavBar() {
                 onMouseDown={(e) => e.preventDefault()}
                 onClick={() => setSearchOpen((o) => !o)}
                 aria-expanded={searchOpen}
-                aria-label={searchOpen ? tBar("closeSearch") : tBar("openSearch")}
+                aria-label={
+                  searchOpen ? tBar("closeSearch") : tBar("openSearch")
+                }
                 className="flex h-11 w-11 shrink-0 items-center justify-center text-white/70 transition-colors hover:text-white md:h-10 md:w-10"
               >
                 <Search className="size-6" strokeWidth={1.75} />
@@ -260,7 +367,7 @@ export function NavBar() {
             onClick={toggleMenu}
             aria-label={isOpen ? tBar("closeMenu") : tBar("openMenu")}
             aria-expanded={isOpen}
-            className={`rounded-md p-1.5 flex items-center justify-center group transition-colors hover:text-white ${isOpen ? "text-white transition-all duration-300 ease-out" : "text-white/70 hover:text-white transition-all duration-300 ease-out"}`}
+            className={`rounded-md p-1.5 flex items-center justify-center group transition-colors hover:text-white lg:hidden ${isOpen ? "text-white transition-all duration-300 ease-out" : "text-white/70 hover:text-white transition-all duration-300 ease-out"}`}
           >
             <div className="relative size-6 shrink-0">
               <span
@@ -315,17 +422,21 @@ export function NavBar() {
           className="relative z-[2] flex h-full flex-col justify-between overflow-y-auto px-8 pb-10 pt-28 md:px-14"
         >
           <div>
-            <p ref={navLabelRef} className="mb-6 text-[0.6rem] font-bold uppercase tracking-[0.2em] text-primary/40">
+            <p
+              ref={navLabelRef}
+              className="mb-6 text-[0.6rem] font-bold uppercase tracking-[0.2em] text-primary/40"
+            >
               {tNav("label")}
             </p>
             <ul ref={linksRef} className="flex flex-col">
               {NAV_LINKS.map((link, i) => (
-                <li key={link.href} className="group border-b border-primary/10">
+                <li
+                  key={link.href}
+                  className="group border-b border-primary/10"
+                >
                   <Link
                     href={link.href}
-                    onClick={() => {
-                      if (isOpen) toggleMenu();
-                    }}
+                    onClick={(e) => handleNavClick(e, link.href, true)}
                     className="flex items-baseline gap-4 py-5 transition-colors duration-300 md:py-7"
                   >
                     <span className="font-golos-text text-[0.65rem] font-medium tabular-nums tracking-[0.2em] text-primary/30">
@@ -353,21 +464,30 @@ export function NavBar() {
                   +30 6932 262 910
                 </a>
                 <a
+                  href="tel:+306943619220"
+                  className="font-golos-text text-[0.8rem] tracking-[0.04em] text-[#d1d1d1]/80 transition-colors hover:text-white"
+                >
+                  +30 6943 619 220
+                </a>
+                <a
+                  href="tel:+306944567317"
+                  className="font-golos-text text-[0.8rem] tracking-[0.04em] text-[#d1d1d1]/80 transition-colors hover:text-white"
+                >
+                  +30 6944 567 317
+                </a>
+                <a
+                  href="tel:+302108000365"
+                  className="font-golos-text text-[0.8rem] tracking-[0.04em] text-[#d1d1d1]/80 transition-colors hover:text-white"
+                >
+                  +30 210 800 0365
+                </a>
+                <a
                   href="mailto:bestplyike@gmail.com"
                   className="font-golos-text text-[0.8rem] tracking-[0.04em] text-[#d1d1d1]/80 transition-colors hover:text-white"
                 >
                   bestplyike@gmail.com
                 </a>
               </div>
-
-              <a
-                href="https://wa.me/306932262910"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-primary/20 px-4 py-2 font-golos-text text-[0.65rem] font-medium uppercase tracking-[0.18em] text-primary/60 transition-colors hover:border-primary/40 hover:text-primary"
-              >
-                WhatsApp
-              </a>
             </div>
           </div>
         </div>

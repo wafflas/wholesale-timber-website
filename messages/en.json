@@ -34,7 +34,7 @@
   },
   "Landing": {
     "eyebrow": "SINCE 2021 — ATHENS",
-    "primaryCta": "VIEW OUR PRODUCTS →",
+    "primaryCta": "VIEW OUR PRODUCTS",
     "secondaryCta": "CONTACT US"
   },
   "Taglines": {
@@ -73,5 +73,42 @@
     "el": "Ελληνικά",
     "en": "English",
     "label": "Language"
+  },
+  "BestPicks": {
+    "title": "Top picks",
+    "items": {
+      "mdf": { "title": "MDF & Melamine", "countLabel": "(146)" },
+      "plywood": { "title": "Plywood", "countLabel": "(92)" },
+      "osb": { "title": "OSB & Chipboard", "countLabel": "(58)" }
+    }
+  },
+  "CompanySection": {
+    "title": "The company",
+    "p1": "BEST PLY I.K.E., under the management of Pantelis Karagiannis, operates exclusively in timber imports/exports and industrial wood-based products sourced worldwide.",
+    "p2": "With solid foundations and long-term partnerships across Asia, Africa, and Europe (China, etc.), our company maintains a strong presence in the Greek timber trade. We focus on wholesale B2B sales to industry professionals, ensuring uninterrupted supply at competitive prices.",
+    "p3": "We offer a broad range of products — BIRCH PLYWOOD, PINE, FILM FACED PLYWOOD, OKOUME, and BLOCKBOARD — building stable, successful collaborations with customers nationwide.",
+    "imageAlt1": "Timber products warehouse",
+    "imageAlt2": "Timber stacks on pallets"
+  },
+  "ContactSection": {
+    "headingBefore": "Your next ",
+    "headingAccent": "strategic",
+    "headingAfter": " partner",
+    "subtitle": "We are at your disposal for wholesale orders and inquiries.",
+    "phoneAria": "Call us",
+    "contactCta": "Contact us"
+  },
+  "PartnersSection": {
+    "title": "International Partner Network",
+    "subtitle": "Building strong relationships with top suppliers worldwide (Asia, Africa, Europe) to deliver the best quality.",
+    "arserwood": "Supplier - China",
+    "hsbaco": "Manufacturer - Austria",
+    "odek": "Manufacturer - Poland",
+    "versowood": "Manufacturer - Finland",
+    "welde": "Manufacturer - Austria",
+    "sumec": "Supplier - China",
+    "veko": "Supplier - Albania",
+    "majerholz": "Manufacturer - Germany",
+    "starwood": "Manufacturer - Turkey"
   }
 }

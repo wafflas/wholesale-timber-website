@@ -10,6 +10,7 @@ import { routing, type Locale } from "@/i18n/routing";
 import { getPathname } from "@/i18n/navigation";
 import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/Footer";
+import { SmoothScroller } from "@/components/SmoothScroller";
 import "../globals.css";
 
 const golosText = Golos_Text({
@@ -75,11 +76,13 @@ export default async function LocaleLayout({
     >
       <body className="font-golos-text antialiased text-foreground bg-background">
         <NextIntlClientProvider>
-          <NavBar />
-          <div className="flex min-h-dvh flex-col">
-            {children}
-            <Footer />
-          </div>
+          <SmoothScroller>
+            <NavBar />
+            <div className="flex min-h-dvh flex-col">
+              {children}
+              <Footer />
+            </div>
+          </SmoothScroller>
         </NextIntlClientProvider>
       </body>
     </html>

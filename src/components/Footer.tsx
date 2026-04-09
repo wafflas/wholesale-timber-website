@@ -30,7 +30,7 @@ export function Footer() {
 
   return (
     <footer className="bg-[#2b2623] text-[#d1d1d1]">
-      <div className="mx-auto max-w-6xl px-5 py-14 sm:px-6 md:py-16 lg:px-8">
+      <div className="mx-auto max-w-6xl px-5 py-14 sm:px-6 md:py-16 lg:px-8 lg:py-20 xl:max-w-7xl">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-4">
             <Link
@@ -42,10 +42,10 @@ export function Footer() {
                 alt="BEST PLY I.K.E."
                 width={88}
                 height={36}
-                className="h-9 w-auto"
+                className="h-9 w-auto lg:h-11"
               />
             </Link>
-            <p className="mt-6 max-w-sm text-sm leading-relaxed text-[#d1d1d1]/85">
+            <p className="mt-6 max-w-sm text-sm leading-relaxed text-[#d1d1d1]/85 lg:text-base lg:leading-relaxed">
               {tFooter("description")}
             </p>
           </div>
@@ -110,6 +110,18 @@ export function Footer() {
                       className={`${footerLinkClass} w-fit`}
                     >
                       6932 262 910
+                    </a>
+                    <a
+                      href="tel:+306943619220"
+                      className={`${footerLinkClass} w-fit`}
+                    >
+                      6943 619 220
+                    </a>
+                    <a
+                      href="tel:+306944567317"
+                      className={`${footerLinkClass} w-fit`}
+                    >
+                      6944 567 317
                     </a>
                     <a
                       href="tel:+302108000365"
