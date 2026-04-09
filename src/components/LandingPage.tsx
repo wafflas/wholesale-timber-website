@@ -54,9 +54,9 @@ export function LandingPage() {
     <>
       <section
         ref={sectionRef}
-        className="relative flex h-screen min-h-[100dvh] w-full flex-col overflow-hidden"
+        className="relative flex min-h-[100dvh] w-full flex-col"
       >
-        <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 -z-10 overflow-hidden">
           <Image
             src="/backgroundImage.png"
             alt="BEST PLY I.K.E."

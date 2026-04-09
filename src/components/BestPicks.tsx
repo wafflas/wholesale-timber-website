@@ -7,12 +7,9 @@ export default async function BestPicks() {
   const t = await getTranslations("BestPicks");
 
   return (
-    <section className="bg-white py-16 md:py-24 lg:py-32">
+    <section className="bg-white py-10 md:py-20 lg:py-24">
       <div className="mx-auto w-full max-w-[1400px] px-5 sm:px-8 lg:px-12">
-        <SectionTitle
-          title={t("title")}
-          className="text-black sm:text-5xl"
-        />
+        <SectionTitle title={t("title")} className="text-black sm:text-5xl" />
 
         <div className="mt-10 md:hidden block">
           <BestPicksCarousel

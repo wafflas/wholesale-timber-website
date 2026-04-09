@@ -115,8 +115,7 @@ const allProducts = [
     image: "/category_mdf_1773695477475.png",
     typeEn: "MDF",
     typeGr: "MDF",
-    descriptionEn:
-      "Premium white melamine board for kitchens and wardrobes.",
+    descriptionEn: "Premium white melamine board for kitchens and wardrobes.",
     descriptionGr:
       "Λευκή μελαμίνη κορυφαίας ποιότητας για κουζίνες και ντουλάπες.",
   },
@@ -127,8 +126,7 @@ const allProducts = [
     typeEn: "MDF",
     typeGr: "MDF",
     descriptionEn: "Textured melamine with a realistic rustic oak look.",
-    descriptionGr:
-      "Μελαμίνη με υφή και ρεαλιστική όψη ξύλου ρουστίκ δρυός.",
+    descriptionGr: "Μελαμίνη με υφή και ρεαλιστική όψη ξύλου ρουστίκ δρυός.",
   },
   {
     name: "Melamine Anthracite",
@@ -239,8 +237,7 @@ const allProducts = [
     image: "/category_lumber_1773695520006.png",
     typeEn: "Hardwood",
     typeGr: "Σκληρό Ξύλο",
-    descriptionEn:
-      "Steamed beech—dense and durable for stairs and furniture.",
+    descriptionEn: "Steamed beech—dense and durable for stairs and furniture.",
     descriptionGr:
       "Φουρνιστή ξυλεία οξιάς, βαριά και ανθεκτική για σκαλοπάτια και έπιπλα.",
   },
@@ -265,7 +262,7 @@ export default function ProductsPage() {
   return (
     <div className="bg-[#FAF9F7] min-h-screen overflow-hidden selection:bg-[#AC8D5B] selection:text-white">
       <div className="mx-auto max-w-6xl px-5 py-24 sm:px-6 lg:px-8">
-        <h1 className="font-hero text-3xl tracking-hero text-[#2b2623] sm:text-4xl">
+        <h1 className="font-golos-text text-3xl tracking-hero text-[#2b2623] sm:text-4xl">
           {t("title")}
         </h1>
         <p className="mt-4 max-w-2xl text-sm leading-relaxed text-[#2b2623]/70">

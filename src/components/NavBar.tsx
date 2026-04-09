@@ -412,7 +412,7 @@ export function NavBar() {
           ref={watermarkRef}
           className="pointer-events-none absolute right-2 top-1/2 z-[1] -translate-y-1/2 select-none sm:right-5 md:right-10"
         >
-          <span className="font-hero text-[10rem] leading-[0.85] tracking-hero text-white/[0.11] [writing-mode:vertical-rl] md:text-[14rem] md:text-white/[0.045] lg:text-white/[0.025]">
+          <span className="font-hero text-[clamp(4rem,min(11.5rem,11.5dvh),11.5rem)] leading-[0.85] tracking-hero text-white/[0.18] [writing-mode:vertical-rl] md:text-[16rem] md:text-white/[0.045] lg:text-white/[0.025]">
             BEST PLY
           </span>
         </div>
