@@ -8,9 +8,9 @@ import localFont from "next/font/local";
 import { Golos_Text } from "next/font/google";
 import { routing, type Locale } from "@/i18n/routing";
 import { getPathname } from "@/i18n/navigation";
-import { NavBar } from "@/components/NavBar";
-import { Footer } from "@/components/Footer";
-import { SmoothScroller } from "@/components/SmoothScroller";
+import { NavBar } from "@/components/layout/NavBar";
+import { Footer } from "@/components/layout/Footer";
+import { SmoothScroller } from "@/components/layout/SmoothScroller";
 import "../globals.css";
 
 const golosText = Golos_Text({

@@ -32,6 +32,11 @@
     "privacy": "Privacy Policy",
     "terms": "Terms of Service"
   },
+  "LocaleSwitcher": {
+    "el": "Ελληνικά",
+    "en": "English",
+    "label": "Language"
+  },
   "Landing": {
     "eyebrow": "SINCE 2021 — ATHENS",
     "primaryCta": "VIEW OUR PRODUCTS",
@@ -39,40 +44,6 @@
   },
   "Taglines": {
     "lines": "Premium timber.|Trusted worldwide.|Reliable on every delivery.|Committed to absolute quality."
-  },
-  "CompanyPage": {
-    "title": "Company",
-    "body": "Content in progress."
-  },
-  "ServicesPage": {
-    "title": "Services",
-    "body": "Content in progress."
-  },
-  "ProductsPage": {
-    "title": "Products",
-    "body": "Browse our product categories. Currently showing dummy data."
-  },
-  "ContactPage": {
-    "title": "Contact",
-    "body": "Content in progress."
-  },
-  "PrivacyPage": {
-    "title": "Privacy Policy",
-    "body": "Content in progress."
-  },
-  "TermsPage": {
-    "title": "Terms of Service",
-    "body": "Content in progress."
-  },
-  "NotFound": {
-    "title": "Page not found",
-    "body": "The page you're looking for may have been removed, renamed, or is temporarily unavailable.",
-    "home": "Back to home"
-  },
-  "LocaleSwitcher": {
-    "el": "Ελληνικά",
-    "en": "English",
-    "label": "Language"
   },
   "BestPicks": {
     "title": "Top picks",
@@ -110,5 +81,43 @@
     "veko": "Supplier - Albania",
     "majerholz": "Manufacturer - Germany",
     "starwood": "Manufacturer - Turkey"
+  },
+  "ProductsPage": {
+    "title": "Products",
+    "body": "Browse our product categories. Currently showing dummy data."
+  },
+  "ContactPage": {
+    "title": "Contact",
+    "subtitle": "We're at your disposal for any information or quote.",
+    "mapTitle": "Find us on the map",
+    "openInMaps": "Open in Maps",
+    "formTitle": "Send us a message",
+    "formSubtitle": "Fill out the form and our team will get back to you as soon as possible.",
+    "labelName": "Full name",
+    "labelEmail": "Email",
+    "labelPhone": "Phone",
+    "labelMessage": "Message",
+    "placeholderName": "Enter your full name",
+    "placeholderEmail": "email@example.com",
+    "placeholderPhone": "69xx xxx xxxx",
+    "placeholderMessage": "Describe your request...",
+    "submitButton": "SEND MESSAGE",
+    "required": "Required field",
+    "invalidEmail": "Invalid email address",
+    "successTitle": "Your message has been sent!",
+    "successBody": "We'll get back to you shortly."
+  },
+  "PrivacyPage": {
+    "title": "Privacy Policy",
+    "body": "Content in progress."
+  },
+  "TermsPage": {
+    "title": "Terms of Service",
+    "body": "Content in progress."
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "body": "The page you're looking for may have been removed, renamed, or is temporarily unavailable.",
+    "home": "Back to home"
   }
 }

@@ -5,7 +5,7 @@ import { flushSync } from "react-dom";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
-import { LocaleSwitcher } from "@/components/LocaleSwitcher";
+import { LocaleSwitcher } from "@/components/layout/LocaleSwitcher";
 import gsap from "gsap";
 import { Search } from "lucide-react";
 import { useLenis } from "lenis/react";

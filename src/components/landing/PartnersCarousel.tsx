@@ -72,7 +72,6 @@ function PartnerCard({ partner }: { partner: Partner }) {
 export function PartnersCarousel({ partners }: PartnersCarouselProps) {
   return (
     <>
-      {/* Mobile — Swiper carousel with blur masking */}
       <div className="lg:hidden">
         <Swiper
           modules={[Pagination]}
@@ -94,7 +93,6 @@ export function PartnersCarousel({ partners }: PartnersCarouselProps) {
         </Swiper>
       </div>
 
-      {/* Desktop — Dense grid */}
       <div className="hidden gap-4 px-4 lg:grid lg:grid-cols-3 lg:gap-5 xl:grid-cols-4 xl:gap-6 2xl:grid-cols-5">
         {partners.map((partner) => (
           <PartnerCard key={partner.id} partner={partner} />

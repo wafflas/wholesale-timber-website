@@ -1,9 +1,9 @@
 import { setRequestLocale } from "next-intl/server";
-import { LandingPage } from "@/components/LandingPage";
-import BestPicks from "@/components/BestPicks";
-import Company from "@/components/Company";
-import ContactSection from "@/components/ContactSection";
-import PartnersSection from "@/components/PartnersSection";
+import { LandingPage } from "@/components/landing/LandingPage";
+import BestPicks from "@/components/landing/BestPicks";
+import Company from "@/components/landing/Company";
+import ContactSection from "@/components/landing/ContactSection";
+import PartnersSection from "@/components/landing/PartnersSection";
 
 export default async function LocaleHomePage({
   params,

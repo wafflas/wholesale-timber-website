@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import SectionTitle from "./SectionTitle";
-import { BestPicksCarousel } from "@/components/BestPicksCarousel";
+import { BestPicksCarousel } from "@/components/landing/BestPicksCarousel";
 import Image from "next/image";
 
 export default async function BestPicks() {

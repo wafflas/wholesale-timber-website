@@ -4,7 +4,7 @@ import { useRef } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { LandingTaglinesTypewriter } from "@/components/LandingTaglinesTypewriter";
+import { LandingTaglinesTypewriter } from "@/components/landing/LandingTaglinesTypewriter";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ArrowRight } from "lucide-react";

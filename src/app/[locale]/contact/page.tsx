@@ -1,4 +1,8 @@
-import { setRequestLocale, getTranslations } from "next-intl/server";
+import { setRequestLocale } from "next-intl/server";
+import ContactHeader from "@/components/contact/ContactHeader";
+import ContactPhoneCard from "@/components/contact/ContactPhoneCard";
+import ContactMapCard from "@/components/contact/ContactMapCard";
+import ContactFormCard from "@/components/contact/ContactFormCard";
 
 export default async function ContactPage({
   params,
@@ -7,18 +11,17 @@ export default async function ContactPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const t = await getTranslations("ContactPage");
 
   return (
-    <div className="py-16 md:py-24">
-      <main className="mx-auto max-w-3xl px-5 sm:px-6">
-        <h1 className="font-hero text-3xl tracking-hero text-white sm:text-4xl">
-          {t("title")}
-        </h1>
-        <p className="mt-6 text-sm leading-relaxed text-white/60">
-          {t("body")}
-        </p>
-      </main>
-    </div>
+    <main className="min-h-screen bg-[#FAF9F7] selection:bg-primary selection:text-white">
+      <div className="mx-auto max-w-3xl px-5 pb-20 pt-28 sm:px-6 sm:pt-32 lg:max-w-5xl lg:px-8 lg:pt-36">
+        <ContactHeader />
+        <div className="mt-10 grid gap-5 lg:grid-cols-2">
+          <ContactPhoneCard />
+          <ContactMapCard />
+          <ContactFormCard />
+        </div>
+      </div>
+    </main>
   );
 }

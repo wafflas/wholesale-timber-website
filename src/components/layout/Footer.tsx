@@ -16,7 +16,6 @@ const PRODUCT_LINKS = [
 const NAV_LINKS = [
   { key: "home", href: "/" },
   { key: "company", href: "/company" },
-  { key: "services", href: "/services" },
   { key: "products", href: "/products" },
   { key: "contact", href: "/contact" },
 ] as const;
@@ -71,10 +70,7 @@ export function Footer() {
             </ul>
           </nav>
 
-          <nav
-            aria-labelledby="footer-nav-heading"
-            className="lg:col-span-2"
-          >
+          <nav aria-labelledby="footer-nav-heading" className="lg:col-span-2">
             <h2
               id="footer-nav-heading"
               className="text-xs font-bold uppercase tracking-[0.2em] text-primary"
@@ -156,9 +152,7 @@ export function Footer() {
                     strokeWidth={1.75}
                     aria-hidden
                   />
-                  <span className="leading-relaxed">
-                    {tFooter("hours")}
-                  </span>
+                  <span className="leading-relaxed">{tFooter("hours")}</span>
                 </div>
               </li>
               <li>
