@@ -6,7 +6,7 @@ export default async function Company() {
   const t = await getTranslations("CompanySection");
 
   return (
-    <section id="company" className="bg-white py-16 md:py-24 lg:py-32">
+    <section id="company" className="bg-white py-8">
       <div className="mx-auto w-full max-w-[1400px] px-5 sm:px-8 lg:px-12">
         <div className="lg:grid lg:grid-cols-2 lg:items-center lg:gap-16 xl:gap-24">
           <div>

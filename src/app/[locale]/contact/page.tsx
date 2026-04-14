@@ -14,7 +14,7 @@ export default async function ContactPage({
 
   return (
     <main className="min-h-screen bg-[#FAF9F7] selection:bg-primary selection:text-white">
-      <div className="mx-auto max-w-3xl px-5 pb-20 pt-28 sm:px-6 sm:pt-32 lg:max-w-5xl lg:px-8 lg:pt-36">
+      <div className="mx-auto max-w-3xl px-5 pb-20 sm:px-6 lg:max-w-5xl lg:px-8 ">
         <ContactHeader />
         <div className="mt-10 grid gap-5 lg:grid-cols-2">
           <ContactPhoneCard />

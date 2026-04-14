@@ -40,7 +40,7 @@ export function LocaleSwitcher() {
         aria-label={t("label")}
         aria-expanded={isOpen}
         onClick={() => setIsOpen((o) => !o)}
-        className="flex h-11 w-11 items-center justify-center rounded-full text-white/70 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 md:h-10 md:w-10"
+        className="flex h-11 w-11 items-center justify-center rounded-full text-white/70 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary md:h-10 md:w-10"
         title={t("label")}
       >
         <Globe className="size-5" strokeWidth={1.75} />

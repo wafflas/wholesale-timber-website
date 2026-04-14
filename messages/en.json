@@ -84,7 +84,10 @@
   },
   "ProductsPage": {
     "title": "Products",
-    "body": "Browse our product categories. Currently showing dummy data."
+    "body": "Browse our product categories. Currently showing dummy data.",
+    "allTab": "All",
+    "productsCount": "products",
+    "filters": "FILTERS"
   },
   "ContactPage": {
     "title": "Contact",
