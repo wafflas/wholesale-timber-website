@@ -54,7 +54,7 @@ export function LandingPage() {
     <>
       <section
         ref={sectionRef}
-        className="relative flex min-h-[100dvh] w-full max-w-[100%] flex-col overflow-x-hidden"
+        className="relative flex min-h-[100svh] w-full max-w-[100%] flex-col overflow-x-hidden"
       >
         <div className="absolute inset-0 -z-10 overflow-hidden">
           <Image
