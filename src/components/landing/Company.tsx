@@ -53,7 +53,7 @@ export default async function Company() {
             <div className="group relative w-full overflow-hidden rounded-[20px] shadow-[0_12px_32px_rgba(0,0,0,0.18)] ring-1 ring-black/5 lg:rounded-[2rem]">
               <div className="relative aspect-[4/3] w-full overflow-hidden lg:aspect-[3/4]">
                 <Image
-                  src="/category_mdf_1773695477475.png"
+                  src="/companyImage1.jpg"
                   alt="Company Image 1"
                   fill
                   sizes="(min-width: 1024px) 25vw, 50vw"
@@ -65,7 +65,7 @@ export default async function Company() {
             <div className="mt-8 group relative w-full overflow-hidden rounded-[20px] shadow-[0_12px_32px_rgba(0,0,0,0.18)] ring-1 ring-black/5 lg:mt-16 lg:rounded-[2rem]">
               <div className="relative aspect-[4/3] w-full overflow-hidden lg:aspect-[3/4]">
                 <Image
-                  src="/category_lumber_1773695520006.png"
+                  src="/companyImage2.jpg"
                   alt="Company Image 2"
                   fill
                   sizes="(min-width: 1024px) 25vw, 50vw"

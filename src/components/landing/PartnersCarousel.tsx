@@ -1,19 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
-import {
-  Truck,
-  Layers,
-  Factory,
-  Trees,
-  Building2,
-  Ship,
-  Package,
-  TreePine,
-  Warehouse,
-  type LucideIcon,
-} from "lucide-react";
 import "swiper/css";
 import "swiper/css/pagination";
 
@@ -28,34 +17,55 @@ interface PartnersCarouselProps {
   partners: Partner[];
 }
 
-const ICON_MAP: Record<string, LucideIcon> = {
-  arserwood: Truck,
-  hsbaco: Layers,
-  odek: Factory,
-  versowood: Trees,
-  welde: Building2,
-  sumec: Ship,
-  veko: Package,
-  majerholz: TreePine,
-  starwood: Warehouse,
+const LOGO_SRC_BY_ID: Record<string, string> = {
+  arserwood: "/partnerlogos/arserwoodlog.png",
+  hsbaco: "/partnerlogos/HSgroupLogo.png",
+  odek: "/partnerlogos/odeklogo.png",
+  versowood: "/partnerlogos/versowoodlogo.png",
+  welde: "/partnerlogos/weldewoodlogo.png",
+  sumec: "/partnerlogos/sumeclogo.png",
+  veko: "/partnerlogos/vekologo.png",
+  majerholz: "/partnerlogos/majer-holzlogo.png",
+  starwood: "/partnerlogos/starwoodlogo.png",
 };
 
-function PartnerCard({ partner }: { partner: Partner }) {
-  const Icon = ICON_MAP[partner.id] ?? Package;
+function PartnerCard({
+  partner,
+  isShowcase = false,
+}: {
+  partner: Partner;
+  isShowcase?: boolean;
+}) {
+  const logoSrc = LOGO_SRC_BY_ID[partner.id];
 
   return (
-    <a
-      href={partner.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={`${partner.name} — ${partner.role}`}
-      className="group flex flex-col items-center justify-center gap-4 rounded-2xl border border-white/[0.08] bg-white/[0.03] px-6 py-10 transition-all duration-300 hover:border-primary/30 hover:bg-white/[0.06] hover:shadow-[0_0_30px_rgba(172,141,91,0.08)] lg:gap-5 lg:px-8 lg:py-12 hover:-translate-y-1"
+    <div
+      className={[
+        "flex flex-col items-center justify-center gap-4 rounded-2xl border border-white/[0.08] bg-white/[0.03] px-6 py-10 transition-all duration-300 lg:gap-5 lg:px-8 lg:py-12",
+        isShowcase
+          ? "border-primary/30 bg-white/[0.06] shadow-[0_0_30px_rgba(172,141,91,0.08)] -translate-y-1"
+          : "",
+      ].join(" ")}
     >
-      <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-white/[0.06] transition-colors duration-300 group-hover:bg-white/[0.1] lg:h-16 lg:w-16 lg:rounded-2xl">
-        <Icon
-          className="h-7 w-7 text-[#6B7280] transition-colors duration-300 group-hover:text-[#9CA3AF] lg:h-8 lg:w-8"
-          strokeWidth={1.5}
-        />
+      <div
+        className={[
+          "relative flex h-14 w-32 items-center justify-center overflow-hidden rounded-xl bg-white/[0.06] transition-colors duration-300 lg:h-16 lg:w-36 lg:rounded-2xl",
+          isShowcase ? "bg-white/[0.1]" : "",
+        ].join(" ")}
+      >
+        {logoSrc ? (
+          <Image
+            src={logoSrc}
+            alt={`${partner.name} logo`}
+            fill
+            sizes="(min-width: 1024px) 144px, 128px"
+            className="object-contain p-2"
+          />
+        ) : (
+          <span className="px-3 text-xs font-semibold tracking-wide text-[#9CA3AF]">
+            {partner.name}
+          </span>
+        )}
       </div>
       <div className="text-center">
         <p className="text-lg font-bold tracking-wide text-white lg:text-xl">
@@ -65,7 +75,7 @@ function PartnerCard({ partner }: { partner: Partner }) {
           {partner.role}
         </p>
       </div>
-    </a>
+    </div>
   );
 }
 
@@ -87,7 +97,9 @@ export function PartnersCarousel({ partners }: PartnersCarouselProps) {
         >
           {partners.map((partner) => (
             <SwiperSlide key={partner.id}>
-              <PartnerCard partner={partner} />
+              {({ isActive }) => (
+                <PartnerCard partner={partner} isShowcase={isActive} />
+              )}
             </SwiperSlide>
           ))}
         </Swiper>

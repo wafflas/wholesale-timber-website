@@ -92,6 +92,12 @@ body {
       black 90%,
       transparent 100%
     );
+    overflow: visible;
+  }
+
+  .partners-swiper .swiper-wrapper {
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 
   .partners-swiper .swiper-slide {
@@ -101,13 +107,14 @@ body {
       transform 0.4s ease;
     filter: blur(2.5px);
     opacity: 0.4;
-    transform: scale(0.92);
+    transform: none;
+    overflow: visible;
   }
 
   .partners-swiper .swiper-slide-active {
     filter: blur(0);
     opacity: 1;
-    transform: scale(1);
+    transform: none;
   }
 
   .partners-swiper .swiper-pagination {
