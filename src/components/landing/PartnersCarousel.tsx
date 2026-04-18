@@ -71,7 +71,7 @@ function PartnerCard({
         <p className="text-lg font-bold tracking-wide text-white lg:text-xl">
           {partner.name}
         </p>
-        <p className="mt-1.5 text-sm font-medium italic text-primary">
+        <p className="mt-1.5 text-xs font-medium italic text-primary">
           {partner.role}
         </p>
       </div>
