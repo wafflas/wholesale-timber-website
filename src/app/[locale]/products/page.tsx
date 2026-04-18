@@ -23,6 +23,7 @@ export default async function ProductsPage({
     image: p.image,
     typeLabel: isGreek ? p.typeGr : p.typeEn,
     typeKey: p.typeEn,
+    slug: p.slug,
   }));
 
   const seen = new Set<string>();
@@ -46,7 +47,6 @@ export default async function ProductsPage({
           <ProductToolbar
             products={products}
             productsCountLabel={t("productsCount")}
-            filtersLabel={t("filters")}
           />
           <div className="mt-8">
             <ProductContent products={products} />

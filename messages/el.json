@@ -15,6 +15,7 @@
     "openSearch": "Άνοιγμα αναζήτησης",
     "closeSearch": "Κλείσιμο αναζήτησης",
     "searchPlaceholder": "Αναζήτηση προϊόντων...",
+    "searchNoResults": "Δεν βρέθηκαν προϊόντα",
     "openMenu": "Άνοιγμα μενού",
     "closeMenu": "Κλείσιμο μενού",
     "selectLanguage": "Επιλογή γλώσσας",
@@ -84,10 +85,17 @@
   },
   "ProductsPage": {
     "title": "Προϊόντα",
-    "body": "Δείτε τις κατηγορίες προϊόντων μας. Προς το παρόν εμφανίζονται δοκιμαστικά δεδομένα.",
+    "body": "Περιηγηθείτε στη γκάμα ξυλείας και πάνελ μας.",
     "allTab": "Όλα",
-    "productsCount": "προϊόντα",
-    "filters": "ΦΙΛΤΡΑ"
+    "productsCount": "προϊόντα"
+  },
+  "ProductDetailPage": {
+    "description": "Περιγραφή",
+    "dimensions": "Διαστάσεις",
+    "thicknesses": "Πάχη",
+    "unit": "(mm)",
+    "contactCta": "Ζητήστε Προσφορά",
+    "relatedProducts": "Σχετικά Προϊόντα"
   },
   "ContactPage": {
     "title": "Επικοινωνία",

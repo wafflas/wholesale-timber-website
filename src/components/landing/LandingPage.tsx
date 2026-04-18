@@ -67,7 +67,6 @@ export function LandingPage() {
           />
         </div>
         <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/70 via-black/40 to-black/60" />
-
         <div className="relative z-20 flex min-h-0 w-full min-w-0 flex-col pt-20 sm:pt-28 lg:pt-32">
           <div className="px-5 pt-4 sm:px-6 sm:pt-6 lg:px-10">
             <p className="text-center text-[0.7rem] font-bold uppercase tracking-[0.2em] text-white/50 lg:text-xs xl:text-sm">
@@ -98,7 +97,7 @@ export function LandingPage() {
               <div className="flex flex-col gap-3 items-center lg:flex-row lg:justify-center lg:gap-5 lg:pb-10">
                 <Link
                   href="/products"
-                  className="flex w-full items-center justify-center rounded-xl bg-primary py-4 text-center text-sm font-bold uppercase tracking-wide text-white transition-opacity hover:opacity-90 active:opacity-80 lg:w-auto lg:min-w-[220px] lg:px-10 lg:py-5 lg:text-base whitespace-nowrap"
+                  className="flex w-full items-center justify-center rounded-lg bg-primary py-4 text-center text-sm font-bold uppercase tracking-wide text-white transition-opacity hover:opacity-90 active:opacity-80 lg:w-auto lg:min-w-[220px] lg:px-10 lg:py-5 lg:text-base whitespace-nowrap"
                 >
                   {t("primaryCta")}
                   <ArrowRight className="ml-2 h-4 w-4" />
@@ -106,7 +105,7 @@ export function LandingPage() {
 
                 <Link
                   href="/contact"
-                  className="flex w-full items-center justify-center rounded-xl border border-white bg-transparent py-4 text-center text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-white/10 active:bg-white/15 lg:w-auto lg:min-w-[220px] lg:px-10 lg:py-5 lg:text-base whitespace-nowrap"
+                  className="flex w-full items-center justify-center rounded-lg border border-white bg-transparent py-4 text-center text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-white/10 active:bg-white/15 lg:w-auto lg:min-w-[220px] lg:px-10 lg:py-5 lg:text-base whitespace-nowrap"
                 >
                   {t("secondaryCta")}
                 </Link>

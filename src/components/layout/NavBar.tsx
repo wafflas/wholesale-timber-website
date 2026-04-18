@@ -4,10 +4,10 @@ import { useEffect, useRef, useState } from "react";
 import { flushSync } from "react-dom";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { Link, usePathname, useRouter } from "@/i18n/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
 import { LocaleSwitcher } from "@/components/layout/LocaleSwitcher";
+import { ProductSearchCombobox } from "@/components/layout/ProductSearchCombobox";
 import gsap from "gsap";
-import { Search } from "lucide-react";
 import { useLenis } from "lenis/react";
 
 const NAV_LINKS = [
@@ -18,7 +18,6 @@ const NAV_LINKS = [
 ] as const;
 
 export function NavBar() {
-  const router = useRouter();
   const pathname = usePathname();
   const tNav = useTranslations("Navigation");
   const tBar = useTranslations("NavBar");
@@ -27,9 +26,6 @@ export function NavBar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [overlayHidden, setOverlayHidden] = useState(true);
-  const [searchOpen, setSearchOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
-
   const lineTopRef = useRef<HTMLSpanElement>(null);
   const lineMidRef = useRef<HTMLSpanElement>(null);
   const lineBottomRef = useRef<HTMLSpanElement>(null);
@@ -42,7 +38,6 @@ export function NavBar() {
   const navLabelRef = useRef<HTMLParagraphElement>(null);
   const linksRef = useRef<HTMLUListElement>(null);
   const footerRef = useRef<HTMLDivElement>(null);
-  const searchRef = useRef<HTMLInputElement>(null);
   const overlayTl = useRef<gsap.core.Timeline | null>(null);
 
   useEffect(() => {
@@ -51,10 +46,6 @@ export function NavBar() {
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  useEffect(() => {
-    if (searchOpen) searchRef.current?.focus();
-  }, [searchOpen]);
 
   useEffect(() => {
     const leftPanel = leftPanelRef.current;
@@ -313,52 +304,7 @@ export function NavBar() {
         </ul>
 
         <div className="flex shrink-0 items-center gap-2">
-          <div className="relative flex items-center">
-            <div
-              className={`flex shrink-0 items-center overflow-hidden rounded-full border transition-all duration-300 ease-out h-11 md:h-10 ${
-                searchOpen
-                  ? "w-[min(14rem,calc(100dvw-6.5rem))] border-white/25 bg-white/10 backdrop-blur-sm md:w-56"
-                  : "w-11 border-transparent bg-transparent backdrop-blur-none md:w-10"
-              }`}
-            >
-              <button
-                type="button"
-                onMouseDown={(e) => e.preventDefault()}
-                onClick={() => setSearchOpen((o) => !o)}
-                aria-expanded={searchOpen}
-                aria-label={
-                  searchOpen ? tBar("closeSearch") : tBar("openSearch")
-                }
-                className="flex h-11 w-11 shrink-0 items-center justify-center text-white/70 transition-colors hover:text-white md:h-10 md:w-10"
-              >
-                <Search className="size-6" strokeWidth={1.75} />
-              </button>
-              <input
-                ref={searchRef}
-                type="search"
-                tabIndex={searchOpen ? 0 : -1}
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder={tBar("searchPlaceholder")}
-                enterKeyHint="search"
-                className={`h-11 min-w-0 flex-1 bg-transparent py-0 pl-0 pr-3 text-base text-white outline-none transition-opacity duration-300 ease-out placeholder:text-white/45 font-golos-text md:h-10 md:pr-4 md:text-sm ${
-                  searchOpen
-                    ? "opacity-100"
-                    : "pointer-events-none w-0 min-w-0 opacity-0 pr-0"
-                }`}
-                onBlur={() => setSearchOpen(false)}
-                onKeyDown={(e) => {
-                  if (e.key !== "Enter") return;
-                  e.preventDefault();
-                  const q = searchQuery.trim();
-                  setSearchOpen(false);
-                  router.push(
-                    q ? `/products?q=${encodeURIComponent(q)}` : "/products",
-                  );
-                }}
-              />
-            </div>
-          </div>
+          <ProductSearchCombobox />
 
           <LocaleSwitcher />
 

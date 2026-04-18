@@ -1,11 +1,13 @@
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+import { Link } from "@/i18n/navigation";
 
 interface ProductCardProps {
   title: string;
   subtitle: string;
   image: string;
   typeLabel: string;
+  slug?: string;
 }
 
 export function ProductCard({
@@ -13,9 +15,10 @@ export function ProductCard({
   subtitle,
   image,
   typeLabel,
+  slug,
 }: ProductCardProps) {
-  return (
-    <div className="group relative overflow-hidden rounded-2xl ring-1 ring-black/5">
+  const inner = (
+    <div className="group relative overflow-hidden rounded-xl ring-1 ring-black/5">
       <div className="relative aspect-[4/5] w-full">
         <Image
           src={image}
@@ -28,7 +31,7 @@ export function ProductCard({
 
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 via-45% to-transparent" />
 
-      <span className="absolute left-2.5 top-2.5 rounded-full bg-[#2b2623]/60 px-2.5 py-0.5 text-[0.55rem] font-semibold uppercase tracking-widest text-white/90 backdrop-blur-md sm:left-3.5 sm:top-3.5 sm:px-3 sm:py-1 sm:text-[0.65rem]">
+      <span className="absolute left-2.5 top-2.5 rounded-full bg-[#2b2623] px-2.5 py-0.5 text-[0.55rem] font-bold uppercase tracking-widest text-white/90 sm:left-3.5 sm:top-3.5 sm:px-3 sm:py-1 sm:text-[0.65rem]">
         {typeLabel}
       </span>
 
@@ -36,7 +39,7 @@ export function ProductCard({
         <h3 className="truncate font-golos-text text-sm font-bold leading-snug text-white sm:text-base">
           {title}
         </h3>
-        <p className="mt-0.5 truncate font-golos-text text-[0.6rem] font-bold uppercase tracking-[0.039rem] text-primary/70">
+        <p className="mt-0.5 truncate font-golos-text text-[0.6rem] font-bold uppercase tracking-[0.039rem] text-primary">
           {subtitle}
         </p>
         <div className="mt-1.5 flex justify-end">
@@ -49,4 +52,14 @@ export function ProductCard({
       </div>
     </div>
   );
+
+  if (slug) {
+    return (
+      <Link href={`/products/${slug}`} className="block">
+        {inner}
+      </Link>
+    );
+  }
+
+  return inner;
 }

@@ -47,7 +47,7 @@ export function LocaleSwitcher() {
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-40 overflow-hidden rounded-xl border border-white/10 bg-secondary/95 backdrop-blur-sm shadow-2xl">
+        <div className="absolute right-0 mt-2 w-40 overflow-hidden rounded-lg border border-white/10 bg-secondary/95 backdrop-blur-sm shadow-2xl">
           {routing.locales.map((l) => (
             <button
               key={l}

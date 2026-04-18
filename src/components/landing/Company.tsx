@@ -50,7 +50,7 @@ export default async function Company() {
           </div>
 
           <div className="mt-10 grid grid-cols-2 items-start gap-4 sm:gap-5 lg:mt-0 lg:gap-6">
-            <div className="group relative w-full overflow-hidden rounded-[20px] shadow-[0_12px_32px_rgba(0,0,0,0.18)] ring-1 ring-black/5 lg:rounded-[2rem]">
+            <div className="group relative w-full overflow-hidden rounded-2xl shadow-[0_12px_32px_rgba(0,0,0,0.18)] ring-1 ring-black/5 lg:rounded-2xl">
               <div className="relative aspect-[4/3] w-full overflow-hidden lg:aspect-[3/4]">
                 <Image
                   src="/companyImage1.jpg"
@@ -62,7 +62,7 @@ export default async function Company() {
               </div>
             </div>
 
-            <div className="mt-8 group relative w-full overflow-hidden rounded-[20px] shadow-[0_12px_32px_rgba(0,0,0,0.18)] ring-1 ring-black/5 lg:mt-16 lg:rounded-[2rem]">
+            <div className="mt-8 group relative w-full overflow-hidden rounded-2xl shadow-[0_12px_32px_rgba(0,0,0,0.18)] ring-1 ring-black/5 lg:mt-16 lg:rounded-2xl">
               <div className="relative aspect-[4/3] w-full overflow-hidden lg:aspect-[3/4]">
                 <Image
                   src="/companyImage2.jpg"

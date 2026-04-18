@@ -1,299 +1,193 @@
-export const PRODUCTS = [
+export interface Product {
+  slug: string;
+  name: string;
+  nameGr: string;
+  subtitleEn: string;
+  subtitleGr: string;
+  image: string;
+  typeEn: string;
+  typeGr: string;
+  descriptionEn: string;
+  descriptionGr: string;
+  dimensions: string[];
+  thicknesses: string[];
+}
+
+export const PRODUCTS: Product[] = [
+  // ─── ΚΟΝΤΡΑ ΠΛΑΚΕ ────────────────────────────────────────────────────────────
   {
-    name: "Birch Plywood Premium",
-    nameGr: "Κόντρα Πλακέ Σημύδας A/B",
-    subtitleEn: "Premium Birch Plywood",
-    subtitleGr: "Πρώτης Ποιότητας Σημύδα",
-    image: "/category_plywood_1773695464864.png",
-    typeEn: "Plywood",
-    typeGr: "Κόντρα Πλακέ",
-    descriptionEn: "Premium birch plywood for demanding builds and interiors.",
-    descriptionGr:
-      "Πρώτης ποιότητας κόντρα πλακέ σημύδας για απαιτητικές κατασκευές.",
-  },
-  {
-    name: "Pine Plywood Standard",
-    nameGr: "Κόντρα Πλακέ Πεύκου",
-    subtitleEn: "Standard Pine Plywood",
-    subtitleGr: "Κόντρα Πλακέ Πεύκου",
-    image: "/category_plywood_1773695464864.png",
-    typeEn: "Plywood",
-    typeGr: "Κόντρα Πλακέ",
-    descriptionEn: "Cost-effective pine plywood for structural applications.",
-    descriptionGr:
-      "Οικονομικό κόντρα πλακέ πεύκου, ιδανικό για δομικές εφαρμογές.",
-  },
-  {
-    name: "Marine Plywood Okoume",
-    nameGr: "Θαλάσσης Okoume",
-    subtitleEn: "Okoume Marine Grade",
-    subtitleGr: "Θαλάσσιας Χρήσης Okoume",
+    slug: "birch-plywood",
+    name: "Birch Plywood",
+    nameGr: "Κόντρα Πλακέ Σημύδας",
+    subtitleEn: "High-Grade Birch",
+    subtitleGr: "Σημύδα Υψηλής Ποιότητας",
     image: "/category_plywood_1773695464864.png",
     typeEn: "Plywood",
     typeGr: "Κόντρα Πλακέ",
     descriptionEn:
-      "Excellent moisture resistance with Okoume veneer. Ideal for outdoor use.",
+      "High-quality birch plywood with excellent bending and moisture resistance. Ideal for furniture manufacturing, construction, flooring, toy manufacturing, musical instruments, and a wide range of woodworking applications.",
     descriptionGr:
-      "Εξαιρετική αντοχή στην υγρασία, καπλαμάς Okoume. Ιδανικό για εξωτερική χρήση.",
+      "Κόντρα πλακέ σημύδας υψηλής ποιότητας με εξαιρετική αντοχή στην κάμψη και στην υγρασία. Ιδανικό για κατασκευή επίπλων, κατασκευές, πατώματα, κατασκευή παιχνιδιών, μουσικά όργανα και ευρύ φάσμα ξυλουργικών εφαρμογών.",
+    dimensions: ["2500 × 1250", "3050 × 1525", "1525 × 1525"],
+    thicknesses: ["3", "4", "6", "9", "12", "15", "18", "21", "24", "27", "30", "35", "40"],
   },
   {
-    name: "Birch Plywood BB/CP",
-    nameGr: "Κόντρα Πλακέ Σημύδας BB/CP",
-    subtitleEn: "Mid-Grade Birch BB/CP",
-    subtitleGr: "Ενδιάμεσης Ποιότητας Σημύδα",
+    slug: "pine-plywood",
+    name: "Pine Plywood",
+    nameGr: "Κόντρα Πλακέ Πεύκου",
+    subtitleEn: "Siberian Pine",
+    subtitleGr: "Πεύκο Σιβηρίας",
     image: "/category_plywood_1773695464864.png",
     typeEn: "Plywood",
     typeGr: "Κόντρα Πλακέ",
-    descriptionEn: "Mid-grade birch for industrial use and cladding.",
+    descriptionEn:
+      "Durable Siberian pine plywood with high resistance to moisture and bending. Suitable for furniture, shipbuilding, construction, flooring, shelving, and veneering applications.",
     descriptionGr:
-      "Σημύδα ενδιάμεσης ποιότητας για βιομηχανική χρήση και επενδύσεις.",
+      "Ανθεκτικό κόντρα πλακέ πεύκου Σιβηρίας με υψηλή αντοχή στην υγρασία και στην κάμψη. Κατάλληλο για έπιπλα, ναυπηγική, κατασκευές, πατώματα, ράφια και επενδύσεις.",
+    dimensions: ["2500 × 1250"],
+    thicknesses: ["6.5", "9", "12", "15", "18", "21", "24", "27", "30"],
   },
   {
-    name: "Film Faced Plywood",
-    nameGr: "Μπετοφόρμ Φιλμ",
+    slug: "chinese-plywood",
+    name: "Chinese Plywood",
+    nameGr: "Κόντρα Πλακέ Κίνας",
+    subtitleEn: "Bitangor Surface",
+    subtitleGr: "Επιφάνεια Bitangor",
+    image: "/category_plywood_1773695464864.png",
+    typeEn: "Plywood",
+    typeGr: "Κόντρα Πλακέ",
+    descriptionEn:
+      "Cross-grain laminated plywood with Bitangor surface, offering excellent resistance to moisture and bending. Suitable for furniture, construction, partitions, flooring, shelving, and veneering.",
+    descriptionGr:
+      "Κόντρα πλακέ από σταυρωτά στρώματα καπλαμά με επιφάνεια Bitangor, με εξαιρετική αντοχή στην υγρασία και στην κάμψη. Κατάλληλο για έπιπλα, κατασκευές, διαχωριστικά, πατώματα, ράφια και επενδύσεις.",
+    dimensions: ["2500 × 1250"],
+    thicknesses: ["4", "6", "8", "10", "12", "15", "18", "20", "25", "30"],
+  },
+  {
+    slug: "film-birch",
+    name: "FILM Birch",
+    nameGr: "FILM Σημύδα",
     subtitleEn: "Phenolic Film Faced",
     subtitleGr: "Φαινολική Επικάλυψη",
     image: "/category_plywood_1773695464864.png",
     typeEn: "Plywood",
     typeGr: "Κόντρα Πλακέ",
     descriptionEn:
-      "Phenolic film-faced plywood suitable for concrete formwork.",
+      "Premium film-faced birch plywood with phenolic resin coating. Designed for heavy-duty use in concrete formwork and construction applications.",
     descriptionGr:
-      "Κόντρα πλακέ με φιλμ φαινολικής ρητίνης, κατάλληλο για καλούπια σκυροδέματος.",
+      "Κόντρα πλακέ σημύδας με φιλμ φαινολικής ρητίνης. Σχεδιασμένο για έντονη χρήση σε καλούπια σκυροδέματος και κατασκευαστικές εφαρμογές.",
+    dimensions: ["2500 × 1250"],
+    thicknesses: ["18", "21"],
   },
   {
-    name: "Anti-slip Plywood",
-    nameGr: "Αντιολισθητικό Κόντρα Πλακέ",
-    subtitleEn: "Anti-Slip Surface",
-    subtitleGr: "Αντιολισθητική Επιφάνεια",
+    slug: "film-welde",
+    name: "FILM Welde",
+    nameGr: "FILM Welde",
+    subtitleEn: "Austrian Specification",
+    subtitleGr: "Αυστριακές Προδιαγραφές",
     image: "/category_plywood_1773695464864.png",
     typeEn: "Plywood",
     typeGr: "Κόντρα Πλακέ",
     descriptionEn:
-      "Anti-slip surface for truck flooring, scaffolding, and platforms.",
+      "Film-faced plywood produced to Austrian Welde specifications. High-quality surface coating ideal for concrete formwork and construction.",
     descriptionGr:
-      "Ειδική αντιολισθητική επιφάνεια για πατώματα φορτηγών και σκαλωσιές.",
+      "Κόντρα πλακέ με φιλμ κατά τις αυστριακές προδιαγραφές Welde. Υψηλής ποιότητας επικάλυψη, ιδανικό για καλούπια σκυροδέματος και κατασκευές.",
+    dimensions: ["2500 × 1250"],
+    thicknesses: ["18", "20"],
   },
   {
-    name: "PET MDF SuperMat",
-    nameGr: "PET MDF Ματ",
-    subtitleEn: "Ultra-Matte PET Finish",
-    subtitleGr: "Απόλυτο Ματ Φινίρισμα PET",
+    slug: "film-chinese",
+    name: "FILM Chinese",
+    nameGr: "FILM Κίνας",
+    subtitleEn: "Film Faced",
+    subtitleGr: "Φιλμ Επικάλυψη",
+    image: "/category_plywood_1773695464864.png",
+    typeEn: "Plywood",
+    typeGr: "Κόντρα Πλακέ",
+    descriptionEn:
+      "Film-faced Chinese plywood with durable phenolic coating. Suitable for concrete formwork and construction applications.",
+    descriptionGr:
+      "Κινέζικο κόντρα πλακέ με ανθεκτική επικάλυψη φιλμ φαινολικής ρητίνης. Κατάλληλο για καλούπια σκυροδέματος και κατασκευές.",
+    dimensions: ["2500 × 1250"],
+    thicknesses: ["12", "15", "18", "20"],
+  },
+  {
+    slug: "fw-birch",
+    name: "F/W Birch",
+    nameGr: "F/W Σημύδα",
+    subtitleEn: "Anti-Slip Film",
+    subtitleGr: "Αντιολισθητικό Φιλμ",
+    image: "/category_plywood_1773695464864.png",
+    typeEn: "Plywood",
+    typeGr: "Κόντρα Πλακέ",
+    descriptionEn:
+      "Anti-slip film-faced birch plywood designed for truck bed flooring, scaffolding, and platforms requiring non-slip surfaces.",
+    descriptionGr:
+      "Κόντρα πλακέ σημύδας με αντιολισθητικό φιλμ, σχεδιασμένο για πατώματα φορτηγών, σκαλωσιές και πλατφόρμες.",
+    dimensions: ["2500 × 1250"],
+    thicknesses: ["9", "12", "15", "18", "21", "24", "27", "30"],
+  },
+
+  // ─── MDF ─────────────────────────────────────────────────────────────────────
+  {
+    slug: "mdf-raw",
+    name: "Raw MDF",
+    nameGr: "MDF Γυμνό",
+    subtitleEn: "Bare MDF Panels",
+    subtitleGr: "Γυμνές Πλάκες MDF",
     image: "/category_mdf_1773695477475.png",
     typeEn: "MDF",
     typeGr: "MDF",
     descriptionEn:
-      "PET-laminated MDF with ultra-matte, anti-fingerprint finish.",
+      "Raw MDF boards produced from wood fibres bonded with synthetic resins, offering a flawless surface with excellent stability and superior mechanical properties. Suitable for furniture manufacturing, veneering, painting, and general woodworking.",
     descriptionGr:
-      "Μεσαίας πυκνότητας ινοσανίδα με επικάλυψη PET, απόλυτο ματ φινίρισμα, anti-fingerprint.",
+      "Γυμνές πλάκες MDF παραγόμενες από ίνες ξύλου συγκολλημένες με συνθετικές ρητίνες, με άψογη επιφάνεια, εξαιρετική σταθερότητα και ανώτερες μηχανικές ιδιότητες. Κατάλληλο για κατασκευή επίπλων, επένδυση, βαφή και ξυλουργικές εφαρμογές.",
+    dimensions: [
+      "2800 × 2070",
+      "3050 × 1220",
+      "3050 × 1850",
+      "3660 × 1850",
+      "2200 × 1850",
+      "2300 × 1220",
+      "2440 × 1220",
+      "3660 × 1870",
+    ],
+    thicknesses: ["4", "6", "8", "10", "12", "16", "19", "22", "25", "30", "38"],
   },
+
+  // ─── OSB ─────────────────────────────────────────────────────────────────────
   {
-    name: "PET MDF HighGloss",
-    nameGr: "PET MDF Γυαλιστερό",
-    subtitleEn: "High-Gloss PET Finish",
-    subtitleGr: "Γυαλιστερό Φινίρισμα PET",
-    image: "/category_mdf_1773695477475.png",
-    typeEn: "MDF",
-    typeGr: "MDF",
-    descriptionEn:
-      "High-gloss PET MDF—ideal for modern kitchens and cabinetry.",
-    descriptionGr:
-      "Ινοσανίδα με εντυπωσιακό γυαλιστερό PET, ιδανικό για μοντέρνες κουζίνες.",
-  },
-  {
-    name: "Raw MDF Standard",
-    nameGr: "Γυμνό MDF 18mm",
-    subtitleEn: "Raw MDF 18mm",
-    subtitleGr: "Γυμνό MDF 18mm",
-    image: "/category_mdf_1773695477475.png",
-    typeEn: "MDF",
-    typeGr: "MDF",
-    descriptionEn: "Raw MDF boards for painting, veneering, and general use.",
-    descriptionGr:
-      "Γυμνές πλάκες MDF για ευέλικτες εφαρμογές βαφής και επένδυσης.",
-  },
-  {
-    name: "Raw MDF Moisture Res.",
-    nameGr: "Ανθυγρό MDF",
-    subtitleEn: "Moisture Resistant MDF",
-    subtitleGr: "Ανθυγρό MDF",
-    image: "/category_mdf_1773695477475.png",
-    typeEn: "MDF",
-    typeGr: "MDF",
-    descriptionEn:
-      "Moisture-resistant MDF (green core), ideal for bathrooms and humid areas.",
-    descriptionGr:
-      "Πράσινο MDF υψηλής αντοχής στην υγρασία, ιδανικό για μπάνια.",
-  },
-  {
-    name: "Melamine White Premium",
-    nameGr: "Λευκή Μελαμίνη Premium",
-    subtitleEn: "Premium White Melamine",
-    subtitleGr: "Λευκή Μελαμίνη Κορυφαίας Ποιότητας",
-    image: "/category_mdf_1773695477475.png",
-    typeEn: "MDF",
-    typeGr: "MDF",
-    descriptionEn: "Premium white melamine board for kitchens and wardrobes.",
-    descriptionGr:
-      "Λευκή μελαμίνη κορυφαίας ποιότητας για κουζίνες και ντουλάπες.",
-  },
-  {
-    name: "Melamine Oak Classic",
-    nameGr: "Μελαμίνη Δρυς",
-    subtitleEn: "Classic Oak Melamine",
-    subtitleGr: "Κλασική Μελαμίνη Δρυός",
-    image: "/category_mdf_1773695477475.png",
-    typeEn: "MDF",
-    typeGr: "MDF",
-    descriptionEn: "Textured melamine with a realistic rustic oak look.",
-    descriptionGr: "Μελαμίνη με υφή και ρεαλιστική όψη ξύλου ρουστίκ δρυός.",
-  },
-  {
-    name: "Melamine Anthracite",
-    nameGr: "Μελαμίνη Ανθρακί",
-    subtitleEn: "Anthracite Melamine",
-    subtitleGr: "Μελαμίνη Ανθρακί",
-    image: "/category_mdf_1773695477475.png",
-    typeEn: "MDF",
-    typeGr: "MDF",
-    descriptionEn: "Modern anthracite melamine for minimal designs.",
-    descriptionGr:
-      "Σύγχρονη επιλογή σε ανθρακί απόχρωση για minimal κατασκευές.",
-  },
-  {
-    name: "Blockboard Poplar 18mm",
-    nameGr: "Μπλόκμπορντ Λεύκας 18mm",
-    subtitleEn: "Poplar Core 18mm",
-    subtitleGr: "Πυρήνας Λεύκας 18mm",
-    image: "/category_blockboard_1773695507126.png",
-    typeEn: "Panel",
-    typeGr: "Πάνελ",
-    descriptionEn:
-      "Lightweight poplar-core blockboard with excellent stability for doors.",
-    descriptionGr:
-      "Ελαφρύ σύνθετο πάνελ με πυρήνα λεύκας, υψηλής αντοχής για πόρτες.",
-  },
-  {
-    name: "Blockboard Fir 22mm",
-    nameGr: "Μπλόκμπορντ Έλατου 22mm",
-    subtitleEn: "Fir Core 22mm",
-    subtitleGr: "Πυρήνας Έλατου 22mm",
-    image: "/category_blockboard_1773695507126.png",
-    typeEn: "Panel",
-    typeGr: "Πάνελ",
-    descriptionEn: "Solid fir-core blockboard offering outstanding stability.",
-    descriptionGr:
-      "Στιβαρό πάνελ με πυρήνα έλατου, παρέχοντας εξαιρετική σταθερότητα.",
-  },
-  {
-    name: "Veneered Blockboard Oak",
-    nameGr: "Μπλόκμπορντ Επενδεδυμένο Δρυς",
-    subtitleEn: "Oak Veneer Blockboard",
-    subtitleGr: "Επενδεδυμένο με Καπλαμά Δρυός",
-    image: "/category_blockboard_1773695507126.png",
-    typeEn: "Panel",
-    typeGr: "Πάνελ",
-    descriptionEn: "Poplar core with natural oak veneer, ready for finishing.",
-    descriptionGr:
-      "Πυρήνας λεύκας με φυσικό καπλαμά δρυός, έτοιμο για λούστρο.",
-  },
-  {
-    name: "OSB 3 11mm",
-    nameGr: "OSB 3 11mm",
-    subtitleEn: "Roofing & Walls",
-    subtitleGr: "Στέγες & Τοιχοποιία",
-    image: "/category_osb_1773695491952.png",
-    typeEn: "Structural Panel",
-    typeGr: "Δομικό Πάνελ",
-    descriptionEn: "11mm OSB/3 for roofing and wall construction.",
-    descriptionGr:
-      "Oriented Strand Board πάχους 11mm για στέγες και τοιχοποιία.",
-  },
-  {
-    name: "OSB 3 15mm",
-    nameGr: "OSB 3 15mm",
+    slug: "osb-3",
+    name: "OSB 3",
+    nameGr: "OSB 3",
     subtitleEn: "Structural Grade",
     subtitleGr: "Δομικής Χρήσης",
     image: "/category_osb_1773695491952.png",
-    typeEn: "Structural Panel",
-    typeGr: "Δομικό Πάνελ",
+    typeEn: "OSB",
+    typeGr: "OSB",
     descriptionEn:
-      "Reinforced 15mm OSB/3 for demanding structural applications.",
+      "Oriented Strand Board type 3, manufactured by compressing oriented wood strands with adhesive substances. Suitable for roofing, flooring, wall construction, packaging, furniture, and interior decoration.",
     descriptionGr:
-      "Ενισχυμένο OSB πάχους 15mm για δομικές κατασκευές αυξημένων απαιτήσεων.",
+      "Oriented Strand Board τύπου 3, κατασκευασμένο από προσανατολισμένα ρινίσματα ξύλου με συγκολλητικές ουσίες. Κατάλληλο για στέγες, πατώματα, τοιχοποιία, συσκευασία, έπιπλα και εσωτερική διακόσμηση.",
+    dimensions: ["2500 × 1250"],
+    thicknesses: ["9", "11", "12", "15", "18", "22"],
   },
+
+  // ─── BLOCKBOARD ──────────────────────────────────────────────────────────────
   {
-    name: "OSB 3 22mm T&G",
-    nameGr: "OSB 3 22mm με πατούρα",
-    subtitleEn: "Tongue & Groove Flooring",
-    subtitleGr: "Σύστημα Πατούρας για Πατώματα",
-    image: "/category_osb_1773695491952.png",
-    typeEn: "Structural Panel",
-    typeGr: "Δομικό Πάνελ",
-    descriptionEn: "Tongue & groove OSB—ideal for flooring.",
-    descriptionGr: "OSB με σύστημα click/πατούρα, ιδανικό για πατώματα.",
-  },
-  {
-    name: "Okoume Lumber",
-    nameGr: "Μαδέρια Οκουμέ",
-    subtitleEn: "Tropical Timber",
-    subtitleGr: "Τροπική Ξυλεία",
-    image: "/category_lumber_1773695520006.png",
-    typeEn: "Tropical Timber",
-    typeGr: "Τροπικό Ξύλο",
+    slug: "blockboard",
+    name: "Blockboard",
+    nameGr: "Blockboard",
+    subtitleEn: "44mm Structural Panel",
+    subtitleGr: "Δομικό Πάνελ 44mm",
+    image: "/category_blockboard_1773695507126.png",
+    typeEn: "Blockboard",
+    typeGr: "Blockboard",
     descriptionEn:
-      "Lightweight tropical timber—ideal for marine and woodworking uses.",
+      "Solid blockboard panels with excellent structural stability and high load-bearing capacity. Suitable for construction applications, doors, and heavy-duty woodworking.",
     descriptionGr:
-      "Ελαφρύ τροπικό ξύλο, ιδανικό για ναυπηγική και ξυλουργικές εφαρμογές.",
-  },
-  {
-    name: "Poplar Planks",
-    nameGr: "Ταύλες Λεύκας",
-    subtitleEn: "Softwood Planks",
-    subtitleGr: "Ταύλες Μαλακού Ξύλου",
-    image: "/category_lumber_1773695520006.png",
-    typeEn: "Softwood",
-    typeGr: "Μαλακό Ξύλο",
-    descriptionEn:
-      "Cost-effective and versatile timber for frames and upholstery work.",
-    descriptionGr:
-      "Οικονομική και ευέλικτη λύση ξυλείας για σκελετούς σαλονιών.",
-  },
-  {
-    name: "Swedish Pine Unedged",
-    nameGr: "Σουηδικό Πεύκο Φαρδύ",
-    subtitleEn: "Imported Swedish Pine",
-    subtitleGr: "Εισαγόμενο Σουηδικό Πεύκο",
-    image: "/category_lumber_1773695520006.png",
-    typeEn: "Softwood",
-    typeGr: "Μαλακό Ξύλο",
-    descriptionEn: "Imported Swedish pine timber of excellent quality.",
-    descriptionGr:
-      "Εισαγόμενη ξυλεία πεύκου από τη Σουηδία, άριστης ποιότητας.",
-  },
-  {
-    name: "Beech Wood Steamed",
-    nameGr: "Οξιά Φουρνιστή",
-    subtitleEn: "Steamed Beech Hardwood",
-    subtitleGr: "Φουρνιστή Ξυλεία Οξιάς",
-    image: "/category_lumber_1773695520006.png",
-    typeEn: "Hardwood",
-    typeGr: "Σκληρό Ξύλο",
-    descriptionEn: "Steamed beech—dense and durable for stairs and furniture.",
-    descriptionGr:
-      "Φουρνιστή ξυλεία οξιάς, βαριά και ανθεκτική για σκαλοπάτια και έπιπλα.",
-  },
-  {
-    name: "Oak Lumber Prime",
-    nameGr: "Δρυς Ευρώπης Prime",
-    subtitleEn: "Prime European Oak",
-    subtitleGr: "Δρυς Ευρώπης Εξαιρετική",
-    image: "/category_lumber_1773695520006.png",
-    typeEn: "Hardwood",
-    typeGr: "Σκληρό Ξύλο",
-    descriptionEn:
-      "Selected prime European oak for premium-grade constructions.",
-    descriptionGr:
-      "Επιλεγμένη ξυλεία δρυός εξαιρετικής ποιότητας για πολυτελείς κατασκευές.",
+      "Σύνθετες πλάκες blockboard με εξαιρετική δομική σταθερότητα και υψηλή φέρουσα ικανότητα. Κατάλληλες για κατασκευές, πόρτες και ξυλουργικές εφαρμογές.",
+    dimensions: ["2250 × 1250"],
+    thicknesses: ["44"],
   },
 ];

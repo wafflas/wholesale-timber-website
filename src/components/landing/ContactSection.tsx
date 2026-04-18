@@ -40,7 +40,7 @@ export default async function ContactSection() {
           <div className="flex flex-col gap-3 items-center mt-10 w-full lg:flex-row lg:justify-center lg:gap-5 lg:flex-wrap">
             <Link
               href={primaryPhone.href}
-              className="flex w-full items-center gap-2 justify-center rounded-xl bg-primary py-4 text-center text-sm font-bold tracking-wide text-white transition-opacity hover:opacity-90 active:opacity-80 lg:w-auto lg:min-w-[220px] lg:px-8 lg:py-5 lg:text-base"
+              className="flex w-full items-center gap-2 justify-center rounded-lg bg-primary py-4 text-center text-sm font-bold tracking-wide text-white transition-opacity hover:opacity-90 active:opacity-80 lg:w-auto lg:min-w-[220px] lg:px-8 lg:py-5 lg:text-base"
               aria-label={`${t("phoneAria")} ${primaryPhone.display}`}
             >
               <PhoneCall className="size-5 shrink-0" aria-hidden="true" />
@@ -49,7 +49,7 @@ export default async function ContactSection() {
 
             <Link
               href="/contact"
-              className="flex w-full items-center justify-center rounded-xl border border-white bg-transparent py-4 text-center text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-white/10 active:bg-white/15 lg:w-auto lg:min-w-[220px] lg:px-8 lg:py-5 lg:text-base"
+              className="flex w-full items-center justify-center rounded-lg border border-white bg-transparent py-4 text-center text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-white/10 active:bg-white/15 lg:w-auto lg:min-w-[220px] lg:px-8 lg:py-5 lg:text-base"
               aria-label={t("contactCta")}
             >
               {t("contactCta")}

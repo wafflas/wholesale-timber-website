@@ -9,11 +9,11 @@ export default async function ContactMapCard() {
   const t = await getTranslations("ContactPage");
 
   return (
-    <div className="rounded-2xl border border-black/[0.04] bg-white p-5 shadow-[0_1px_3px_rgb(0,0,0,0.04)] sm:p-6">
+    <div className="rounded-xl border border-black/[0.04] bg-white p-5 shadow-[0_1px_3px_rgb(0,0,0,0.04)] sm:p-6">
       <h2 className="text-[1.05rem] font-semibold text-[#2b2623]">
         {t("mapTitle")}
       </h2>
-      <div className="relative mt-4 overflow-hidden rounded-xl">
+      <div className="relative mt-4 overflow-hidden rounded-lg">
         <a
           href={MAPS_LINK}
           target="_blank"

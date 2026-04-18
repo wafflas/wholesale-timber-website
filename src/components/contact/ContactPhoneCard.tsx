@@ -8,7 +8,7 @@ const EMAIL = {
 
 export default function ContactPhoneCard() {
   return (
-    <div className="flex flex-col items-center justify-center rounded-2xl border border-black/[0.04] bg-white px-6 py-10 text-center shadow-[0_1px_3px_rgb(0,0,0,0.04)]">
+    <div className="flex flex-col items-center justify-center rounded-xl border border-black/[0.04] bg-white px-6 py-10 text-center shadow-[0_1px_3px_rgb(0,0,0,0.04)]">
       <div className="flex size-[4.25rem] items-center justify-center rounded-full border-[1.5px] border-primary/25">
         <PhoneCall
           className="size-7 text-primary"

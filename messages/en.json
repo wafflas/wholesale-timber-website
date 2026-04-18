@@ -15,6 +15,7 @@
     "openSearch": "Open search",
     "closeSearch": "Close search",
     "searchPlaceholder": "Search products...",
+    "searchNoResults": "No matching products",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
     "selectLanguage": "Select language",
@@ -84,10 +85,17 @@
   },
   "ProductsPage": {
     "title": "Products",
-    "body": "Browse our product categories. Currently showing dummy data.",
+    "body": "Browse our full range of timber and panel products.",
     "allTab": "All",
-    "productsCount": "products",
-    "filters": "FILTERS"
+    "productsCount": "products"
+  },
+  "ProductDetailPage": {
+    "description": "Description",
+    "dimensions": "Dimensions",
+    "thicknesses": "Thicknesses",
+    "unit": "(mm)",
+    "contactCta": "Request a Quote",
+    "relatedProducts": "Related Products"
   },
   "ContactPage": {
     "title": "Contact",

@@ -20,7 +20,7 @@ export function ProductTabBar({ categories, allLabel }: ProductTabBarProps) {
   return (
     <div className="fixed left-0 right-0 top-[84px] z-40 bg-white/95 shadow-[0_4px_12px_-2px_rgba(0,0,0,0.08)] backdrop-blur-sm md:top-[80px]">
       <div className="mx-auto max-w-3xl overflow-x-auto px-2 py-3 sm:px-6 lg:max-w-5xl lg:px-8 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-        <div className="flex w-max gap-2">
+        <div className="flex w-max gap-2 mx-auto">
           {tabs.map((tab) => (
             <button
               key={tab.key}

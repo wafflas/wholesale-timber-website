@@ -65,7 +65,7 @@ export default function NotFound() {
                  <p className="mt-4 text-sm text-[#d1d1d1]/70 max-w-md mx-auto md:text-base leading-relaxed">{t.body}</p>
                  <Link
                    href={`/${locale}`}
-                   className="mt-10 inline-flex h-14 items-center justify-center rounded-xl bg-primary px-10 text-sm font-bold tracking-[0.15em] text-white transition-all duration-300 hover:bg-primary/90 hover:shadow-[0_0_30px_rgba(172,141,91,0.2)] active:scale-[0.98]"
+                   className="mt-10 inline-flex h-14 items-center justify-center rounded-lg bg-primary px-10 text-sm font-bold tracking-[0.15em] text-white transition-all duration-300 hover:bg-primary/90 hover:shadow-[0_0_30px_rgba(172,141,91,0.2)] active:scale-[0.98]"
                  >
                    {t.home}
                  </Link>

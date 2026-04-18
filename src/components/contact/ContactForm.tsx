@@ -36,7 +36,7 @@ function Field({ label, icon, error, children }: FieldProps) {
 }
 
 const inputClass =
-  "mt-2 w-full rounded-xl border border-black/[0.08] bg-[#FAF9F7] px-4 py-3 text-sm text-[#2b2623] placeholder:text-[#2b2623]/30 transition-colors focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/15";
+  "mt-2 w-full rounded-lg border border-black/[0.08] bg-[#FAF9F7] px-4 py-3 text-sm text-[#2b2623] placeholder:text-[#2b2623]/30 transition-colors focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-primary/15";
 
 const iconClass = "size-[0.95rem] text-primary";
 
@@ -143,7 +143,7 @@ export function ContactForm() {
       </Field>
 
       {serverError && (
-        <p className="rounded-lg bg-red-50 px-4 py-2.5 text-sm text-red-600">
+        <p className="rounded-md bg-red-50 px-4 py-2.5 text-sm text-red-600">
           {serverError}
         </p>
       )}
@@ -151,7 +151,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="flex w-full items-center justify-center gap-2.5 rounded-xl bg-primary py-3.5 text-[0.8rem] font-bold uppercase tracking-[0.14em] text-white transition-all hover:bg-primary/90 active:scale-[0.98] disabled:opacity-50"
+        className="flex w-full items-center justify-center gap-2.5 rounded-lg bg-primary py-3.5 text-[0.8rem] font-bold uppercase tracking-[0.14em] text-white transition-all hover:bg-primary/90 active:scale-[0.98] disabled:opacity-50"
       >
         <Send className="size-4" strokeWidth={2} aria-hidden />
         {t("submitButton")}

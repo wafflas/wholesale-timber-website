@@ -41,7 +41,7 @@ function PartnerCard({
   return (
     <div
       className={[
-        "flex flex-col items-center justify-center gap-4 rounded-2xl border border-white/[0.08] bg-white/[0.03] px-6 py-10 transition-all duration-300 lg:gap-5 lg:px-8 lg:py-12",
+        "flex flex-col items-center justify-center gap-4 rounded-xl border border-white/[0.08] bg-white/[0.03] px-6 py-10 transition-all duration-300 lg:gap-5 lg:px-8 lg:py-12",
         isShowcase
           ? "border-primary/30 bg-white/[0.06] shadow-[0_0_30px_rgba(172,141,91,0.08)] -translate-y-1"
           : "",
@@ -49,7 +49,7 @@ function PartnerCard({
     >
       <div
         className={[
-          "relative flex h-14 w-32 items-center justify-center overflow-hidden rounded-xl bg-white/[0.06] transition-colors duration-300 lg:h-16 lg:w-36 lg:rounded-2xl",
+          "relative flex h-14 w-32 items-center justify-center overflow-hidden rounded-lg bg-white/[0.06] transition-colors duration-300 lg:h-16 lg:w-36 lg:rounded-xl",
           isShowcase ? "bg-white/[0.1]" : "",
         ].join(" ")}
       >
@@ -71,7 +71,7 @@ function PartnerCard({
         <p className="text-lg font-bold tracking-wide text-white lg:text-xl">
           {partner.name}
         </p>
-        <p className="mt-1.5 text-sm font-medium italic text-primary lg:text-base">
+        <p className="mt-1.5 text-sm font-medium italic text-primary">
           {partner.role}
         </p>
       </div>
