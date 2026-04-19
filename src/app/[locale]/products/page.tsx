@@ -1,11 +1,38 @@
 import { Suspense } from "react";
 import { setRequestLocale, getTranslations } from "next-intl/server";
+import type { Metadata } from "next";
 import { PRODUCTS } from "@/lib/products";
 import { ProductFilterProvider } from "@/components/products/ProductFilterContext";
 import { ProductTabBar } from "@/components/products/ProductTabBar";
 import ProductHeader from "@/components/products/ProductHeader";
 import { ProductContent } from "@/components/products/ProductContent";
 import { ProductToolbar } from "@/components/products/ProductToolbar";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "ProductsPage" });
+
+  return {
+    title: t("title"),
+    description: t("body"),
+    alternates: {
+      canonical: "./",
+      languages: {
+        el: "/el/products",
+        en: "/en/products",
+      },
+    },
+    openGraph: {
+      title: t("title"),
+      description: t("body"),
+      url: `/${locale}/products`,
+    },
+  };
+}
 
 export default async function ProductsPage({
   params,

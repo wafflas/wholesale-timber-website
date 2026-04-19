@@ -1,4 +1,31 @@
 import { setRequestLocale, getTranslations } from "next-intl/server";
+import type { Metadata } from "next";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "PrivacyPage" });
+
+  return {
+    title: t("title"),
+    description: t("body"),
+    alternates: {
+      canonical: "./",
+      languages: {
+        el: "/el/privacy",
+        en: "/en/privacy",
+      },
+    },
+    openGraph: {
+      title: t("title"),
+      description: t("body"),
+      url: `/${locale}/privacy`,
+    },
+  };
+}
 
 export default async function PrivacyPage({
   params,

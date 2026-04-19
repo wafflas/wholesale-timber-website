@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { setRequestLocale, getTranslations } from "next-intl/server";
+import type { Metadata } from "next";
 import { PRODUCTS } from "@/lib/products";
 import ProductDetailPage from "@/components/products/ProductDetailPage";
 
@@ -11,13 +12,30 @@ export async function generateMetadata({
   params,
 }: {
   params: Promise<{ locale: string; slug: string }>;
-}) {
+}): Promise<Metadata> {
   const { locale, slug } = await params;
   const product = PRODUCTS.find((p) => p.slug === slug);
   if (!product) return {};
   const isGreek = locale === "el";
+
+  const title = `${isGreek ? product.nameGr : product.name} | BEST PLY I.K.E.`;
+  const description = isGreek ? product.descriptionGr : product.descriptionEn;
+
   return {
-    title: `${isGreek ? product.nameGr : product.name} | BEST PLY I.K.E.`,
+    title,
+    description,
+    alternates: {
+      canonical: "./",
+      languages: {
+        el: `/el/products/${slug}`,
+        en: `/en/products/${slug}`,
+      },
+    },
+    openGraph: {
+      title,
+      description,
+      url: `/${locale}/products/${slug}`,
+    },
   };
 }
 

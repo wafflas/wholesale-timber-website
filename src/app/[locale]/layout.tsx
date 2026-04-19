@@ -44,17 +44,39 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Metadata" });
 
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "https://bestply.gr";
+  const siteUrl =
+    process.env.NEXT_PUBLIC_SITE_URL ??
+    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined) ??
+    "http://localhost:3000";
 
   return {
+    metadataBase: new URL(siteUrl),
     title: t("title"),
     description: t("description"),
     manifest: "/favicon_io/site.webmanifest",
     alternates: {
-      canonical: `${baseUrl}/${locale}`,
-      languages: Object.fromEntries(
-        routing.locales.map((l) => [l, `${baseUrl}/${l}`]),
-      ),
+      canonical: "./",
+      languages: Object.fromEntries(routing.locales.map((l) => [l, `/${l}`])),
+    },
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      url: `/${locale}`,
+      siteName: "BEST PLY I.K.E.",
+      type: "website",
+      images: [
+        {
+          url: "/Logo.svg",
+          alt: "BEST PLY I.K.E.",
+          type: "image/svg+xml",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary",
+      title: t("title"),
+      description: t("description"),
+      images: ["/Logo.svg"],
     },
   };
 }
