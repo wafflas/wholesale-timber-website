@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, use, useState } from "react";
+import { parseAsString, useQueryState } from "nuqs";
 
 interface ProductFilterContextValue {
   activeCategory: string;
@@ -12,11 +13,14 @@ interface ProductFilterContextValue {
 const ProductFilterContext = createContext<ProductFilterContextValue | null>(null);
 
 export function ProductFilterProvider({ children }: { children: React.ReactNode }) {
-  const [activeCategory, setActiveCategory] = useState("all");
+  const [activeCategory, setActiveCategory] = useQueryState(
+    "tab",
+    parseAsString.withDefault("all"),
+  );
   const [currentPage, setCurrentPage] = useState(1);
 
   function handleSetCategory(category: string) {
-    setActiveCategory(category);
+    void setActiveCategory(category);
     setCurrentPage(1);
   }
 

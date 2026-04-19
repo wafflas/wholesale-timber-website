@@ -83,11 +83,15 @@
     "majerholz": "Manufacturer - Germany",
     "starwood": "Manufacturer - Turkey"
   },
+  "Common": {
+    "backToTop": "Back to top"
+  },
   "ProductsPage": {
     "title": "Products",
     "body": "Browse our full range of timber and panel products.",
     "allTab": "All",
-    "productsCount": "products"
+    "productsCount": "products",
+    "productsCountLabel": "{count, plural, =0 {No products found} one {# product} other {# products}}"
   },
   "ProductDetailPage": {
     "description": "Description",

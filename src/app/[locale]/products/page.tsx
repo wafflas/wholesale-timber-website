@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { PRODUCTS } from "@/lib/products";
 import { ProductFilterProvider } from "@/components/products/ProductFilterContext";
@@ -40,19 +41,18 @@ export default async function ProductsPage({
 
   return (
     <main className="min-h-screen bg-[#FAF9F7] selection:bg-primary selection:text-white">
-      <ProductFilterProvider>
-        <ProductTabBar categories={categories} allLabel={t("allTab")} />
-        <div className="mx-auto max-w-3xl px-5 pb-20 pt-20 sm:px-6 lg:max-w-5xl lg:px-8">
-          <ProductHeader />
-          <ProductToolbar
-            products={products}
-            productsCountLabel={t("productsCount")}
-          />
-          <div className="mt-8">
-            <ProductContent products={products} />
+      <Suspense fallback={null}>
+        <ProductFilterProvider>
+          <ProductTabBar categories={categories} allLabel={t("allTab")} />
+          <div className="mx-auto max-w-3xl px-5 pb-20 pt-20 sm:px-6 lg:max-w-5xl lg:px-8">
+            <ProductHeader />
+            <ProductToolbar products={products} />
+            <div className="mt-8">
+              <ProductContent products={products} />
+            </div>
           </div>
-        </div>
-      </ProductFilterProvider>
+        </ProductFilterProvider>
+      </Suspense>
     </main>
   );
 }

@@ -83,11 +83,15 @@
     "majerholz": "Κατασκευαστής - Γερμανία",
     "starwood": "Κατασκευαστής - Τουρκία"
   },
+  "Common": {
+    "backToTop": "Πίσω στην κορυφή"
+  },
   "ProductsPage": {
     "title": "Προϊόντα",
     "body": "Περιηγηθείτε στη γκάμα ξυλείας και πάνελ μας.",
     "allTab": "Όλα",
-    "productsCount": "προϊόντα"
+    "productsCount": "προϊόντα",
+    "productsCountLabel": "{count, plural, =0 {Δεν βρέθηκαν προϊόντα} one {# προϊόν} other {# προϊόντα}}"
   },
   "ProductDetailPage": {
     "description": "Περιγραφή",

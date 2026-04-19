@@ -1,17 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
-
-const PRODUCT_LINKS = [
-  { label: "Birch Plywood", href: "/products" },
-  { label: "Poplar", href: "/products" },
-  { label: "Blockboard", href: "/products" },
-  { label: "OSB", href: "/products" },
-  { label: "PET MDF", href: "/products" },
-] as const;
+import { PRODUCTS } from "@/lib/products";
 
 const NAV_LINKS = [
   { key: "home", href: "/" },
@@ -24,8 +17,19 @@ const footerLinkClass =
   "text-[#d1d1d1]/90 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#2b2623]";
 
 export function Footer() {
+  const locale = useLocale();
   const tNav = useTranslations("Navigation");
   const tFooter = useTranslations("Footer");
+
+  const categories = (() => {
+    const seen = new Set<string>();
+    return PRODUCTS.reduce<{ key: string; label: string }[]>((acc, p) => {
+      if (seen.has(p.typeEn)) return acc;
+      seen.add(p.typeEn);
+      acc.push({ key: p.typeEn, label: locale === "el" ? p.typeGr : p.typeEn });
+      return acc;
+    }, []);
+  })();
 
   return (
     <footer className="bg-[#2b2623] text-[#d1d1d1]">
@@ -60,9 +64,12 @@ export function Footer() {
               {tFooter("products")}
             </h2>
             <ul className="mt-5 space-y-3 text-sm">
-              {PRODUCT_LINKS.map((item) => (
-                <li key={item.label}>
-                  <Link href={item.href} className={footerLinkClass}>
+              {categories.map((item) => (
+                <li key={item.key}>
+                  <Link
+                    href={{ pathname: "/products", query: { tab: item.key } }}
+                    className={footerLinkClass}
+                  >
                     {item.label}
                   </Link>
                 </li>

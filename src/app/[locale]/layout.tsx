@@ -6,11 +6,12 @@ import { setRequestLocale, getTranslations } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
 import localFont from "next/font/local";
 import { Golos_Text } from "next/font/google";
-import { routing, type Locale } from "@/i18n/routing";
-import { getPathname } from "@/i18n/navigation";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
+import { routing } from "@/i18n/routing";
 import { NavBar } from "@/components/layout/NavBar";
 import { Footer } from "@/components/layout/Footer";
 import { SmoothScroller } from "@/components/layout/SmoothScroller";
+import { ScrollToTopButton } from "@/components/shared/ScrollToTopButton";
 import "../globals.css";
 
 const golosText = Golos_Text({
@@ -66,6 +67,7 @@ export default async function LocaleLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  const tCommon = await getTranslations({ locale, namespace: "Common" });
 
   if (!hasLocale(routing.locales, locale)) {
     notFound();
@@ -79,15 +81,18 @@ export default async function LocaleLayout({
       className={`${golosText.variable} ${fontHero.variable}`}
     >
       <body className="font-golos-text antialiased text-foreground bg-background">
-        <NextIntlClientProvider>
-          <SmoothScroller>
-            <NavBar />
-            <div className="flex min-h-dvh w-full min-w-0 flex-col">
-              {children}
-              <Footer />
-            </div>
-          </SmoothScroller>
-        </NextIntlClientProvider>
+        <NuqsAdapter>
+          <NextIntlClientProvider>
+            <SmoothScroller>
+              <NavBar />
+              <div className="flex min-h-dvh w-full min-w-0 flex-col">
+                {children}
+                <Footer />
+              </div>
+              <ScrollToTopButton ariaLabel={tCommon("backToTop")} />
+            </SmoothScroller>
+          </NextIntlClientProvider>
+        </NuqsAdapter>
       </body>
     </html>
   );

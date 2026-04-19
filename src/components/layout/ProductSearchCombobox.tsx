@@ -180,7 +180,7 @@ export function ProductSearchCombobox() {
         sideOffset={8}
         collisionPadding={16}
         onOpenAutoFocus={(e) => e.preventDefault()}
-        className="w-[min(14rem,calc(100dvw-6.5rem))] md:w-56 border-white/15 bg-secondary/95 p-0 text-white shadow-lg backdrop-blur-md"
+        className="z-[5000] w-[min(14rem,calc(100dvw-6.5rem))] md:w-56 border-white/15 bg-secondary/95 p-0 text-white shadow-lg backdrop-blur-md"
       >
         <div ref={popoverPanelRef} id="product-search-suggestions">
           <Command shouldFilter={false} className="bg-transparent">
