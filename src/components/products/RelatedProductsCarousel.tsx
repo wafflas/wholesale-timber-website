@@ -93,14 +93,22 @@ export function RelatedProductsCarousel({
               aria-label="Previous"
               className={`${prevClass} absolute -left-3 top-[40%] z-10 hidden -translate-y-1/2 items-center justify-center rounded-full border border-[#2b2623]/10 bg-white shadow-md transition-all hover:bg-[#FAF9F7] lg:flex is-disabled:pointer-events-none is-disabled:opacity-30 h-9 w-9`}
             >
-              <ChevronLeft className="size-4 text-[#2b2623]" strokeWidth={2} aria-hidden />
+              <ChevronLeft
+                className="size-4 text-[#2b2623]"
+                strokeWidth={2}
+                aria-hidden
+              />
             </button>
             <button
               type="button"
               aria-label="Next"
               className={`${nextClass} absolute -right-3 top-[40%] z-10 hidden -translate-y-1/2 items-center justify-center rounded-full border border-[#2b2623]/10 bg-white shadow-md transition-all hover:bg-[#FAF9F7] lg:flex is-disabled:pointer-events-none is-disabled:opacity-30 h-9 w-9`}
             >
-              <ChevronRight className="size-4 text-[#2b2623]" strokeWidth={2} aria-hidden />
+              <ChevronRight
+                className="size-4 text-[#2b2623]"
+                strokeWidth={2}
+                aria-hidden
+              />
             </button>
           </>
         )}

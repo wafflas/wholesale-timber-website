@@ -51,7 +51,10 @@ export async function generateMetadata({
 
   return {
     metadataBase: new URL(siteUrl),
-    title: t("title"),
+    title: {
+      default: `BEST PLY I.K.E | ${t("title")}`,
+      template: "BEST PLY I.K.E | %s",
+    },
     description: t("description"),
     manifest: "/favicon_io/site.webmanifest",
     alternates: {
@@ -59,7 +62,10 @@ export async function generateMetadata({
       languages: Object.fromEntries(routing.locales.map((l) => [l, `/${l}`])),
     },
     openGraph: {
-      title: t("title"),
+      title: {
+        default: `BEST PLY I.K.E | ${t("title")}`,
+        template: "BEST PLY I.K.E | %s",
+      },
       description: t("description"),
       url: `/${locale}`,
       siteName: "BEST PLY I.K.E.",
@@ -74,7 +80,10 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary",
-      title: t("title"),
+      title: {
+        default: `BEST PLY I.K.E | ${t("title")}`,
+        template: "BEST PLY I.K.E | %s",
+      },
       description: t("description"),
       images: ["/Logo.svg"],
     },
