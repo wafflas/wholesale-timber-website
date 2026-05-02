@@ -6,12 +6,15 @@ import { setRequestLocale, getTranslations } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
 import localFont from "next/font/local";
 import { Golos_Text } from "next/font/google";
+import { cookies } from "next/headers";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { routing } from "@/i18n/routing";
 import { NavBar } from "@/components/layout/NavBar";
 import { Footer } from "@/components/layout/Footer";
 import { SmoothScroller } from "@/components/layout/SmoothScroller";
 import { ScrollToTopButton } from "@/components/shared/ScrollToTopButton";
+import { CookieConsent } from "@/components/shared/CookieConsent";
+import { GoogleAnalytics } from "@/components/shared/GoogleAnalytics";
 import "../globals.css";
 
 const golosText = Golos_Text({
@@ -99,6 +102,10 @@ export default async function LocaleLayout({
 }) {
   const { locale } = await params;
   const tCommon = await getTranslations({ locale, namespace: "Common" });
+  const cookieStore = await cookies();
+  const consentCookie = cookieStore.get("bestply-cookie-consent")?.value;
+  const hasCookieChoice = Boolean(consentCookie);
+  const hasAnalyticsConsent = consentCookie === "accepted";
 
   if (!hasLocale(routing.locales, locale)) {
     notFound();
@@ -112,6 +119,7 @@ export default async function LocaleLayout({
       className={`${golosText.variable} ${fontHero.variable}`}
     >
       <body className="font-golos-text antialiased text-foreground bg-background">
+        <GoogleAnalytics hasConsent={hasAnalyticsConsent} />
         <NuqsAdapter>
           <NextIntlClientProvider>
             <SmoothScroller>
@@ -121,6 +129,7 @@ export default async function LocaleLayout({
                 <Footer />
               </div>
               <ScrollToTopButton ariaLabel={tCommon("backToTop")} />
+              <CookieConsent hasChoice={hasCookieChoice} />
             </SmoothScroller>
           </NextIntlClientProvider>
         </NuqsAdapter>

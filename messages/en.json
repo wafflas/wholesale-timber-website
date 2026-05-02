@@ -124,11 +124,88 @@
   },
   "PrivacyPage": {
     "title": "Privacy Policy",
-    "body": "Content in progress."
+    "description": "How BEST PLY I.K.E. processes your data when you browse the website or contact us for wholesale (B2B) enquiries.",
+    "updated": "Last updated: May 2026",
+    "intro": "This Privacy Policy explains how BEST PLY I.K.E. (“we”, “us”) collects and processes personal data when you visit our website or contact us. This website is a digital information space for a wholesale (B2B) business and is not an e‑commerce shop.",
+    "sections": [
+      {
+        "title": "1. Data Controller",
+        "body": [
+          "The data controller is BEST PLY I.K.E. Registered address: Filadelfeias 7, Nea Erythraia, Athens, Greece. Phone: +30 210 800 0365. Email: `bestplyike@gmail.com` (or via the Contact page)."
+        ]
+      },
+      {
+        "title": "2. Data we collect",
+        "body": [
+          "We collect information you provide directly to us (for example through the contact form or email), such as your name, email address, phone number (if provided), and the content of your message.",
+          "We may also collect technical usage data (e.g. IP address, device/browser type, pages visited) through cookies or similar technologies as described below."
+        ]
+      },
+      {
+        "title": "3. Purposes and legal bases",
+        "body": [
+          "We process your data to respond to inquiries, provide product information, issue quotations, and manage business communications (legitimate interests and/or steps taken at your request prior to entering into a business relationship).",
+          "Where required, we rely on your consent (for example, for non-essential cookies/analytics)."
+        ]
+      },
+      {
+        "title": "4. Cookies and similar technologies",
+        "body": [
+          "We use essential cookies for basic functionality and security. Optional cookies (such as analytics/statistics) are used only if you provide consent via our cookie banner.",
+          "You can delete or manage cookies in your browser settings. If you remove cookies, the banner may appear again."
+        ],
+        "bullets": [
+          "Essential: required for core functionality/security.",
+          "Analytics (optional): helps us understand website use in aggregated form."
+        ]
+      },
+      {
+        "title": "5. Sharing of data",
+        "body": [
+          "We do not sell your personal data. We may share it only with service providers that help us operate the website and respond to inquiries (e.g. hosting provider, email delivery provider).",
+          "Our contact form sends your message via an email delivery provider to our team so we can reply to you. Where service providers are located outside the EEA, we ensure appropriate safeguards are in place for the protection of your data."
+        ]
+      },
+      {
+        "title": "6. Retention",
+        "body": [
+          "We keep contact data for as long as needed to handle your request and for a reasonable period to follow up on business communications, unless a longer period is required by law."
+        ]
+      },
+      {
+        "title": "7. Security",
+        "body": [
+          "We apply reasonable technical and organizational measures to protect your personal data. However, no transmission or storage method can be guaranteed 100% secure."
+        ]
+      },
+      {
+        "title": "8. Your rights",
+        "body": [
+          "Depending on the circumstances, you may request access, correction, deletion, restriction, objection, and portability. Where processing is based on consent, you may withdraw it at any time.",
+          "To exercise your rights, contact `bestplyike@gmail.com`. You also have the right to lodge a complaint with the Hellenic Data Protection Authority (`www.dpa.gr`)."
+        ]
+      },
+      {
+        "title": "9. External links",
+        "body": [
+          "Our website may include links to third parties (e.g. Maps). We do not control third‑party privacy practices."
+        ]
+      },
+      {
+        "title": "10. Changes",
+        "body": [
+          "We may update this policy from time to time. The “Last updated” date at the top indicates when the latest changes were made."
+        ]
+      }
+    ]
   },
-  "TermsPage": {
-    "title": "Terms of Service",
-    "body": "Content in progress."
+  "CookieConsent": {
+    "ariaLabel": "Cookie consent",
+    "eyebrow": "Cookies",
+    "body": "We use essential cookies for core functionality. With your consent, we may also use optional analytics cookies to improve the website. You can read more in our Privacy Policy.",
+    "learnMore": "Read Privacy Policy",
+    "reject": "Reject",
+    "accept": "Accept"
   },
   "NotFound": {
     "title": "Page not found",

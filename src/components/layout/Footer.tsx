@@ -191,11 +191,6 @@ export function Footer() {
                 {tFooter("privacy")}
               </Link>
             </li>
-            <li>
-              <Link href="/terms" className={footerLinkClass}>
-                {tFooter("terms")}
-              </Link>
-            </li>
           </ul>
         </div>
       </div>

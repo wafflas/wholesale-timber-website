@@ -1,5 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { PartnersCarousel } from "./PartnersCarousel";
+import { PartnersSectionHeading } from "./PartnersSectionHeading";
 
 const PARTNER_CONFIG = [
   {
@@ -34,16 +35,7 @@ export default async function PartnersSection() {
   return (
     <section className="bg-[#1A1A1A] py-16 md:py-24 lg:py-32">
       <div className="mx-auto max-w-6xl xl:max-w-7xl">
-        <div className="px-4 text-center">
-          <h2 className="font-golos-text text-3xl font-bold sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
-            <span className="bg-gradient-to-r from-[#C9A96E] via-[#E8D5A8] to-[#C9A96E] bg-clip-text text-transparent">
-              {t("title")}
-            </span>
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-[#9CA3AF] sm:text-base lg:mt-6 lg:max-w-2xl lg:text-lg">
-            {t("subtitle")}
-          </p>
-        </div>
+        <PartnersSectionHeading title={t("title")} subtitle={t("subtitle")} />
 
         <div className="mt-10 md:mt-14 lg:mt-16">
           <PartnersCarousel partners={partners} />
