@@ -10,7 +10,6 @@ interface Partner {
   id: string;
   name: string;
   url: string;
-  role: string;
 }
 
 interface PartnersCarouselProps {
@@ -24,7 +23,7 @@ const LOGO_SRC_BY_ID: Record<string, string> = {
   versowood: "/partnerlogos/versowoodlogo.png",
   welde: "/partnerlogos/weldewoodlogo.png",
   sumec: "/partnerlogos/sumeclogo.png",
-  veko: "/partnerlogos/vekologo.png",
+  luopajarvensaha: "/partnerlogos/luopajarvensahalogo.webp",
   majerholz: "/partnerlogos/majer-holzlogo.png",
   starwood: "/partnerlogos/starwoodlogo.png",
 };
@@ -70,9 +69,6 @@ function PartnerCard({
       <div className="text-center">
         <p className="text-lg font-bold tracking-wide text-white lg:text-xl">
           {partner.name}
-        </p>
-        <p className="mt-1.5 text-xs font-medium italic text-primary">
-          {partner.role}
         </p>
       </div>
     </div>

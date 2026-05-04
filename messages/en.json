@@ -56,7 +56,7 @@
   },
   "CompanySection": {
     "title": "The company",
-    "p1": "BEST PLY I.K.E., under the management of Pantelis Karagiannis, operates exclusively in timber imports/exports and industrial wood-based products sourced worldwide.",
+    "p1": "BEST PLY I.K.E. operates exclusively in timber imports/exports and industrial wood-based products sourced worldwide.",
     "p2": "With solid foundations and long-term partnerships across Asia, Africa, and Europe (China, etc.), our company maintains a strong presence in the Greek timber trade. We focus on wholesale B2B sales to industry professionals, ensuring uninterrupted supply at competitive prices.",
     "p3": "We offer a broad range of products — BIRCH PLYWOOD, PINE, FILM FACED PLYWOOD, OKOUME, and BLOCKBOARD — building stable, successful collaborations with customers nationwide.",
     "imageAlt1": "Timber products warehouse",
@@ -72,16 +72,16 @@
   },
   "PartnersSection": {
     "title": "International Partner Network",
-    "subtitle": "Building strong relationships with top suppliers worldwide (Asia, Africa, Europe) to deliver the best quality.",
-    "arserwood": "Supplier - China",
-    "hsbaco": "Manufacturer - Austria",
-    "odek": "Manufacturer - Poland",
-    "versowood": "Manufacturer - Finland",
-    "welde": "Manufacturer - Austria",
-    "sumec": "Supplier - China",
-    "veko": "Supplier - Albania",
-    "majerholz": "Manufacturer - Germany",
-    "starwood": "Manufacturer - Turkey"
+    "subtitle": "Building strong relationships with top suppliers worldwide to deliver the best quality.",
+    "arserwood": "Supplier",
+    "hsbaco": "Manufacturer",
+    "odek": "Manufacturer",
+    "versowood": "Manufacturer",
+    "welde": "Manufacturer",
+    "sumec": "Supplier",
+    "luopajarvensaha": "Manufacturer",
+    "majerholz": "Manufacturer",
+    "starwood": "Manufacturer"
   },
   "Common": {
     "backToTop": "Back to top"

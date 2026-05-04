@@ -17,7 +17,11 @@ const PARTNER_CONFIG = [
   { id: "versowood", name: "VERSOWOOD", url: "https://www.versowood.com/" },
   { id: "welde", name: "WELDE", url: "https://www.welde.at/en/" },
   { id: "sumec", name: "SUMEC", url: "https://www.sumecbuildingmaterial.com/" },
-  { id: "veko", name: "VEKO", url: "https://veko-al.com/en/" },
+  {
+    id: "luopajarvensaha",
+    name: "LUOPAJÄRVEN SAHA",
+    url: "https://www.luopajarvensaha.fi/en/",
+  },
   { id: "majerholz", name: "MAJER - HOLZ", url: "https://www.majer-holz.com/" },
   { id: "starwood", name: "STARWOOD", url: "https://www.starwood.com.tr/" },
 ] as const;
@@ -29,7 +33,6 @@ export default async function PartnersSection() {
     id: p.id,
     name: p.name,
     url: p.url,
-    role: t(p.id),
   }));
 
   return (

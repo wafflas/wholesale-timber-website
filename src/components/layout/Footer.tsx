@@ -108,30 +108,47 @@ export function Footer() {
                     aria-hidden
                   />
                   <div className="flex flex-col gap-1">
-                    <a
-                      href="tel:+306932262910"
-                      className={`${footerLinkClass} w-fit`}
-                    >
-                      6932 262 910
-                    </a>
-                    <a
-                      href="tel:+306943619220"
-                      className={`${footerLinkClass} w-fit`}
-                    >
-                      6943 619 220
-                    </a>
-                    <a
-                      href="tel:+306944567317"
-                      className={`${footerLinkClass} w-fit`}
-                    >
-                      6944 567 317
-                    </a>
-                    <a
-                      href="tel:+302108000365"
-                      className={`${footerLinkClass} w-fit`}
-                    >
-                      210 800 0365
-                    </a>
+                    <div className="grid gap-2.5">
+                      <div className="grid grid-cols-1 gap-y-1 sm:grid-cols-[1fr_auto] sm:items-center sm:gap-x-4 sm:gap-y-0">
+                        <span className="min-w-0 text-[0.72rem] font-semibold tracking-[0.12em] text-white/60">
+                          {locale === "el"
+                            ? "ΠΑΝΤΕΛΗΣ ΚΑΡΑΓΙΑΝΝΗΣ"
+                            : "PANTELIS KARAGIANNIS"}
+                        </span>
+                        <a
+                          href="tel:+306932262910"
+                          className={`${footerLinkClass} w-fit tabular-nums`}
+                        >
+                          6932 262 910
+                        </a>
+                      </div>
+                      <div className="grid grid-cols-1 gap-y-1 sm:grid-cols-[1fr_auto] sm:items-center sm:gap-x-4 sm:gap-y-0">
+                        <span className="min-w-0 text-[0.72rem] font-semibold tracking-[0.12em] text-white/60">
+                          {locale === "el"
+                            ? "ΝΙΚΟΣ ΚΑΡΑΓΙΑΝΝΗΣ"
+                            : "NIKOS KARAGIANNIS"}
+                        </span>
+                        <a
+                          href="tel:+306944567317"
+                          className={`${footerLinkClass} w-fit tabular-nums`}
+                        >
+                          6944 567 317
+                        </a>
+                      </div>
+                      <div className="grid grid-cols-1 gap-y-1 sm:grid-cols-[1fr_auto] sm:items-center sm:gap-x-4 sm:gap-y-0">
+                        <span className="min-w-0 text-[0.72rem] font-semibold tracking-[0.12em] text-white/60">
+                          {locale === "el"
+                            ? "ΠΑΝΑΓΙΩΤΗΣ ΚΑΡΑΓΙΑΝΝΗΣ"
+                            : "PANAGIOTIS KARAGIANNIS"}
+                        </span>
+                        <a
+                          href="tel:+306943619220"
+                          className={`${footerLinkClass} w-fit tabular-nums`}
+                        >
+                          6943 619 220
+                        </a>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </li>
