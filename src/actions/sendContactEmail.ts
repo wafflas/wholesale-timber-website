@@ -30,7 +30,7 @@ export async function sendContactEmail(
 
   const { error } = await resend.emails.send({
     from: "BEST PLY Contact <onboarding@resend.dev>",
-    to: "giannikakisgiwrgos@gmail.com", //testing email to change it later
+    to: "bestplyike@gmail.com",
     replyTo: email,
     subject: `New enquiry from ${name}`,
     html: `
