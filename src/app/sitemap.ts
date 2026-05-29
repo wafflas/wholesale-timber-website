@@ -17,7 +17,7 @@ const lastModified = new Date("2026-05-01");
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = getSiteUrl();
 
-  const paths = ["/", "/company", "/products", "/contact", "/privacy"] as const;
+  const paths = ["/", "/products", "/contact", "/privacy"] as const;
 
   return routing.locales.flatMap((locale) =>
     paths.map((path) => ({

@@ -8,7 +8,7 @@ import { PRODUCTS } from "@/lib/products";
 
 const NAV_LINKS = [
   { key: "home", href: "/" },
-  { key: "company", href: "/company" },
+  { key: "company", href: "/#company" },
   { key: "products", href: "/products" },
   { key: "contact", href: "/contact" },
 ] as const;
