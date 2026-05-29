@@ -1,15 +1,6 @@
 import { MetadataRoute } from "next";
 import { routing } from "@/i18n/routing";
-
-function getSiteUrl() {
-  return (
-    process.env.NEXT_PUBLIC_SITE_URL ??
-    (process.env.VERCEL_URL
-      ? `https://${process.env.VERCEL_URL}`
-      : undefined) ??
-    "http://localhost:3000"
-  );
-}
+import { getSiteUrl } from "@/lib/site";
 
 // Static date for predictable caching — bump when you ship meaningful content changes
 const lastModified = new Date("2026-05-01");

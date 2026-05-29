@@ -15,6 +15,7 @@ import { SmoothScroller } from "@/components/layout/SmoothScroller";
 import { ScrollToTopButton } from "@/components/shared/ScrollToTopButton";
 import { CookieConsent } from "@/components/shared/CookieConsent";
 import { GoogleAnalytics } from "@/components/shared/GoogleAnalytics";
+import { getSiteUrl } from "@/lib/site";
 import "../globals.css";
 
 const golosText = Golos_Text({
@@ -47,13 +48,8 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Metadata" });
 
-  const siteUrl =
-    process.env.NEXT_PUBLIC_SITE_URL ??
-    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined) ??
-    "http://localhost:3000";
-
   return {
-    metadataBase: new URL(siteUrl),
+    metadataBase: new URL(getSiteUrl()),
     title: {
       default: `BEST PLY I.K.E | ${t("title")}`,
       template: "BEST PLY I.K.E | %s",
@@ -89,6 +85,9 @@ export async function generateMetadata({
       },
       description: t("description"),
       images: ["/Logo.svg"],
+    },
+    verification: {
+      google: "1mvp8e6mEm9LEczrh4u7MDNgyz-NKSeoICAdu83X3H4",
     },
   };
 }

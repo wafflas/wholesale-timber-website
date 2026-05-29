@@ -1,6 +1,8 @@
 {
   "name": "BEST PLY I.K.E.",
   "short_name": "BEST PLY",
+  "start_url": "https://www.bestplyike.com/",
+  "scope": "https://www.bestplyike.com/",
   "icons": [
     {
       "src": "/favicon_io/android-chrome-192x192.png",
