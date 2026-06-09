@@ -15,7 +15,7 @@ import { SmoothScroller } from "@/components/layout/SmoothScroller";
 import { ScrollToTopButton } from "@/components/shared/ScrollToTopButton";
 import { CookieConsent } from "@/components/shared/CookieConsent";
 import { GoogleAnalytics } from "@/components/shared/GoogleAnalytics";
-import { getSiteUrl } from "@/lib/site";
+import { getSiteUrl, SITE_LOGO } from "@/lib/site";
 import "../globals.css";
 
 const golosText = Golos_Text({
@@ -55,6 +55,10 @@ export async function generateMetadata({
       template: "BEST PLY I.K.E | %s",
     },
     description: t("description"),
+    icons: {
+      icon: SITE_LOGO,
+      apple: SITE_LOGO,
+    },
     manifest: "/favicon_io/site.webmanifest",
     alternates: {
       canonical: "./",
@@ -71,9 +75,9 @@ export async function generateMetadata({
       type: "website",
       images: [
         {
-          url: "/Logo.svg",
+          url: SITE_LOGO,
           alt: "BEST PLY I.K.E.",
-          type: "image/svg+xml",
+          type: "image/webp",
         },
       ],
     },
@@ -84,7 +88,7 @@ export async function generateMetadata({
         template: "BEST PLY I.K.E | %s",
       },
       description: t("description"),
-      images: ["/Logo.svg"],
+      images: [SITE_LOGO],
     },
     verification: {
       google: "1mvp8e6mEm9LEczrh4u7MDNgyz-NKSeoICAdu83X3H4",

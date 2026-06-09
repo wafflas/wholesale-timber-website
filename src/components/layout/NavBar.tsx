@@ -7,6 +7,7 @@ import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { LocaleSwitcher } from "@/components/layout/LocaleSwitcher";
 import { ProductSearchCombobox } from "@/components/layout/ProductSearchCombobox";
+import { SITE_LOGO } from "@/lib/site";
 import gsap from "gsap";
 import { useLenis } from "lenis/react";
 
@@ -273,12 +274,12 @@ export function NavBar() {
           onClick={(e) => handleNavClick(e, "/", false)}
         >
           <Image
-            src="/Logo.svg"
+            src={SITE_LOGO}
             alt="BEST PLY I.K.E."
-            width={88}
-            height={36}
+            width={140}
+            height={56}
             priority
-            className="h-9 w-auto lg:h-10"
+            className="h-10 w-auto sm:h-11 lg:h-12"
           />
         </Link>
 

@@ -2,6 +2,7 @@ import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import SectionTitle from "./SectionTitle";
 import { CompanyReveal } from "./CompanyReveal";
+import { SITE_LOGO } from "@/lib/site";
 
 export default async function Company() {
   const t = await getTranslations("CompanySection");
@@ -48,10 +49,11 @@ export default async function Company() {
                 className="mt-10 flex justify-center lg:justify-start"
               >
                 <Image
-                  src="/Logo 2.svg"
-                  alt="Company Logo"
-                  width={180}
-                  height={180}
+                  src={SITE_LOGO}
+                  alt="BEST PLY I.K.E."
+                  width={240}
+                  height={96}
+                  className="h-auto w-[220px] sm:w-[240px] lg:w-[280px]"
                 />
               </div>
             </div>
@@ -78,8 +80,8 @@ export default async function Company() {
               >
                 <div className="relative aspect-[4/3] w-full overflow-hidden lg:aspect-[3/4]">
                   <Image
-                    src="/companyImage2.jpg"
-                    alt="Company Image 2"
+                    src="/photo 2.webp"
+                    alt={t("imageAlt2")}
                     fill
                     sizes="(min-width: 1024px) 25vw, 50vw"
                     className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"

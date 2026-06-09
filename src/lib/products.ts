@@ -164,6 +164,24 @@ export const PRODUCTS: Product[] = [
     thicknesses: ["9", "11", "15", "18"],
   },
 
+  // ─── ΚΑΛΑΜΩΤΗ ────────────────────────────────────────────────────────────────
+  {
+    slug: "bamboo-tonkin",
+    name: "Bamboo Tonkin Scaffolding",
+    nameGr: "ΚΑΛΑΜΩΤΗ-BAMBOO TONKIN",
+    subtitleEn: "Tonkin Bamboo Poles",
+    subtitleGr: "Καλάμια Tonkin",
+    image: "/products/bamboo.webp",
+    typeEn: "Bamboo",
+    typeGr: "Καλαμωτή",
+    descriptionEn:
+      "High-quality Tonkin bamboo poles for scaffolding and construction applications. Available in multiple heights with consistent diameter and excellent structural strength.",
+    descriptionGr:
+      "Καλάμια Tonkin υψηλής ποιότητας για καλαμωτές και κατασκευαστικές εφαρμογές. Διατίθενται σε πολλαπλά ύψη με σταθερή διάμετρο και εξαιρετική δομική αντοχή.",
+    dimensions: ["1000×3000", "1500×3000", "2000×3000", "2500×3000"],
+    thicknesses: ["16", "17", "18", "19", "20"],
+  },
+
   // ─── BLOCKBOARD ──────────────────────────────────────────────────────────────
   {
     slug: "blockboard",

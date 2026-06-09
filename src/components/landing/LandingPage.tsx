@@ -58,7 +58,7 @@ export function LandingPage() {
       >
         <div className="absolute inset-0 -z-10 overflow-hidden">
           <Image
-            src="/backgroundImage2.jpg"
+            src="/photo 1.webp"
             alt="BEST PLY I.K.E."
             fill
             priority

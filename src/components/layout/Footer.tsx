@@ -3,8 +3,9 @@
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { Clock, Mail, MapPin, Phone } from "lucide-react";
+import { Clock, Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react";
 import { PRODUCTS } from "@/lib/products";
+import { SITE_LOGO, SOCIAL_LINKS } from "@/lib/site";
 
 const NAV_LINKS = [
   { key: "home", href: "/" },
@@ -41,16 +42,36 @@ export function Footer() {
               className="inline-block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#2b2623]"
             >
               <Image
-                src="/Logo.svg"
+                src={SITE_LOGO}
                 alt="BEST PLY I.K.E."
-                width={88}
-                height={36}
-                className="h-9 w-auto lg:h-11"
+                width={280}
+                height={112}
+                className="h-24 w-auto"
               />
             </Link>
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-[#d1d1d1]/85 lg:text-base lg:leading-relaxed">
               {tFooter("description")}
             </p>
+            <div className="mt-5 flex gap-3">
+              <a
+                href={SOCIAL_LINKS.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={tFooter("instagram")}
+                className={`${footerLinkClass} inline-flex size-10 items-center justify-center rounded-full border border-white/15 bg-white/5`}
+              >
+                <Instagram className="size-4" strokeWidth={1.75} aria-hidden />
+              </a>
+              <a
+                href={SOCIAL_LINKS.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={tFooter("facebook")}
+                className={`${footerLinkClass} inline-flex size-10 items-center justify-center rounded-full border border-white/15 bg-white/5`}
+              >
+                <Facebook className="size-4" strokeWidth={1.75} aria-hidden />
+              </a>
+            </div>
           </div>
 
           <nav
@@ -107,48 +128,25 @@ export function Footer() {
                     strokeWidth={1.75}
                     aria-hidden
                   />
-                  <div className="flex flex-col gap-1">
-                    <div className="grid gap-2.5">
-                      <div className="grid grid-cols-1 gap-y-1 sm:grid-cols-[1fr_auto] sm:items-center sm:gap-x-4 sm:gap-y-0">
-                        <span className="min-w-0 text-[0.72rem] font-semibold tracking-[0.12em] text-white/60">
-                          {locale === "el"
-                            ? "ΠΑΝΤΕΛΗΣ ΚΑΡΑΓΙΑΝΝΗΣ"
-                            : "PANTELIS KARAGIANNIS"}
-                        </span>
-                        <a
-                          href="tel:+306932262910"
-                          className={`${footerLinkClass} w-fit tabular-nums`}
-                        >
-                          6932 262 910
-                        </a>
-                      </div>
-                      <div className="grid grid-cols-1 gap-y-1 sm:grid-cols-[1fr_auto] sm:items-center sm:gap-x-4 sm:gap-y-0">
-                        <span className="min-w-0 text-[0.72rem] font-semibold tracking-[0.12em] text-white/60">
-                          {locale === "el"
-                            ? "ΝΙΚΟΣ ΚΑΡΑΓΙΑΝΝΗΣ"
-                            : "NIKOS KARAGIANNIS"}
-                        </span>
-                        <a
-                          href="tel:+306944567317"
-                          className={`${footerLinkClass} w-fit tabular-nums`}
-                        >
-                          6944 567 317
-                        </a>
-                      </div>
-                      <div className="grid grid-cols-1 gap-y-1 sm:grid-cols-[1fr_auto] sm:items-center sm:gap-x-4 sm:gap-y-0">
-                        <span className="min-w-0 text-[0.72rem] font-semibold tracking-[0.12em] text-white/60">
-                          {locale === "el"
-                            ? "ΠΑΝΑΓΙΩΤΗΣ ΚΑΡΑΓΙΑΝΝΗΣ"
-                            : "PANAGIOTIS KARAGIANNIS"}
-                        </span>
-                        <a
-                          href="tel:+306943619220"
-                          className={`${footerLinkClass} w-fit tabular-nums`}
-                        >
-                          6943 619 220
-                        </a>
-                      </div>
-                    </div>
+                  <div className="flex flex-col gap-2">
+                    <a
+                      href="tel:+306932262910"
+                      className={`${footerLinkClass} w-fit tabular-nums`}
+                    >
+                      6932 262 910
+                    </a>
+                    <a
+                      href="tel:+306944567317"
+                      className={`${footerLinkClass} w-fit tabular-nums`}
+                    >
+                      6944 567 317
+                    </a>
+                    <a
+                      href="tel:+306943619220"
+                      className={`${footerLinkClass} w-fit tabular-nums`}
+                    >
+                      6943 619 220
+                    </a>
                   </div>
                 </div>
               </li>

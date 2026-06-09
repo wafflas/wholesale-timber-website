@@ -13,14 +13,17 @@ export default async function ContactSection() {
       aria-labelledby="contact-section-heading"
     >
       <Image
-        src="/contactBackground.png"
+        src="/photo 3.webp"
         alt=""
         fill
         className="object-cover object-center"
         sizes="100vw"
         priority={false}
       />
-      <div className="absolute inset-0 bg-black/40" aria-hidden="true" />
+      <div
+        className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/55 to-black/65"
+        aria-hidden="true"
+      />
 
       <ContactSectionClient
         headingBefore={t("headingBefore")}
