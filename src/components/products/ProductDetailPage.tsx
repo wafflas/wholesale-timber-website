@@ -11,6 +11,11 @@ interface ProductDetailPageProps {
   description: string;
   dimensions: string[];
   thicknesses: string[];
+  secondarySpecs?: {
+    label: string;
+    unit: string;
+    values: string[];
+  };
   image: string;
   relatedProducts: { slug: string; title: string; image: string }[];
   labels: {
@@ -32,10 +37,15 @@ export default function ProductDetailPage({
   description,
   dimensions,
   thicknesses,
+  secondarySpecs,
   image,
   relatedProducts,
   labels,
 }: ProductDetailPageProps) {
+  const secondaryLabel = secondarySpecs?.label ?? labels.thicknesses;
+  const secondaryUnit = secondarySpecs?.unit ?? labels.unit;
+  const secondaryValues = secondarySpecs?.values ?? thicknesses;
+
   return (
     <main className="min-h-screen bg-[#FAF9F7] selection:bg-primary selection:text-white">
       <div className="mx-auto max-w-3xl px-5 pb-24 pt-28 sm:px-6 lg:max-w-5xl lg:px-8 lg:pt-32">
@@ -102,11 +112,11 @@ export default function ProductDetailPage({
 
               <section>
                 <h2 className="mb-2.5 font-golos-text text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-[#2b2623]/40">
-                  {labels.thicknesses}{" "}
-                  <span className="normal-case">{labels.unit}</span>
+                  {secondaryLabel}{" "}
+                  <span className="normal-case">{secondaryUnit}</span>
                 </h2>
                 <div className="flex flex-wrap gap-2">
-                  {thicknesses.map((t) => (
+                  {secondaryValues.map((t) => (
                     <span
                       key={t}
                       className="rounded-full bg-primary/10 px-3.5 py-1.5 font-golos-text text-xs font-bold text-primary"

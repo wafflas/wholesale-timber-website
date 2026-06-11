@@ -68,8 +68,19 @@ export default async function ProductPage({
       subtitle={isGreek ? product.subtitleGr : product.subtitleEn}
       typeLabel={isGreek ? product.typeGr : product.typeEn}
       description={isGreek ? product.descriptionGr : product.descriptionEn}
-      dimensions={product.dimensions}
+      dimensions={
+        isGreek ? product.dimensions : (product.dimensionsEn ?? product.dimensions)
+      }
       thicknesses={product.thicknesses}
+      secondarySpecs={
+        product.heights
+          ? {
+              label: t("heights"),
+              unit: product.secondaryUnit ?? "(m)",
+              values: product.heights,
+            }
+          : undefined
+      }
       image={product.image}
       relatedProducts={related}
       labels={{

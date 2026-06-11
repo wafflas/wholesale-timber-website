@@ -99,6 +99,7 @@
     "description": "Description",
     "dimensions": "Dimensions",
     "thicknesses": "Thicknesses",
+    "heights": "Height",
     "unit": "(mm)",
     "contactCta": "Request a Quote",
     "relatedProducts": "Related Products"

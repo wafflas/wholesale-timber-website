@@ -10,7 +10,13 @@ export interface Product {
   descriptionEn: string;
   descriptionGr: string;
   dimensions: string[];
+  /** English dimension labels when they differ from `dimensions` (Greek). */
+  dimensionsEn?: string[];
   thicknesses: string[];
+  /** When set, shown instead of thicknesses (e.g. bamboo scaffolding heights). */
+  heights?: string[];
+  /** Unit label for the heights section; defaults to mm when omitted. */
+  secondaryUnit?: string;
 }
 
 export const PRODUCTS: Product[] = [
@@ -171,15 +177,18 @@ export const PRODUCTS: Product[] = [
     nameGr: "ΚΑΛΑΜΩΤΗ-BAMBOO TONKIN",
     subtitleEn: "Tonkin Bamboo Poles",
     subtitleGr: "Καλάμια Tonkin",
-    image: "/products/bamboo.webp",
+    image: "/products/bamboo4.webp",
     typeEn: "Bamboo",
     typeGr: "Καλαμωτή",
     descriptionEn:
       "High-quality Tonkin bamboo poles for scaffolding and construction applications. Available in multiple heights with consistent diameter and excellent structural strength.",
     descriptionGr:
       "Καλάμια Tonkin υψηλής ποιότητας για καλαμωτές και κατασκευαστικές εφαρμογές. Διατίθενται σε πολλαπλά ύψη με σταθερή διάμετρο και εξαιρετική δομική αντοχή.",
-    dimensions: ["1000×3000", "1500×3000", "2000×3000", "2500×3000"],
-    thicknesses: ["16", "17", "18", "19", "20"],
+    dimensions: ["Διάμετρος Ø 16–20"],
+    dimensionsEn: ["Diameter Ø 16–20"],
+    thicknesses: [],
+    heights: ["1", "1.5", "2", "2.5"],
+    secondaryUnit: "(m)",
   },
 
   // ─── BLOCKBOARD ──────────────────────────────────────────────────────────────
