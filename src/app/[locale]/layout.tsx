@@ -8,7 +8,7 @@ import localFont from "next/font/local";
 import { Golos_Text } from "next/font/google";
 import { cookies } from "next/headers";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
-import { routing } from "@/i18n/routing";
+import { getLanguageAlternates, getLocalePath, routing } from "@/i18n/routing";
 import { NavBar } from "@/components/layout/NavBar";
 import { Footer } from "@/components/layout/Footer";
 import { SmoothScroller } from "@/components/layout/SmoothScroller";
@@ -74,7 +74,7 @@ export async function generateMetadata({
     manifest: "/favicon_io/site.webmanifest",
     alternates: {
       canonical: "./",
-      languages: Object.fromEntries(routing.locales.map((l) => [l, `/${l}`])),
+      languages: getLanguageAlternates("/"),
     },
     openGraph: {
       title: {
@@ -82,7 +82,7 @@ export async function generateMetadata({
         template: "BEST PLY I.K.E | %s",
       },
       description: t("description"),
-      url: `/${locale}`,
+      url: getLocalePath("/", locale),
       siteName: "BEST PLY I.K.E.",
       type: "website",
       images: [

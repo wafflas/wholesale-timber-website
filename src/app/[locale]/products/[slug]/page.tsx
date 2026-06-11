@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
+import { getLanguageAlternates, getLocalePath } from "@/i18n/routing";
 import { PRODUCTS } from "@/lib/products";
 import ProductDetailPage from "@/components/products/ProductDetailPage";
 
@@ -26,15 +27,12 @@ export async function generateMetadata({
     description,
     alternates: {
       canonical: "./",
-      languages: {
-        el: `/el/products/${slug}`,
-        en: `/en/products/${slug}`,
-      },
+      languages: getLanguageAlternates(`/products/${slug}`),
     },
     openGraph: {
       title,
       description,
-      url: `/${locale}/products/${slug}`,
+      url: getLocalePath(`/products/${slug}`, locale),
     },
   };
 }

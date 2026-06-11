@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { routing } from "@/i18n/routing";
+import { getLocalePath, routing } from "@/i18n/routing";
 import { getSiteUrl } from "@/lib/site";
 
 // Static date for predictable caching — bump when you ship meaningful content changes
@@ -12,7 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return routing.locales.flatMap((locale) =>
     paths.map((path) => ({
-      url: `${base}/${locale}${path === "/" ? "" : path}`,
+      url: `${base}${getLocalePath(path, locale)}`,
       lastModified,
       changeFrequency:
         path === "/privacy"

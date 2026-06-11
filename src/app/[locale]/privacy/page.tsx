@@ -1,5 +1,6 @@
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
+import { getLanguageAlternates, getLocalePath } from "@/i18n/routing";
 
 interface PrivacySection {
   title: string;
@@ -20,15 +21,12 @@ export async function generateMetadata({
     description: t("description"),
     alternates: {
       canonical: "./",
-      languages: {
-        el: "/el/privacy",
-        en: "/en/privacy",
-      },
+      languages: getLanguageAlternates("/privacy"),
     },
     openGraph: {
       title: t("title"),
       description: t("description"),
-      url: `/${locale}/privacy`,
+      url: getLocalePath("/privacy", locale),
     },
   };
 }

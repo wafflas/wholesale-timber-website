@@ -1,5 +1,6 @@
 import { setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
+import { getLanguageAlternates, getLocalePath } from "@/i18n/routing";
 import { LandingPage } from "@/components/landing/LandingPage";
 //import BestPicks from "@/components/landing/BestPicks";
 import Company from "@/components/landing/Company";
@@ -16,13 +17,10 @@ export async function generateMetadata({
   return {
     alternates: {
       canonical: "./",
-      languages: {
-        el: "/el",
-        en: "/en",
-      },
+      languages: getLanguageAlternates("/"),
     },
     openGraph: {
-      url: `/${locale}`,
+      url: getLocalePath("/", locale),
     },
   };
 }

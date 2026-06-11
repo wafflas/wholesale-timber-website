@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
+import { getLanguageAlternates, getLocalePath } from "@/i18n/routing";
 import { PRODUCTS } from "@/lib/products";
 import { ProductFilterProvider } from "@/components/products/ProductFilterContext";
 import { ProductTabBar } from "@/components/products/ProductTabBar";
@@ -21,15 +22,12 @@ export async function generateMetadata({
     description: t("body"),
     alternates: {
       canonical: "./",
-      languages: {
-        el: "/el/products",
-        en: "/en/products",
-      },
+      languages: getLanguageAlternates("/products"),
     },
     openGraph: {
       title: t("title"),
       description: t("body"),
-      url: `/${locale}/products`,
+      url: getLocalePath("/products", locale),
     },
   };
 }
